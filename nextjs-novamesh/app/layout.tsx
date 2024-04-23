@@ -19,8 +19,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <NavBar />
-        <EthereumProvider>{children}</EthereumProvider>
+        <EthereumProvider>
+          <NavBar />
+          {children}
+        </EthereumProvider>
       </body>
     </html>
   );
