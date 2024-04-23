@@ -1,3 +1,5 @@
+"use client";
+
 import { useEthereum } from "./EthereumProvider";
 import { ethers } from "ethers";
 
