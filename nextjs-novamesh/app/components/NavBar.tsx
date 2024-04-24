@@ -7,6 +7,11 @@ export default function NavBar() {
         <h1 className="text-2xl text-white">NovaMesh</h1>
       </Link>
       <div className="flex justify-around flex-grow">
+      <Link href="/programs">
+          <p className="text-white hover:text-purple-300 cursor-pointer">
+            Programs
+          </p>
+        </Link>
         <Link href="/explore">
           <p className="text-white hover:text-purple-300 cursor-pointer">
             Explore
