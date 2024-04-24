@@ -96,6 +96,13 @@ dependencies = [
 ]
 
 [[package]]
+name = "anchor-counter"
+version = "0.1.0"
+dependencies = [
+ "anchor-lang",
+]
+
+[[package]]
 name = "anchor-derive-accounts"
 version = "0.29.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -153,13 +160,6 @@ dependencies = [
  "getrandom 0.2.14",
  "solana-program",
  "thiserror",
-]
-
-[[package]]
-name = "anchor-novamesh"
-version = "0.1.0"
-dependencies = [
- "anchor-lang",
 ]
 
 [[package]]

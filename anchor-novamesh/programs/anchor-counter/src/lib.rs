@@ -1,9 +1,9 @@
 use anchor_lang::prelude::*;
 
-declare_id!("7p9LDQG2eXeyHYkkxMX6J9iLQ5gMd4s8xAhqy9PHr7S7");
+declare_id!("DeffejzE94nG1u4ZoAhGzmS9bWfQ1Sd1RFknj7M2AJa5");
 
 #[program]
-pub mod anchor_novamesh {
+pub mod anchor_counter {
     use super::*;
 
     pub fn initialize(ctx: Context<Initialize>) -> Result<()> {

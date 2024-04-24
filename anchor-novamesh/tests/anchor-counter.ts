@@ -1,15 +1,15 @@
 import * as anchor from "@coral-xyz/anchor";
 import { Program } from "@coral-xyz/anchor";
-import { AnchorNovamesh } from "../target/types/anchor_novamesh";
+import { AnchorCounter } from "../target/types/anchor_counter";
 import { assert, expect } from "chai";
 
-describe("anchor-novamesh", () => {
+describe("anchor-counter", () => {
   // Configure the client to use the local cluster.
 
   const provider = anchor.AnchorProvider.env();
   anchor.setProvider(provider);
 
-  const program = anchor.workspace.AnchorNovamesh as Program<AnchorNovamesh>;
+  const program = anchor.workspace.AnchorCounter as Program<AnchorCounter>;
 
   const counter = anchor.web3.Keypair.generate();
 
