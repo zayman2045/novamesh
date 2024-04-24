@@ -1,7 +1,7 @@
 import * as anchor from "@coral-xyz/anchor";
 import { Program } from "@coral-xyz/anchor";
 import { AnchorNovamesh } from "../target/types/anchor_novamesh";
-import { expect } from "chai";
+import { assert, expect } from "chai";
 
 describe("anchor-novamesh", () => {
   // Configure the client to use the local cluster.
@@ -22,5 +22,15 @@ describe("anchor-novamesh", () => {
 
     const account = await program.account.counter.fetch(counter.publicKey);
     expect(account.count.toNumber()).to.equal(0);
+  });
+
+  it("Incremented the count", async () => {
+    const tx = await program.methods
+      .increment()
+      .accounts({ counter: counter.publicKey })
+      .rpc();
+
+    const account = await program.account.counter.fetch(counter.publicKey);
+    assert.deepEqual(account.count.toNumber(), 1);
   });
 });
