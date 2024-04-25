@@ -7,11 +7,14 @@ skip-lint = false
 [programs.localnet]
 anchor_counter = "DeffejzE94nG1u4ZoAhGzmS9bWfQ1Sd1RFknj7M2AJa5"
 
+[programs.devnet]
+anchor_counter = "DeffejzE94nG1u4ZoAhGzmS9bWfQ1Sd1RFknj7M2AJa5"
+
 [registry]
 url = "https://api.apr.dev"
 
 [provider]
-cluster = "Localnet"
+cluster = "devnet"
 wallet = "/Users/zayman/.config/solana/id.json"
 
 [scripts]
