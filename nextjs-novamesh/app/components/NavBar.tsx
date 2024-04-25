@@ -2,12 +2,12 @@ import Link from "next/link";
 
 export default function NavBar() {
   return (
-    <nav className="flex items-center justify-between p-6 bg-purple-500">
+    <nav className="flex items-center justify-between p-6 bg-purple-800">
       <Link href="/">
         <h1 className="text-2xl text-white">NovaMesh</h1>
       </Link>
       <div className="flex justify-around flex-grow">
-      <Link href="/programs">
+        <Link href="/programs">
           <p className="text-white hover:text-purple-300 cursor-pointer">
             Programs
           </p>
