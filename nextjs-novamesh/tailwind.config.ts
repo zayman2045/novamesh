@@ -10,6 +10,17 @@ const config: Config = {
     extend: {
       colors: {
         "custom-green": "#08f7be",
+        "custom-purple": "#512da8",
+      },
+      fontFamily: {
+        "custom-solana": [
+          "DM Sans",
+          "Roboto",
+          "Helvetica Neue",
+          "Helvetica",
+          "Arial",
+          "sans-serif",
+        ],
       },
     },
   },

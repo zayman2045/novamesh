@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { EthereumProvider } from "./components/EthereumProvider";
+import { SolanaProvider } from "./components/SolanaProvider";
 import "./globals.css";
 import NavBar from "./components/NavBar";
 
@@ -19,10 +20,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} bg-gray-800 text-white`}>
-        <EthereumProvider>
+        {/* <EthereumProvider> */}
+        <SolanaProvider>
           <NavBar />
           {children}
-        </EthereumProvider>
+        </SolanaProvider>
+        {/* </EthereumProvider> */}
       </body>
     </html>
   );

@@ -1,6 +1,17 @@
+"use client";
+
 import Link from "next/link";
+import { useState, useEffect } from "react";
+import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
+// import dynamic from "next/dynamic";
 
 export default function NavBar() {
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
   return (
     <nav className="flex justify-between items-center p-6 bg-custom-green bg-opacity-75">
       <Link href="/">
@@ -28,9 +39,19 @@ export default function NavBar() {
           </p>
         </Link>
       </div>
-      <button className="bg-white text-purple-500 hover:bg-purple-500 hover:text-white py-2 px-4 rounded mr-10">
-        Connect
-      </button>
+      <div className="w-[175px]">
+  {isClient ? (
+    <WalletMultiButton />
+  ) : (
+    <button
+      className={
+        "text-base font-semibold h-12 leading-none px-6 rounded bg-custom-purple font-custom-solana"
+      }
+    >
+      Select Wallet
+    </button>
+  )}
+</div>
     </nav>
   );
 }
