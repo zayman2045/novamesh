@@ -1,12 +1,10 @@
 import {
   useConnection,
-  useWallet,
   useAnchorWallet,
 } from "@solana/wallet-adapter-react";
 import * as anchor from "@project-serum/anchor";
 import { FC, useCallback, useEffect, useState } from "react";
 import { IDL } from "./idl";
-import { Button, HStack, VStack, Text } from "@chakra-ui/react";
 
 const PROGRAM_ID = `DeffejzE94nG1u4ZoAhGzmS9bWfQ1Sd1RFknj7M2AJa5`;
 

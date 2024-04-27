@@ -5,7 +5,6 @@ import {
 import * as anchor from "@project-serum/anchor";
 import { FC, useEffect, useState } from "react";
 import { IDL } from "./idl";
-import { Button } from "@chakra-ui/react";
 
 const PROGRAM_ID = new anchor.web3.PublicKey(
   `DeffejzE94nG1u4ZoAhGzmS9bWfQ1Sd1RFknj7M2AJa5`
