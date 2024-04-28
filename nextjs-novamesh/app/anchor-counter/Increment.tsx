@@ -3,7 +3,7 @@ import {
   useAnchorWallet,
 } from "@solana/wallet-adapter-react";
 import * as anchor from "@project-serum/anchor";
-import { FC, useCallback, useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { IDL } from "./idl";
 
 const PROGRAM_ID = `DeffejzE94nG1u4ZoAhGzmS9bWfQ1Sd1RFknj7M2AJa5`;
