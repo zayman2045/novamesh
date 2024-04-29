@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@chakra-ui/react": "^2.8.2",
-    "@coral-xyz/anchor": "^0.30.0",
+    "@coral-xyz/anchor": "^0.29.0",
     "@project-serum/anchor": "^0.26.0",
     "@solana/wallet-adapter-base": "^0.9.23",
     "@solana/wallet-adapter-react": "^0.15.35",
