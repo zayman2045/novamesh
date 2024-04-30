@@ -1,28 +1,20 @@
-"use client"
-import { PublicKey } from "@solana/web3.js";
-import { Increment } from "../anchor-counter/Increment";
-import { Initialize } from "../anchor-counter/Initialize";
+"use client";
+
 import { useWallet } from "@solana/wallet-adapter-react";
-import { useState } from "react";
 
 export default function ProgramsHome() {
-  const [counter, setCounter] = useState<PublicKey | null>(null);
-  const [transactionUrl, setTransactionUrl] = useState("");
   const wallet = useWallet();
   return (
     <>
-      <h1>Programs</h1>
-      <h2>Solana Counter</h2>
-      {wallet.connected ? (
-        counter ? (
-          <Increment counter={counter} setTransactionUrl={setTransactionUrl}/>
+      <div className={"flex flex-col mx-auto border w-1/2 mt-4"}>
+        <h2 className={"mx-auto"}>Solana Counter</h2>
+        {wallet.connected ? (
+          <p> Wallet Connected </p>
         ) : (
-          <Initialize setCounter={setCounter} setTransactionUrl={setTransactionUrl}/>
-        )
-      ) : (
-        <p>Connect Wallet</p>
-      )}
+          <p> Please Connect Wallet</p>
+        )}
+      </div>
       <h2>Ethereum Counter</h2>
     </>
   );
-  }
+}
