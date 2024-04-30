@@ -1,115 +1,149 @@
 export type AnchorCounter = {
-  version: "0.1.0";
-  name: "anchor_counter";
-  instructions: [
+  "version": "0.1.0",
+  "name": "anchor_counter",
+  "instructions": [
     {
-      name: "initialize";
-      accounts: [
+      "name": "initialize",
+      "accounts": [
         {
-          name: "counter";
-          isMut: true;
-          isSigner: true;
+          "name": "counter",
+          "isMut": true,
+          "isSigner": false,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "type": "string",
+                "value": "counter"
+              }
+            ]
+          }
         },
         {
-          name: "user";
-          isMut: true;
-          isSigner: true;
+          "name": "user",
+          "isMut": true,
+          "isSigner": true
         },
         {
-          name: "systemProgram";
-          isMut: false;
-          isSigner: false;
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
         }
-      ];
-      args: [];
+      ],
+      "args": []
     },
     {
-      name: "increment";
-      accounts: [
+      "name": "increment",
+      "accounts": [
         {
-          name: "counter";
-          isMut: true;
-          isSigner: false;
-        },
-        {
-          name: "user";
-          isMut: false;
-          isSigner: true;
-        }
-      ];
-      args: [];
-    }
-  ];
-  accounts: [
-    {
-      name: "counter";
-      type: {
-        kind: "struct";
-        fields: [
-          {
-            name: "count";
-            type: "u64";
+          "name": "counter",
+          "isMut": true,
+          "isSigner": false,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "type": "string",
+                "value": "counter"
+              }
+            ]
           }
-        ];
-      };
+        }
+      ],
+      "args": []
     }
-  ];
+  ],
+  "accounts": [
+    {
+      "name": "counter",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "count",
+            "type": "u64"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    }
+  ]
 };
 
 export const IDL: AnchorCounter = {
-  version: "0.1.0",
-  name: "anchor_counter",
-  instructions: [
+  "version": "0.1.0",
+  "name": "anchor_counter",
+  "instructions": [
     {
-      name: "initialize",
-      accounts: [
+      "name": "initialize",
+      "accounts": [
         {
-          name: "counter",
-          isMut: true,
-          isSigner: true,
+          "name": "counter",
+          "isMut": true,
+          "isSigner": false,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "type": "string",
+                "value": "counter"
+              }
+            ]
+          }
         },
         {
-          name: "user",
-          isMut: true,
-          isSigner: true,
+          "name": "user",
+          "isMut": true,
+          "isSigner": true
         },
         {
-          name: "systemProgram",
-          isMut: false,
-          isSigner: false,
-        },
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
       ],
-      args: [],
+      "args": []
     },
     {
-      name: "increment",
-      accounts: [
+      "name": "increment",
+      "accounts": [
         {
-          name: "counter",
-          isMut: true,
-          isSigner: false,
-        },
-        {
-          name: "user",
-          isMut: false,
-          isSigner: true,
-        },
+          "name": "counter",
+          "isMut": true,
+          "isSigner": false,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "type": "string",
+                "value": "counter"
+              }
+            ]
+          }
+        }
       ],
-      args: [],
-    },
+      "args": []
+    }
   ],
-  accounts: [
+  "accounts": [
     {
-      name: "counter",
-      type: {
-        kind: "struct",
-        fields: [
+      "name": "counter",
+      "type": {
+        "kind": "struct",
+        "fields": [
           {
-            name: "count",
-            type: "u64",
+            "name": "count",
+            "type": "u64"
           },
-        ],
-      },
-    },
-  ],
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    }
+  ]
 };
