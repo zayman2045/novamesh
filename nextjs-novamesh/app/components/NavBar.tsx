@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
-// import dynamic from "next/dynamic";
 
 export default function NavBar() {
   const [isClient, setIsClient] = useState(false);
