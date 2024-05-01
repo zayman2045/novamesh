@@ -7,7 +7,7 @@ const IncrementButton = () => {
   const { connection } = useConnection();
   const [isLoading, setIsLoading] = useState(false);
 
-  const onClick = async () => {
+  const incrementCounter = async () => {
     if (!publicKey) return;
 
     setIsLoading(true);
@@ -21,13 +21,17 @@ const IncrementButton = () => {
     } catch (error) {
       console.log(error);
     } finally {
-        setIsLoading(false);
-      }
+      setIsLoading(false);
+    }
   };
 
   return (
     <>
-      <button className="w-24 border border-white rounded p-1 mb-2" onClick={onClick} disabled={!publicKey}>
+      <button
+        className="w-24 border border-white rounded p-1 mb-2"
+        onClick={incrementCounter}
+        disabled={!publicKey}
+      >
         {isLoading ? "Loading" : "Increment"}
       </button>
     </>
