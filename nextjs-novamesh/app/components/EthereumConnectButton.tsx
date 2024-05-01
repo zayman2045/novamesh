@@ -12,10 +12,6 @@ export default function EthereumConnectButton() {
     ({ provider, signer } = ethereum);
     console.log(provider, signer);
   }
-  if (ethereum !== null) {
-    ({ provider, signer } = ethereum);
-    console.log(provider, signer);
-  }
 
   const connectWallet = async () => {
     if (provider === null) {
