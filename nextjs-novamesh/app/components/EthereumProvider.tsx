@@ -1,8 +1,9 @@
 "use client";
 
-import React, {
+import {
+  FC,
   ReactNode,
-  createContext, // Why isn't this used?
+  createContext,
   useContext,
   useEffect,
   useState,
@@ -24,15 +25,13 @@ interface EthereumContextType {
   signer: ethers.JsonRpcSigner | null;
 }
 
-const EthereumContext = React.createContext<EthereumContextType | null>(null);
+const EthereumContext = createContext<EthereumContextType | null>(null);
 
 export function useEthereum() {
   return useContext(EthereumContext);
 }
 
-export const EthereumProvider: React.FC<EthereumProviderProps> = ({
-  children,
-}) => {
+export const EthereumProvider: FC<EthereumProviderProps> = ({ children }) => {
   const [provider, setProvider] = useState<ethers.BrowserProvider | null>(null);
   const [signer, setSigner] = useState<ethers.JsonRpcSigner | null>(null);
 
