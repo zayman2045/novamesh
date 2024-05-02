@@ -1,8 +1,8 @@
 "use client";
 
 import { useWallet } from "@solana/wallet-adapter-react";
-import CounterState from "../anchor-counter/components/CounterState";
-import IncrementButton from "../anchor-counter/components/IncrementButton";
+import CounterState from "./anchor-counter/components/CounterState";
+import IncrementButton from "./anchor-counter/components/IncrementButton";
 
 export default function ProgramsHome() {
   const wallet = useWallet();
@@ -16,7 +16,7 @@ export default function ProgramsHome() {
             <IncrementButton />
           </div>
         ) : (
-          <p> Please Connect Wallet</p>
+          <p> Please Connect Solana Wallet</p>
         )}
       </div>
       <h2>Ethereum Counter</h2>
