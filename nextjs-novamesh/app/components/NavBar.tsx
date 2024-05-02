@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
+import EthereumConnectButton from "./EthereumConnectButton";
 
 export default function NavBar() {
   const [isClient, setIsClient] = useState(false);
@@ -39,18 +40,21 @@ export default function NavBar() {
         </Link>
       </div>
       <div className="w-[175px]">
-  {isClient ? (
-    <WalletMultiButton />
-  ) : (
-    <button
-      className={
-        "text-base font-semibold h-12 leading-none px-6 rounded bg-custom-purple font-custom-solana"
-      }
-    >
-      Select Wallet
-    </button>
-  )}
-</div>
+        {isClient ? (
+          <WalletMultiButton />
+        ) : (
+          <button
+            className={
+              "text-base font-semibold h-12 leading-none px-6 rounded bg-custom-purple font-custom-solana"
+            }
+          >
+            Select Wallet
+          </button>
+        )}
+      </div>
+      <div>
+        <EthereumConnectButton/>
+      </div>
     </nav>
   );
 }
