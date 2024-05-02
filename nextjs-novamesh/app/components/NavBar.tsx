@@ -1,18 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useEffect } from "react";
-import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 import EthereumConnectButton from "./EthereumConnectButton";
+import SolanaConnectButton from "./SolanaConnectButton";
 
 export default function NavBar() {
-  const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  return (
+ return (
     <nav className="flex justify-between items-center p-6 bg-custom-green bg-opacity-75">
       <Link href="/">
         <h1 className="text-2xl text-white ml-10">NovaMesh</h1>
@@ -39,22 +32,8 @@ export default function NavBar() {
           </p>
         </Link>
       </div>
-      <div className="w-[175px]">
-        {isClient ? (
-          <WalletMultiButton />
-        ) : (
-          <button
-            className={
-              "text-base font-semibold h-12 leading-none px-6 rounded bg-custom-purple font-custom-solana"
-            }
-          >
-            Select Wallet
-          </button>
-        )}
-      </div>
-      <div>
-        <EthereumConnectButton/>
-      </div>
+      <SolanaConnectButton />
+      <EthereumConnectButton />
     </nav>
   );
 }
