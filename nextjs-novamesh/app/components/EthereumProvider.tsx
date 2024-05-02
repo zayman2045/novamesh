@@ -44,6 +44,7 @@ export const EthereumProvider: FC<EthereumProviderProps> = ({ children }) => {
   // Initialize provider and signer when the component mounts
   useEffect(() => {
     if (window.ethereum) {
+      console.log(provider, signer)
       const newProvider = new ethers.BrowserProvider(window.ethereum);
       setProvider(newProvider);
       newProvider.getSigner().then(setSigner);

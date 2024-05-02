@@ -8,7 +8,7 @@ export default function EthereumConnectButton() {
   // Retrieve Ethereum context with provider and signer
   const ethereum = useEthereum();
   let provider: ethers.BrowserProvider | null = null,
-      signer: ethers.JsonRpcSigner | null = null;
+    signer: ethers.JsonRpcSigner | null = null;
 
   // Destructure provider and signer from the context if available
   if (ethereum !== null) {
@@ -34,12 +34,20 @@ export default function EthereumConnectButton() {
 
   // Render a button to connect the wallet if no signer is available, else show connected status
   return (
-    <>
+    <div className="w-[175px]">
+      <h2 className={"text-center"}>Ethereum Wallet</h2>
       {signer ? (
         <p>Connected</p>
       ) : (
-        <button onClick={connectWallet}>Connect Wallet</button>
+        <button
+          onClick={connectWallet}
+          className={
+            "text-base font-semibold h-12 leading-none px-6 rounded font-custom-solana bg-blue-600"
+          }
+        >
+          Select Wallet
+        </button>
       )}
-    </>
+    </div>
   );
 }
