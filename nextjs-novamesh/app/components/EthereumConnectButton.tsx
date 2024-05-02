@@ -30,7 +30,7 @@ export default function EthereumConnectButton() {
             "text-base font-semibold h-12 leading-none px-6 rounded font-custom-solana bg-blue-600"
           }
         >
-          Wallet Address
+          Wallet Connected
         </button>
       ) : (
         <button
