@@ -17,10 +17,16 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const projectId = process.env.WALLET_CONNECT_PROJECT_ID;
+
+  if (!projectId) {
+    throw new Error('WALLET_CONNECT_PROJECT_ID is not defined');
+  }
+
   return (
     <html lang="en">
       <body className={`${inter.className} bg-gray-800 text-white`}>
-        <EthereumProvider>
+        <EthereumProvider projectId={projectId}>
           <SolanaProvider>
             <NavBar />
             {children}

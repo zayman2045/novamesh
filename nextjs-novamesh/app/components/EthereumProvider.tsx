@@ -11,11 +11,10 @@ const queryClient = new QueryClient();
 
 interface EthereumProviderProps {
   children: ReactNode;
+  projectId: string;
 }
 
-const EthereumProvider: FC<EthereumProviderProps> = ({ children }) => {
-  const projectId = process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID!;
-
+const EthereumProvider: FC<EthereumProviderProps> = ({ children, projectId }) => {
   const config = getDefaultConfig({
     appName: "NovaMesh",
     projectId,
@@ -33,3 +32,4 @@ const EthereumProvider: FC<EthereumProviderProps> = ({ children }) => {
 };
 
 export default EthereumProvider;
+
