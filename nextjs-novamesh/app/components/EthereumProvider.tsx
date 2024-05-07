@@ -1,62 +1,35 @@
 "use client";
 
-import {
-  FC,
-  ReactNode,
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
-import { ethers } from "ethers";
+import "@rainbow-me/rainbowkit/styles.css";
+import { RainbowKitProvider, getDefaultConfig } from "@rainbow-me/rainbowkit";
+import { WagmiProvider } from "wagmi";
+import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
+import { FC, ReactNode } from "react";
+import { mainnet, polygon, optimism, arbitrum, base } from "wagmi/chains";
 
-declare global {
-  interface Window {
-    ethereum: any;
-  }
-}
-
-interface EthereumContextType {
-  provider: ethers.BrowserProvider | null;
-  signer: ethers.JsonRpcSigner | null;
-  connect: () => Promise<void>;
-}
-
-const EthereumContext = createContext<EthereumContextType | null>(null);
-
-export function useEthereum() {
-  return useContext(EthereumContext);
-}
+const queryClient = new QueryClient();
 
 interface EthereumProviderProps {
   children: ReactNode;
 }
 
-export const EthereumProvider: FC<EthereumProviderProps> = ({ children }) => {
-  const [provider, setProvider] = useState<ethers.BrowserProvider | null>(null);
-  const [signer, setSigner] = useState<ethers.JsonRpcSigner | null>(null);
+const EthereumProvider: FC<EthereumProviderProps> = ({ children }) => {
+  const projectId = process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID!;
 
-  const connect = async () => {
-    if (window.ethereum) {
-      const newProvider = new ethers.BrowserProvider(window.ethereum);
-      setProvider(newProvider);
-      const newSigner = await newProvider.getSigner();
-      setSigner(newSigner);
-    }
-  };
-
-  useEffect(() => {
-    if (
-      window.ethereum &&
-      window.ethereum.request({ method: "eth_accounts" })
-    ) {
-      connect();
-    }
-  }, []);
+  const config = getDefaultConfig({
+    appName: "NovaMesh",
+    projectId,
+    chains: [mainnet, polygon, optimism, arbitrum, base],
+    ssr: true,
+  });
 
   return (
-    <EthereumContext.Provider value={{ provider, signer, connect }}>
-      {children}
-    </EthereumContext.Provider>
+    <WagmiProvider config={config}>
+      <QueryClientProvider client={queryClient}>
+        <RainbowKitProvider>{children}</RainbowKitProvider>
+      </QueryClientProvider>
+    </WagmiProvider>
   );
 };
+
+export default EthereumProvider;

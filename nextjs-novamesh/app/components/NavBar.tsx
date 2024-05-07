@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import EthereumConnectButton from "./EthereumConnectButton";
 import SolanaConnectButton from "./SolanaConnectButton";
+import { ConnectButton } from '@rainbow-me/rainbowkit';
 
 export default function NavBar() {
   return (
@@ -39,7 +39,7 @@ export default function NavBar() {
       </div>
       <div className="flex">
         <SolanaConnectButton />
-        <EthereumConnectButton />
+        <ConnectButton />
       </div>
     </nav>
   );

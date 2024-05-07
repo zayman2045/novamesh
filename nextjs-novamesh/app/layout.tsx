@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { EthereumProvider } from "./components/EthereumProvider";
 import { SolanaProvider } from "./components/SolanaProvider";
+import EthereumProvider from "./components/EthereumProvider";
 import "./globals.css";
 import NavBar from "./components/NavBar";
 
