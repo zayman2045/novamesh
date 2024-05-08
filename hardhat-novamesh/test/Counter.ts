@@ -12,14 +12,14 @@ describe("hardhat-counter", () => {
   });
 
   it("Is initialized", async () => {
-    const currentCount = Number(await counter.count());
+    const currentCount = Number(await counter.s_counter());
     const expectedCount: number = 0;
     expect(currentCount).to.equal(expectedCount);
   });
 
   it("Increment the count", async () => {
     await counter.increment();
-    const currentCount = Number(await counter.count());
+    const currentCount = Number(await counter.s_counter());
     const expectedCount: number = 1;
     assert.equal(currentCount, expectedCount);
   })
