@@ -1,26 +1,27 @@
-import { assert, expect } from "chai";
-import { Counter, Counter__factory } from "../typechain-types";
-import { ethers } from "hardhat";
+import { expect, assert } from "chai"
+import { Counter, Counter__factory } from "../typechain-types"
+import { ethers } from "hardhat"
 
-describe("hardhat-counter", () => {
-  let counter: Counter;
-  let counterFactory: Counter__factory;
+describe("counter", () => {
 
-  beforeEach(async () => {
-    counterFactory = await ethers.getContractFactory("Counter");
-    counter = await counterFactory.deploy();
-  });
+    let counter: Counter;
+    let counterFactory: Counter__factory;
 
-  it("Is initialized", async () => {
-    const currentCount = Number(await counter.s_counter());
-    const expectedCount: number = 0;
-    expect(currentCount).to.equal(expectedCount);
-  });
+    beforeEach(async () => {
+        counterFactory = await ethers.getContractFactory("Counter");
+        counter = await counterFactory.deploy();
+    })
 
-  it("Increment the count", async () => {
-    await counter.increment();
-    const currentCount = Number(await counter.s_counter());
-    const expectedCount: number = 1;
-    assert.equal(currentCount, expectedCount);
-  })
-});
+    it("initialize counter", async () => {
+        const actualValue = Number(await counter.s_counter());
+        const expectedValue = 0;
+        assert.equal(expectedValue, actualValue);
+    })
+
+    it("increment counter", async () => {
+        await counter.increment();
+        const actualValue = await counter.s_counter();
+        const expectedValue = 1;
+        expect(expectedValue).to.equal(actualValue);
+    })
+})
