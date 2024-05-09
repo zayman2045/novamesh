@@ -5,7 +5,7 @@ import { RainbowKitProvider, getDefaultConfig } from "@rainbow-me/rainbowkit";
 import { WagmiProvider } from "wagmi";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import { FC, ReactNode } from "react";
-import { mainnet, polygon, optimism, arbitrum, base, sepolia } from "wagmi/chains";
+import { mainnet, sepolia } from "wagmi/chains";
 
 const queryClient = new QueryClient();
 
@@ -18,7 +18,7 @@ const EthereumProvider: FC<EthereumProviderProps> = ({ children, projectId }) =>
   const config = getDefaultConfig({
     appName: "NovaMesh",
     projectId,
-    chains: [mainnet, sepolia, polygon, optimism, arbitrum, base],
+    chains: [mainnet, sepolia],
     ssr: true,
   });
 
