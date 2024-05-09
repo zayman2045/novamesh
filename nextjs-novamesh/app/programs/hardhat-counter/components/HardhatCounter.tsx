@@ -1,6 +1,7 @@
 "use client";
 
 import HardhatCounterState from "./HardhatCounterState";
+import HardhatIncrementButton from "./HardhatIncrementButton";
 
 export default function HardhatCounter() {
   return (
@@ -9,6 +10,7 @@ export default function HardhatCounter() {
         <h2 className={" bg-white text-black w-full"}>Hardhat Counter</h2>
         <div className={"mx-auto"}>
           <HardhatCounterState />
+          <HardhatIncrementButton/>
         </div>
       </div>
     </>
