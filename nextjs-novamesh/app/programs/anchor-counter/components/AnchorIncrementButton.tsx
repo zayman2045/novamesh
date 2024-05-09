@@ -18,6 +18,7 @@ const AnchorIncrementButton = () => {
         transaction,
         connection
       );
+      console.log(`Transaction Signature: ${transactionSignature}`);
     } catch (error) {
       console.log(error);
     } finally {
@@ -28,7 +29,7 @@ const AnchorIncrementButton = () => {
   return (
     <>
       <button
-        className="w-24 border border-white rounded p-1 mb-2 hover:bg-black hover:text-white"
+        className="w-24 border border-white rounded p-1 mb-2 hover:bg-white hover:text-black hover:border-black"
         onClick={incrementCounter}
         disabled={!publicKey}
       >
