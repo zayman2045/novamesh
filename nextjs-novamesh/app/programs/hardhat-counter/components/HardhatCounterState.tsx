@@ -1,5 +1,5 @@
 import { useReadContract } from "wagmi";
-import { useReadCounterSCounter, counterAbi } from "../../../src/generated";
+import { useReadCounterSCounter, counterAbi } from "../../../../src/generated";
 
 export default function HardhatCounterState() {
   const result = useReadContract({
