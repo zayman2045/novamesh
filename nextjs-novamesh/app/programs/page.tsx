@@ -1,7 +1,8 @@
 "use client";
 
 import { useWallet } from "@solana/wallet-adapter-react";
-import CounterState from "./anchor-counter/components/CounterState";
+import AnchorCounterState from "./anchor-counter/components/AnchorCounterState";
+import HardhatCounterState from "./hardhat-counter/HardhatCounterState";
 import IncrementButton from "./anchor-counter/components/IncrementButton";
 
 export default function ProgramsHome() {
@@ -12,7 +13,7 @@ export default function ProgramsHome() {
         <h2 className={" bg-white text-black w-full"}>Solana Counter</h2>
         {wallet.connected ? (
           <div className={"mx-auto"}>
-            <CounterState />
+            <AnchorCounterState />
             <IncrementButton />
           </div>
         ) : (
@@ -20,6 +21,7 @@ export default function ProgramsHome() {
         )}
       </div>
       <h2>Ethereum Counter</h2>
+      <HardhatCounterState />
     </>
   );
 }
