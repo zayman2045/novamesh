@@ -2,7 +2,7 @@ import { program } from "../setup";
 import { useConnection, useWallet } from "@solana/wallet-adapter-react";
 import { useState } from "react";
 
-const IncrementButton = () => {
+const AnchorIncrementButton = () => {
   const { publicKey, sendTransaction } = useWallet();
   const { connection } = useConnection();
   const [isLoading, setIsLoading] = useState(false);
@@ -28,7 +28,7 @@ const IncrementButton = () => {
   return (
     <>
       <button
-        className="w-24 border border-white rounded p-1 mb-2"
+        className="w-24 border border-white rounded p-1 mb-2 hover:bg-black hover:text-white"
         onClick={incrementCounter}
         disabled={!publicKey}
       >
@@ -38,4 +38,4 @@ const IncrementButton = () => {
   );
 };
 
-export default IncrementButton;
+export default AnchorIncrementButton;
