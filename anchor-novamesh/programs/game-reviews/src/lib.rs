@@ -42,6 +42,11 @@ pub mod game_reviews {
         game_review.rating = rating;
         Ok(())
     }
+
+    pub fn delete_game_review(ctx: Context<DeleteGameReview>, title: String) -> Result<()> {
+        msg!("The review for {} has been deleted.", title);
+        Ok(())
+    }
 }
 
 #[derive(Accounts)]
@@ -62,6 +67,17 @@ pub struct UpdateGameReview<'info> {
     #[account(mut)]
     pub reviewer: Signer<'info>,
     pub system_program: Program<'info, System>,
+}
+
+#[derive(Accounts)]
+#[instruction(title: String)]
+pub struct DeleteGameReview<'info> {
+    #[account(mut, close = reviewer, seeds = [reviewer.key().as_ref(), title.as_bytes()], bump)]
+    pub game_review: Account<'info, GameReview>,
+    #[account(mut)]
+    pub reviewer: Signer<'info>,
+    pub system_program: Program<'info, System>
+
 }
 
 #[account]
