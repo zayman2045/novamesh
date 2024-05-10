@@ -15,7 +15,11 @@ describe("anchor-counter", () => {
     program.programId
   );
 
-  it("Incremented the count", async () => {
+  it("initialize the counter", async () => {
+    const tx = await program.methods.initialize().rpc();
+  });
+
+  it("incremented the count", async () => {
     const originalData = await program.account.counter.fetch(counterPDA);
     const transactionSignature = await program.methods.increment().rpc();
     const updatedData = await program.account.counter.fetch(counterPDA);
