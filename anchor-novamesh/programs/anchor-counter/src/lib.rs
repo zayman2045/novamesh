@@ -8,7 +8,10 @@ pub mod anchor_counter {
 
     pub fn initialize(ctx: Context<Initialize>) -> Result<()> {
         let counter = &mut ctx.accounts.counter;
+
+        // Store the bump used to initialize the counter within the counter
         counter.bump = ctx.bumps.counter;
+
         msg!("Counter account created! Counter count: {}", counter.count);
         msg!("Counter bump: {}", counter.bump);
         Ok(())
@@ -34,6 +37,7 @@ pub struct Initialize<'info> {
 
 #[derive(Accounts)]
 pub struct Update<'info> {
+    // Use the string "counter" and the stored bump to derive the PDA
     #[account(mut, seeds = [b"counter"], bump = counter.bump)]
     pub counter: Account<'info, Counter>,
 }

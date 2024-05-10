@@ -1,0 +1,41 @@
+use anchor_lang::prelude::*;
+
+declare_id!("Cu82DmpTFM65d5Qqja2cmW3wWnw6CmaKf7aBwt9r5UQU");
+
+#[program]
+pub mod game_reviews {
+    use super::*;
+
+    pub fn add_game_review(
+        ctx: Context<AddGameReview>,
+        title: String,
+        description: String,
+        rating: u8,
+    ) -> Result<()> {
+        let game_review = &mut ctx.accounts.game_review;
+        game_review.reviewer = ctx.accounts.reviewer.key();
+        game_review.title = title;
+        game_review.description = description;
+        game_review.rating = rating;
+
+        Ok(())
+    }
+}
+
+#[derive(Accounts)]
+#[instruction(title: String, description: String)]
+pub struct AddGameReview<'info> {
+    #[account(init, seeds=[title.as_bytes(), reviewer.key().as_ref()], bump, payer=reviewer, space = 8 + 32 + 1 + 4 + title.len() + 4 + description.len())]
+    pub game_review: Account<'info, GameReview>,
+    #[account(mut)]
+    pub reviewer: Signer<'info>,
+    pub system_program: Program<'info, System>,
+}
+
+#[account]
+pub struct GameReview {
+    pub reviewer: Pubkey,
+    pub title: String,
+    pub description: String,
+    pub rating: u8,
+}

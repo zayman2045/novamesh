@@ -6,6 +6,7 @@ skip-lint = false
 
 [programs.devnet]
 anchor_counter = "dPRoKkdhQVbQfMtFkfXq1rjZM7ooCpnDpYhMBJGtwy4"
+game-reviews = "Cu82DmpTFM65d5Qqja2cmW3wWnw6CmaKf7aBwt9r5UQU"
 
 [programs.localnet]
 anchor_counter = "dPRoKkdhQVbQfMtFkfXq1rjZM7ooCpnDpYhMBJGtwy4"
@@ -14,7 +15,7 @@ anchor_counter = "dPRoKkdhQVbQfMtFkfXq1rjZM7ooCpnDpYhMBJGtwy4"
 url = "https://api.apr.dev"
 
 [provider]
-cluster = "devnet"
+cluster = "Devnet"
 wallet = "/Users/zayman/.config/solana/id.json"
 
 [scripts]
