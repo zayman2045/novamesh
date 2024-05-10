@@ -62,7 +62,7 @@ pub struct AddGameReview<'info> {
 #[derive(Accounts)]
 #[instruction(title: String, description: String, rating: u8)]
 pub struct UpdateGameReview<'info> {
-    #[account(mut, seeds=[reviewer.key().as_ref(), title.as_bytes()], bump ,realloc = 8 + 32 + 1 + 4 + title.len() + 4 + description.len(), realloc::payer = reviewer, realloc::zero = true)]
+    #[account(mut, seeds = [title.as_bytes(), reviewer.key().as_ref()], bump ,realloc = 8 + 32 + 1 + 4 + title.len() + 4 + description.len(), realloc::payer = reviewer, realloc::zero = true)]
     pub game_review: Account<'info, GameReview>,
     #[account(mut)]
     pub reviewer: Signer<'info>,
@@ -72,12 +72,11 @@ pub struct UpdateGameReview<'info> {
 #[derive(Accounts)]
 #[instruction(title: String)]
 pub struct DeleteGameReview<'info> {
-    #[account(mut, close = reviewer, seeds = [reviewer.key().as_ref(), title.as_bytes()], bump)]
+    #[account(mut, close = reviewer, seeds = [title.as_bytes(), reviewer.key().as_ref()], bump)]
     pub game_review: Account<'info, GameReview>,
     #[account(mut)]
     pub reviewer: Signer<'info>,
-    pub system_program: Program<'info, System>
-
+    pub system_program: Program<'info, System>,
 }
 
 #[account]
