@@ -1,11 +1,11 @@
-import { expect } from "chai";
+import { ignition } from "hardhat";
+import Counter from "../ignition/modules/Counter";
 import { loadFixture } from "@nomicfoundation/hardhat-network-helpers";
-import { ethers } from "hardhat";
+import { expect } from "chai";
 
 describe("counter", () => {
   const setup = async () => {
-    const counter = await ethers.deployContract("Counter");
-    return { counter };
+    return ignition.deploy(Counter);
   };
 
   it("counter initialized to 0", async () => {
@@ -19,4 +19,3 @@ describe("counter", () => {
     expect(await counter.s_counter()).to.equal(1);
   });
 });
-
