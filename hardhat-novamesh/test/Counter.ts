@@ -1,27 +1,22 @@
-import { expect, assert } from "chai"
-import { Counter, Counter__factory } from "../typechain-types"
-import { ethers } from "hardhat"
+import { expect } from "chai";
+import { loadFixture } from "@nomicfoundation/hardhat-network-helpers";
+import { ethers } from "hardhat";
 
 describe("counter", () => {
+  const setup = async () => {
+    const counter = await ethers.deployContract("Counter");
+    return { counter };
+  };
 
-    let counter: Counter;
-    let counterFactory: Counter__factory;
+  it("counter initialized to 0", async () => {
+    const { counter } = await loadFixture(setup);
+    expect(await counter.s_counter()).to.equal(0);
+  });
 
-    beforeEach(async () => {
-        counterFactory = await ethers.getContractFactory("Counter");
-        counter = await counterFactory.deploy();
-    })
+  it("counter incremented", async () => {
+    const { counter } = await loadFixture(setup);
+    await counter.increment();
+    expect(await counter.s_counter()).to.equal(1);
+  });
+});
 
-    it("initialize counter", async () => {
-        const actualValue = Number(await counter.s_counter());
-        const expectedValue = 0;
-        assert.equal(expectedValue, actualValue);
-    })
-
-    it("increment counter", async () => {
-        await counter.increment();
-        const actualValue = await counter.s_counter();
-        const expectedValue = 1;
-        expect(expectedValue).to.equal(actualValue);
-    })
-})
