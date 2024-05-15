@@ -43,7 +43,7 @@ pub mod game_reviews {
         Ok(())
     }
 
-    pub fn delete_game_review(ctx: Context<DeleteGameReview>, title: String) -> Result<()> {
+    pub fn delete_game_review(_ctx: Context<DeleteGameReview>, title: String) -> Result<()> {
         msg!("The review for {} has been deleted.", title);
         Ok(())
     }
