@@ -2,7 +2,6 @@ import * as anchor from "@coral-xyz/anchor";
 import { Program } from "@coral-xyz/anchor";
 import { AnchorCounter } from "../target/types/anchor_counter";
 import { expect } from "chai";
-import { PublicKey } from "@solana/web3.js";
 
 describe("anchor-counter", () => {
   const provider = anchor.AnchorProvider.env();
@@ -10,7 +9,7 @@ describe("anchor-counter", () => {
 
   const program = anchor.workspace.AnchorCounter as Program<AnchorCounter>;
 
-  const [counterPDA] = PublicKey.findProgramAddressSync(
+  const [counterPDA] = anchor.web3.PublicKey.findProgramAddressSync(
     [Buffer.from("counter")],
     program.programId
   );
