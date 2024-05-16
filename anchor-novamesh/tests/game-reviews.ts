@@ -57,5 +57,5 @@ describe("game-reviews", () => {
 
   it("delete game review", async () => {
     const tx = await program.methods.deleteGameReview(game_review.title).rpc();
-  })
+  });
 });
