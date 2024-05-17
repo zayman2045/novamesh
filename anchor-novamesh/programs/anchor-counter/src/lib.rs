@@ -37,7 +37,7 @@ pub struct Initialize<'info> {
 
 #[derive(Accounts)]
 pub struct Update<'info> {
-    // Use the string "counter" and the stored bump to derive the PDA
+    // Use the string "counter" and the bump property stored in the passed in counter account to derive the PDA
     #[account(mut, seeds = [b"counter"], bump = counter.bump)]
     pub counter: Account<'info, Counter>,
 }
