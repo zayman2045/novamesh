@@ -24,7 +24,6 @@ describe("student-intro", () => {
     const tx = await program.methods
       .addStudent(student.name, student.intro, student.age)
       .rpc();
-    console.log(`Transaction Signature: ${tx}`);
     const account = await program.account.student.fetch(studentPDA);
     expect(account.address.toBase58()).to.equal(
       provider.wallet.publicKey.toBase58()
@@ -48,4 +47,8 @@ describe("student-intro", () => {
     expect(account.intro).to.equal(newStudent.intro);
     expect(account.address.toBase58()).to.equal(provider.wallet.publicKey.toBase58())
   });
+
+  it("remove student", async () => {
+    const tx = await program.methods.removeStudent(student.name).rpc();
+  })
 });
