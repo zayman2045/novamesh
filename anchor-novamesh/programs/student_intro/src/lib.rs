@@ -33,6 +33,11 @@ pub mod student_intro {
         student.address = ctx.accounts.user.key();
         Ok(())
     }
+
+    pub fn remove_student(_ctx: Context<RemoveStudent>, name: String) -> Result<()> {
+        msg!("Removing {}", name);
+        Ok(())
+    }
 }
 
 #[derive(Accounts)]
@@ -53,6 +58,14 @@ pub struct UpdateStudent<'info> {
     #[account(mut)]
     pub user: Signer<'info>,
     pub system_program: Program<'info, System>,
+}
+
+#[derive(Accounts)]
+#[instruction(name: String)]
+pub struct RemoveStudent<'info> {
+    #[account(mut, close = user, seeds = [name.as_bytes(), user.key().as_ref()], bump)]
+    pub student: Account<'info, Student>,
+    pub user: Signer<'info>
 }
 
 #[account]
