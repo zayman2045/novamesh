@@ -68,6 +68,24 @@ contract GameReviews {
     }
 
     function deleteGameReview(string memory title) public {
+        require(
+            s_gameReviews[msg.sender][title].reviewer == msg.sender,
+            "You have not reviewed this game"
+        );
+
+        // Find and remove the title from the s_gameTitles array
+        string[] storage titles = s_gameTitles[msg.sender];
+        for (uint256 i = 0; i < titles.length; i++) {
+            if (
+                keccak256(abi.encodePacked(titles[i])) ==
+                keccak256(abi.encodePacked(title))
+            ) {
+                titles[i] = titles[titles.length - 1];
+                titles.pop();
+                break;
+            }
+        }
+
         delete s_gameReviews[msg.sender][title];
         emit GameReviewDeleted(title);
     }
