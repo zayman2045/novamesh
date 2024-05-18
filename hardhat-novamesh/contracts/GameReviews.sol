@@ -10,8 +10,8 @@ contract GameReviews {
         uint8 rating;
     }
 
-    mapping(address => mapping(string => GameReview)) public s_gameReviews;
-    mapping(address => string[]) public s_gameTitles;
+    mapping(address => mapping(string => GameReview)) s_gameReviews;
+    mapping(address => string[]) s_gameTitles;
 
     event GameReviewAdded(string title, string description, uint8 rating);
     event GameReviewUpdated(string title, string description, uint8 rating);
