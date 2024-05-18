@@ -57,7 +57,7 @@ contract GameReviews {
         emit GameReviewUpdated(title, description, rating);
     }
 
-    function getGameReview() public view returns (GameReview[] memory) {
+    function getGameReviews() public view returns (GameReview[] memory) {
         uint256 count = s_gameTitles[msg.sender].length;
         GameReview[] memory reviews = new GameReview[](count);
         for (uint256 i = 0; i < count; i++) {
