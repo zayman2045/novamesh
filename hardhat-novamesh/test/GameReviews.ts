@@ -1,5 +1,5 @@
 import { ignition } from "hardhat";
-import GameReviews from "../ignition/modules/GameReviews";
+import GameReviewsModule from "../ignition/modules/GameReviews";
 import { loadFixture } from "@nomicfoundation/hardhat-network-helpers";
 import { expect } from "chai";
 
@@ -12,7 +12,7 @@ interface GameReview {
 
 describe("game reviews", () => {
   const setup = async () => {
-    return ignition.deploy(GameReviews);
+    return ignition.deploy(GameReviewsModule);
   };
 
   it("game review added", async () => {
