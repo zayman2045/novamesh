@@ -1,11 +1,11 @@
 import { ignition } from "hardhat";
-import Counter from "../ignition/modules/Counter";
+import CounterModule from "../ignition/modules/Counter";
 import { loadFixture } from "@nomicfoundation/hardhat-network-helpers";
 import { expect } from "chai";
 
 describe("counter", () => {
   const setup = async () => {
-    return ignition.deploy(Counter);
+    return ignition.deploy(CounterModule);
   };
 
   it("counter initialized to 0", async () => {
