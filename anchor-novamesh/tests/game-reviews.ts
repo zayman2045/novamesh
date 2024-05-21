@@ -2,6 +2,7 @@ import * as anchor from "@coral-xyz/anchor";
 import { assert, expect } from "chai";
 import { Program } from "@coral-xyz/anchor";
 import { GameReviews } from "../target/types/game_reviews";
+import { getAssociatedTokenAddress, getAccount } from "@solana/spl-token";
 
 describe("game-reviews", () => {
   const provider = anchor.AnchorProvider.env();
@@ -12,7 +13,7 @@ describe("game-reviews", () => {
   const game_review = {
     title: "The Last of Us Part II",
     description: "Party at the end of the world!",
-    rating: 9,
+    rating: 5,
   };
 
   const [gameReviewPDA] = anchor.web3.PublicKey.findProgramAddressSync(
@@ -20,13 +21,28 @@ describe("game-reviews", () => {
     program.programId
   );
 
+  const [mint] = anchor.web3.PublicKey.findProgramAddressSync(
+    [Buffer.from("mint")],
+    program.programId
+  );
+
+  it("initializes the reward token", async () => {
+    const tx = await program.methods.initializeTokenMint().rpc();
+  });
+
   it("add game review", async () => {
+    const tokenAccount = await getAssociatedTokenAddress(
+      mint,
+      provider.wallet.publicKey
+    );
+
     const tx = await program.methods
       .addGameReview(
         game_review.title,
         game_review.description,
         game_review.rating
       )
+      .accounts({ tokenAccount })
       .rpc();
 
     const account = await program.account.gameReview.fetch(gameReviewPDA);
@@ -37,11 +53,14 @@ describe("game-reviews", () => {
       provider.wallet.publicKey.toBase58(),
       account.reviewer.toBase58()
     );
+
+    const userAta = await getAccount(provider.connection, tokenAccount);
+    expect(Number(userAta.amount)).to.equal((10 * 10) ^6)
   });
 
   it("update game review", async () => {
     const newDescription = "Back 2 Life!";
-    const newRating = 10;
+    const newRating = 5;
     const tx = await program.methods
       .updateGameReview(game_review.title, newDescription, newRating)
       .rpc();
