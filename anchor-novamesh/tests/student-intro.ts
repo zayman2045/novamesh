@@ -1,7 +1,7 @@
 import * as anchor from "@coral-xyz/anchor";
 import { Program } from "@coral-xyz/anchor";
 import { StudentIntro } from "../target/types/student_intro";
-import { expect } from "chai";
+import { assert, expect } from "chai";
 
 describe("student-intro", () => {
   const provider = anchor.AnchorProvider.env();
@@ -50,5 +50,11 @@ describe("student-intro", () => {
 
   it("remove student", async () => {
     const tx = await program.methods.removeStudent(student.name).rpc();
+    try {
+      await program.account.student.fetch(studentPDA);
+      assert.fail('Student account should have been closed');
+    } catch (error) {
+      expect(error.message).to.contain('Account does not exist');
+    }
   })
 });
