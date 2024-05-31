@@ -1,11 +1,16 @@
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 export default function EthereumConnectButton() {
-    return (
-        <>
-        <div className="w-[175px]">
-            <ConnectButton/>
-        </div>
-        </>
-    )
+  return (
+    <div>
+      <ConnectButton
+        label="Ethereum Wallet"
+        accountStatus="full"
+        showBalance={
+          false
+        }
+        chainStatus="none"
+      />
+    </div>
+  );
 }
