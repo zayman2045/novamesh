@@ -10,10 +10,6 @@ export default function NavBar() {
       <Link href="/">
         <h1 className="text-2xl text-white ml-10">NovaMesh</h1>
       </Link>
-      <div className="flex justify-center">
-        <SolanaConnectButton />
-        <EthereumConnectButton />
-      </div>
       <div className="flex justify-between space-x-8">
         <Link href="/mint">
           <p className="text-white hover:text-purple-800 cursor-pointer pb-2 border-b-2 border-white hover:border-purple-800">
@@ -35,6 +31,10 @@ export default function NavBar() {
             Bridge
           </p>
         </Link>
+      </div>
+      <div className="flex justify-center">
+        <SolanaConnectButton />
+        <EthereumConnectButton />
       </div>
     </nav>
   );
