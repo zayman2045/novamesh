@@ -8,9 +8,9 @@ describe("mesh token", () => {
     return ignition.deploy(MeshTokenModule);
   };
 
-  it("initial supply is correct", async () => {
+  it("initial supply is 0", async () => {
     const { meshToken } = await loadFixture(setup);
     const [deployerAddress] = await ethers.getSigners();
-    expect(await meshToken.balanceOf(deployerAddress.address)).to.equal(1000000000)
+    expect(await meshToken.balanceOf(deployerAddress.address)).to.equal(0);
   });
 });
