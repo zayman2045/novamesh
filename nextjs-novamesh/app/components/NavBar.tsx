@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import SolanaConnectButton from "./SolanaConnectButton";
-import { ConnectButton } from '@rainbow-me/rainbowkit';
+import EthereumConnectButton from "./EthereumConnectButton";
 
 export default function NavBar() {
   return (
@@ -10,15 +10,14 @@ export default function NavBar() {
       <Link href="/">
         <h1 className="text-2xl text-white ml-10">NovaMesh</h1>
       </Link>
+      <div className="flex justify-center">
+        <SolanaConnectButton />
+        <EthereumConnectButton />
+      </div>
       <div className="flex justify-between space-x-8">
-        <Link href="/programs">
+        <Link href="/mint">
           <p className="text-white hover:text-purple-800 cursor-pointer pb-2 border-b-2 border-white hover:border-purple-800">
-            Programs
-          </p>
-        </Link>
-        <Link href="/explore">
-          <p className="text-white hover:text-purple-800 cursor-pointer pb-2 border-b-2 border-white hover:border-purple-800">
-            Explore
+            Mint
           </p>
         </Link>
         <Link href="/swap">
@@ -31,15 +30,11 @@ export default function NavBar() {
             NFTs
           </p>
         </Link>
-        <Link href="/mesh">
+        <Link href="/bridge">
           <p className="text-white hover:text-purple-800 cursor-pointer pb-2 border-b-2 border-white hover:border-purple-800">
-            Mesh
+            Bridge
           </p>
         </Link>
-      </div>
-      <div className="flex">
-        <SolanaConnectButton />
-        <ConnectButton />
       </div>
     </nav>
   );

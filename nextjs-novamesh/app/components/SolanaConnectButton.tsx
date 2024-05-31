@@ -12,7 +12,6 @@ export default function SolanaConnectButton() {
 
   return (
     <div className="w-[175px]">
-      <h2 className={"text-center"}>Solana Wallet</h2>
       {isClient ? (
         <WalletMultiButton />
       ) : (
