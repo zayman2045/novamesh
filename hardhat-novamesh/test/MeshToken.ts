@@ -10,7 +10,7 @@ describe("mesh token", () => {
 
   it("initial supply is 0", async () => {
     const { meshToken } = await loadFixture(setup);
-    const [deployerAddress] = await ethers.getSigners();
-    expect(await meshToken.balanceOf(deployerAddress.address)).to.equal(0);
+    const [deployer] = await ethers.getSigners();
+    expect(await meshToken.balanceOf(deployer.address)).to.equal(0);
   });
 });
