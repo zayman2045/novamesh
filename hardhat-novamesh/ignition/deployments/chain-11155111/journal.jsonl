@@ -25,3 +25,6 @@
 {"futureId":"LockModule#Lock","networkInteractionId":1,"nonce":28,"transaction":{"fees":{"maxFeePerGas":{"_kind":"bigint","value":"7623637720"},"maxPriorityFeePerGas":{"_kind":"bigint","value":"1000000000"}},"hash":"0x8c6d488bb38b1b4df142a7b530f8802d1e25cb71b8b4b933fc1342cc14c37e3b"},"type":"TRANSACTION_SEND"}
 {"futureId":"LockModule#Lock","hash":"0x8c6d488bb38b1b4df142a7b530f8802d1e25cb71b8b4b933fc1342cc14c37e3b","networkInteractionId":1,"receipt":{"blockHash":"0xaba710d6f6cbb899485eb0cf42b5729a4e20042f44f6d2a1260147dd69a12e69","blockNumber":5881978,"contractAddress":"0xcF9DC40B27D5a5F9bE259A0eFF3661790D602a4e","logs":[],"status":"SUCCESS"},"type":"TRANSACTION_CONFIRM"}
 {"futureId":"LockModule#Lock","result":{"address":"0xcF9DC40B27D5a5F9bE259A0eFF3661790D602a4e","type":"SUCCESS"},"type":"DEPLOYMENT_EXECUTION_STATE_COMPLETE"}
+{"futureId":"Auction#Auction.placeBid","type":"WIPE_APPLY"}
+{"futureId":"Auction#Auction","type":"WIPE_APPLY"}
+{"futureId":"LockModule#Lock","type":"WIPE_APPLY"}
