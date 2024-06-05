@@ -1,14 +1,16 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
+import logo from "../../public/novamesh-title.png";
 import SolanaConnectButton from "./SolanaConnectButton";
 import EthereumConnectButton from "./EthereumConnectButton";
 
 export default function NavBar() {
   return (
-    <nav className="flex justify-between items-center p-6 bg-custom-green bg-opacity-75">
+    <nav className="flex justify-between items-center p-6 bg-custom-dark-blue bg-opacity-75">
       <Link href="/">
-        <h1 className="text-2xl text-white ml-10">NovaMesh</h1>
+       <Image src={logo} alt="NovaMesh" className="ml-10" width={300} height={100} />
       </Link>
       <div className="flex justify-between space-x-8">
         <Link href="/tokens">
