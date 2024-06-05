@@ -8,9 +8,9 @@ import EthereumConnectButton from "./EthereumConnectButton";
 
 export default function NavBar() {
   return (
-    <nav className="flex justify-between items-center p-6 bg-custom-dark-blue bg-opacity-75">
+    <nav className="flex justify-between items-center p-3 bg-custom-green bg-opacity-75">
       <Link href="/">
-       <Image src={logo} alt="NovaMesh" className="ml-10" width={300} height={100} />
+       <Image src={logo} alt="NovaMesh" className="ml-10" width={200} height={100} />
       </Link>
       <div className="flex justify-between space-x-8">
         <Link href="/tokens">

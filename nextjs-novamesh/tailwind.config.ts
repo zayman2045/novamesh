@@ -9,9 +9,8 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        "custom-green": "#08f7be",
+        "custom-green": "#08A581",
         "custom-purple": "#512da8",
-        "custom-dark-blue": "#0F061E"
       },
       fontFamily: {
         "custom-solana": [

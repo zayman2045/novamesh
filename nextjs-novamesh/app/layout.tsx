@@ -25,7 +25,7 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-gray-800 text-white`}>
+      <body className={`${inter.className} bg-gray-100 text-black`}>
         <EthereumProvider projectId={projectId}>
           <SolanaProvider>
             <NavBar />
