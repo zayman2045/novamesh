@@ -1,16 +1,26 @@
 # NovaMesh: Ethereum & Solana Cross-Chain Bridge
 
 This web application...
+* Mint and Swap Tokens & NFTs
 
 ## Overview
 
 ### Frontend
 
-The frontend is...
+* The `Next.js` React framework for creating modern, performant front-ends using server-side rendering.
+* The `RainbowKit` React library that provides a customizable and easy-to-integrate user interface for connecting and interacting with Ethereum wallets in decentralized applications.
+* The `Wagmi` React library provides a collection of hooks for managing Ethereum-related states and actions, simplifying the process of interacting with Ethereum smart contracts and wallets in web applications.
 
-### Backend
+### Ethereum On-Chain Programs
 
-The backend uses...
+* The `Hardhat` development environment for Ethereum that facilitates building, deploying, testing, and debugging decentralized applications and smart contracts. Hardhat Ignition for deployment.
+* The `Mocha` testing framework and `Chai` assertion library.
+
+
+### Solana On-Chain Programs
+
+* `Anchor` framework for developing, testing, and deploying Solana smart contracts
+* The `Mocha` testing framework and `Chai` assertion library
 
 ### Deployment
 
