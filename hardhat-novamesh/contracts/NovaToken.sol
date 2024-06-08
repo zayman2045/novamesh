@@ -7,4 +7,8 @@ contract NovaToken is ERC20 {
     constructor(uint256 initialSupply) ERC20("Nova", "NOVA") {
         _mint(msg.sender, initialSupply);
     }
+
+    function mint(uint256 _amount) public {
+        _mint(msg.sender, _amount);
+    }
 }
