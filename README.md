@@ -1,7 +1,8 @@
 # NovaMesh: Ethereum & Solana Cross-Chain Bridge
 
-This web application...
-* Mint and Swap Tokens & NFTs
+This web application is a...
+
+* Mint and Swap Tokens & NFTs 
 
 ## Overview
 
