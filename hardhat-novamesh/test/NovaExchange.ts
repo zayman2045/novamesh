@@ -1,16 +1,43 @@
 import { ignition, ethers } from "hardhat";
-import NovaExchangeModule from "../ignition/modules/NovaExchange";
 import { loadFixture } from "@nomicfoundation/hardhat-network-helpers";
+import NovaExchangeModule from "../ignition/modules/NovaExchange";
 import { expect } from "chai";
 
 describe("nova exchange", () => {
   const setup = async () => {
-    return ignition.deploy(NovaExchangeModule);
+    const deployment = await ignition.deploy(NovaExchangeModule);
+    const novaExchange = await ethers.getContractAt(
+      "NovaExchange",
+      await deployment.novaExchange.getAddress()
+    );
+
+    const novaToken = await ethers.getContractAt(
+      "NovaToken",
+      await novaExchange.novaToken()
+    );
+    return { novaExchange, novaToken };
   };
 
-  it("should deploy NovaToken contract", async () => {
-    const { novaExchange } = await loadFixture(setup);
-    const novaToken = await novaExchange.novaToken();
-    expect(novaToken).to.be.properAddress;
+  it("should deploy the NovaToken contract", async () => {
+    const { novaExchange, novaToken } = await loadFixture(setup);
+    const novaTokenAddress = await novaExchange.novaToken();
+    expect(novaTokenAddress).to.be.properAddress;
+    expect(novaTokenAddress).to.equal(await novaToken.getAddress());
+  });
+
+  it("should allow the NovaExchange to mint tokens", async () => {
+    const { novaExchange, novaToken } = await loadFixture(setup);
+    const [deployer] = await ethers.getSigners();
+
+    await novaExchange.buyTokens({ value: ethers.parseUnits("1", "wei") });
+    expect(await novaToken.balanceOf(deployer)).to.equal(100);
+  });
+
+  it("should not allow mint function on NovaToken to be called directly", async () => {
+    const { novaToken } = await loadFixture(setup);
+    const [deployer] = await ethers.getSigners();
+
+    await expect(novaToken.connect(deployer).mint(deployer.address, 1)).to.be
+      .reverted;
   });
 });
