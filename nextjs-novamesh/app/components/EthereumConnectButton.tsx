@@ -4,11 +4,9 @@ export default function EthereumConnectButton() {
   return (
     <div>
       <ConnectButton
-        label="Ethereum Wallet"
+        label="Select Wallet"
         accountStatus="full"
-        showBalance={
-          false
-        }
+        showBalance={false}
         chainStatus="none"
       />
     </div>
