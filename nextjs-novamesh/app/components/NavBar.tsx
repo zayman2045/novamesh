@@ -3,8 +3,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import logo from "../../public/novamesh-title-text.png";
-import SolanaConnectButton from "./SolanaConnectButton";
-import EthereumConnectButton from "./EthereumConnectButton";
 
 export default function NavBar() {
   return (
@@ -13,26 +11,23 @@ export default function NavBar() {
        <Image src={logo} alt="NovaMesh" className="ml-10" width={225} height={100} />
       </Link>
       <div className="flex justify-between space-x-8">
-        <Link href="/tokens">
-          <p className="text-white hover:text-purple-800 cursor-pointer pb-2 border-b-2 border-white hover:border-purple-800">
-            Tokens
+        <Link href="/ethereum">
+          <p className="text-white hover:text-blue-800 cursor-pointer pb-2 border-b-2 border-white hover:border-blue-800">
+            Ethereum
           </p>
         </Link>
-        <Link href="/nfts">
+        <Link href="/solana">
           <p className="text-white hover:text-purple-800 cursor-pointer pb-2 border-b-2 border-white hover:border-purple-800">
-            NFTs
+            Solana
           </p>
         </Link>
         <Link href="/bridge">
-          <p className="text-white hover:text-purple-800 cursor-pointer pb-2 border-b-2 border-white hover:border-purple-800">
+          <p className="text-white hover:text-black cursor-pointer pb-2 border-b-2 border-white hover:border-black">
             Bridge
           </p>
         </Link>
       </div>
-      <div className="flex justify-center">
-        <SolanaConnectButton />
-        <EthereumConnectButton />
-      </div>
+      <div className="text-white mr-10">Github & Portfolio Links</div>
     </nav>
   );
 }
