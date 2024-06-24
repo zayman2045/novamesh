@@ -1,4 +1,9 @@
 export default function BridgeHome() {
-    return <h1>Bridge Home</h1>;
-  }
-  
+  return (
+    <>
+      <div className="flex flex-col items-center">
+        <h1>Bridge Home</h1>
+      </div>
+    </>
+  );
+}
