@@ -11,6 +11,7 @@ const config: Config = {
       colors: {
         "custom-green": "#08A581",
         "custom-purple": "#512da8",
+        "custom-blue": "#0E76FD"
       },
       fontFamily: {
         "custom-solana": [
