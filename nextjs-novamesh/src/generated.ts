@@ -6,45 +6,6 @@ import {
 } from 'wagmi/codegen'
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Counter
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-/**
- * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0xA91FA55aE9cb5d1f4701177C99Cd7E418940CCa2)
- */
-export const counterAbi = [
-  {
-    type: 'function',
-    inputs: [],
-    name: 'increment',
-    outputs: [],
-    stateMutability: 'nonpayable',
-  },
-  {
-    type: 'function',
-    inputs: [],
-    name: 's_counter',
-    outputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
-    stateMutability: 'view',
-  },
-] as const
-
-/**
- * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0xA91FA55aE9cb5d1f4701177C99Cd7E418940CCa2)
- */
-export const counterAddress = {
-  11155111: '0xA91FA55aE9cb5d1f4701177C99Cd7E418940CCa2',
-} as const
-
-/**
- * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0xA91FA55aE9cb5d1f4701177C99Cd7E418940CCa2)
- */
-export const counterConfig = {
-  address: counterAddress,
-  abi: counterAbi,
-} as const
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // erc20
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -148,70 +109,6 @@ export const erc20Abi = [
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // React
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-/**
- * Wraps __{@link useReadContract}__ with `abi` set to __{@link counterAbi}__
- *
- * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0xA91FA55aE9cb5d1f4701177C99Cd7E418940CCa2)
- */
-export const useReadCounter = /*#__PURE__*/ createUseReadContract({
-  abi: counterAbi,
-  address: counterAddress,
-})
-
-/**
- * Wraps __{@link useReadContract}__ with `abi` set to __{@link counterAbi}__ and `functionName` set to `"s_counter"`
- *
- * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0xA91FA55aE9cb5d1f4701177C99Cd7E418940CCa2)
- */
-export const useReadCounterSCounter = /*#__PURE__*/ createUseReadContract({
-  abi: counterAbi,
-  address: counterAddress,
-  functionName: 's_counter',
-})
-
-/**
- * Wraps __{@link useWriteContract}__ with `abi` set to __{@link counterAbi}__
- *
- * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0xA91FA55aE9cb5d1f4701177C99Cd7E418940CCa2)
- */
-export const useWriteCounter = /*#__PURE__*/ createUseWriteContract({
-  abi: counterAbi,
-  address: counterAddress,
-})
-
-/**
- * Wraps __{@link useWriteContract}__ with `abi` set to __{@link counterAbi}__ and `functionName` set to `"increment"`
- *
- * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0xA91FA55aE9cb5d1f4701177C99Cd7E418940CCa2)
- */
-export const useWriteCounterIncrement = /*#__PURE__*/ createUseWriteContract({
-  abi: counterAbi,
-  address: counterAddress,
-  functionName: 'increment',
-})
-
-/**
- * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link counterAbi}__
- *
- * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0xA91FA55aE9cb5d1f4701177C99Cd7E418940CCa2)
- */
-export const useSimulateCounter = /*#__PURE__*/ createUseSimulateContract({
-  abi: counterAbi,
-  address: counterAddress,
-})
-
-/**
- * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link counterAbi}__ and `functionName` set to `"increment"`
- *
- * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0xA91FA55aE9cb5d1f4701177C99Cd7E418940CCa2)
- */
-export const useSimulateCounterIncrement =
-  /*#__PURE__*/ createUseSimulateContract({
-    abi: counterAbi,
-    address: counterAddress,
-    functionName: 'increment',
-  })
 
 /**
  * Wraps __{@link useReadContract}__ with `abi` set to __{@link erc20Abi}__

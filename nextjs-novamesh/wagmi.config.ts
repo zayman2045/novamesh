@@ -19,12 +19,12 @@ export default defineConfig({
       apiKey: process.env.ETHERSCAN_API_KEY!,
       chainId: sepolia.id,
       contracts: [
-        {
-          name: "Counter",
-          address: {
-            [sepolia.id]: "0xA91FA55aE9cb5d1f4701177C99Cd7E418940CCa2",
-          },
-        },
+        // {
+        //   name: "Counter",
+        //   address: {
+        //     [sepolia.id]: "0xA91FA55aE9cb5d1f4701177C99Cd7E418940CCa2",
+        //   },
+        // },
       ],
     }),
     react(),
