@@ -1,10 +1,10 @@
 export default function NovaNftMint() {
-    let nfts = [
-        { name: "NOVA NFT1" },
-        { name: "NOVA NFT2" },
-        { name: "NOVA NFT3" },
-      ];
-      
+  let nfts = [
+    { name: "NOVA NFT1" },
+    { name: "NOVA NFT2" },
+    { name: "NOVA NFT3" },
+  ];
+
   return (
     <>
       <div className="flex flex-col border-4 border-custom-blue rounded-md items-center w-3/5 p-4 m-4 bg-blue-400">
