@@ -20,16 +20,18 @@ export default function RootLayout({
   const projectId = process.env.WALLET_CONNECT_PROJECT_ID;
 
   if (!projectId) {
-    throw new Error('WALLET_CONNECT_PROJECT_ID is not defined');
+    throw new Error("WALLET_CONNECT_PROJECT_ID is not defined");
   }
 
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-gray-100 text-black`}>
+      <body
+        className={`${inter.className} bg-gray-100 text-white bg-custom-background bg-cover bg-center h-screen bg-fixed`}
+      >
         <EthereumProvider projectId={projectId}>
           <SolanaProvider>
             <NavBar />
-            {children}
+            <div className="pt-[4rem]">{children}</div>
           </SolanaProvider>
         </EthereumProvider>
       </body>
