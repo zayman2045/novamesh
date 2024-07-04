@@ -7,24 +7,24 @@ import githubLogo from "@/public/github-logo.png";
 
 export default function NavBar() {
   return (
-    <nav className="flex justify-between items-center p-2 bg-custom-green bg-opacity-75">
+    <nav className="fixed top-0 left-0 w-full h-[4rem] flex justify-between items-center p-2 text-white">
       <Link href="/">
         <Image
           src={novameshLogo}
           alt="NovaMesh Logo"
-          className="ml-10"
+          className="ml-4"
           width={225}
           height={100}
         />
       </Link>
-      <div className="flex justify-between space-x-8 mr-8">
+      <div className="flex justify-between space-x-8 mr-4">
         <Link href="/ethereum">
-          <p className="text-white font-semibold hover:text-custom-blue cursor-pointer  hover:border-blue-800">
+          <p className="font-semibold hover:text-custom-blue cursor-pointer  hover:border-blue-800">
             Ethereum
           </p>
         </Link>
         <Link href="/solana">
-          <p className="text-white font-semibold hover:text-custom-purple cursor-pointer">
+          <p className="font-semibold hover:text-custom-purple cursor-pointer">
             Solana
           </p>
         </Link>

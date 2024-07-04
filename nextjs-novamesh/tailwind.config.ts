@@ -13,6 +13,9 @@ const config: Config = {
         "custom-purple": "#512da8",
         "custom-blue": "#0E76FD"
       },
+      backgroundImage: {
+        'custom-background': "url('/background.jpg')",
+      },
       fontFamily: {
         "custom-solana": [
           "DM Sans",
