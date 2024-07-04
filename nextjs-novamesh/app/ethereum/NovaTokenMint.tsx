@@ -5,7 +5,7 @@ export default function NovaTokenMint() {
   return (
     <>
       <div
-        className={`flex flex-col border-4 ${address ? "border-custom-blue" : "border-gray-600"} rounded-md items-center w-3/5 p-4 m-4 ${address ? "bg-blue-400" : "bg-gray-400"}`}
+        className={`flex flex-col border-4 bg-opacity-50 border-opacity-50 ${address ? "border-custom-blue" : "border-gray-600"} rounded-md items-center w-3/5 p-4 m-4 ${address ? "bg-blue-400" : "bg-gray-400"}`}
       >
         <h2 className="text-2xl pb-3 font-bold">Nova Tokens</h2>
         {address ? <h3 className="mb-3">Current Balance:</h3> : <div></div>}
