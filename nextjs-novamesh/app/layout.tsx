@@ -26,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.className} bg-gray-100 text-white bg-custom-background bg-cover bg-center h-screen bg-fixed`}
+        className={`${inter.className} bg-gray-300 text-white bg-custom-background bg-cover bg-center h-screen bg-fixed`}
       >
         <EthereumProvider projectId={projectId}>
           <SolanaProvider>
