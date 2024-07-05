@@ -3,7 +3,7 @@ import SolanaConnectButton from "../components/SolanaConnectButton";
 export default function SolanaHome() {
   return (
     <>
-      <div className="flex flex-col items-center m-4 text-white">
+      <div className="flex flex-col items-center m-4 pt-[4rem] text-white">
         <div className="flex flex-col items-center border-4 border-custom-purple rounded-md m-4 p-4 w-3/5 bg-purple-400 bg-opacity-50 border-opacity-50">
           <h1 className="text-2xl font-bold pb-3">Solana Wallet</h1>
           <SolanaConnectButton />

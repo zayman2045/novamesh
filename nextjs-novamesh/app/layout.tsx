@@ -31,7 +31,7 @@ export default function RootLayout({
         <EthereumProvider projectId={projectId}>
           <SolanaProvider>
             <NavBar />
-            <main className="">{children}</main>
+            <main>{children}</main>
           </SolanaProvider>
         </EthereumProvider>
       </body>

@@ -5,7 +5,7 @@ import Image from "next/image";
 export default function Home() {
   return (
     <div className="flex flex-col m-10">
-      <div className="text-center">
+      <div className="flex flex-col justify-center items-center h-screen">
         <h1 className="text-3xl font-bold">Welcome to NovaMesh</h1>
         <p className="m-6">
           Connect your Ethereum and Solana Wallet to mint Tokens and NFTs
