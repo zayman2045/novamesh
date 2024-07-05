@@ -14,7 +14,7 @@ export default function NavBar() {
         <Image
           src={novameshLogo}
           alt="NovaMesh Logo"
-          className="ml-4"
+          className="ml-4 border-b-2 border-white border-opacity-0 hover:border-opacity-100 transition-colors duration-500"
           width={225}
           height={100}
         />
