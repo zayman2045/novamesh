@@ -9,7 +9,7 @@ import solLogo from "@/public/solana-sol-logo.png";
 
 export default function NavBar() {
   return (
-    <nav className="fixed top-0 left-0 w-full h-[4rem] flex justify-between items-center p-2 text-white text-lg">
+    <nav className="fixed top-0 left-0 w-full h-[4rem] flex justify-between items-center p-2 text-white text-lg z-10">
       <Link href="/">
         <Image
           src={novameshLogo}
