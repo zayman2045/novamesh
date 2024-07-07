@@ -33,7 +33,7 @@ export default function Home() {
       </div>
       <div>
         <h2 className="text-center font-bold text-2xl">Ethereum</h2>
-        <div className="flex justify-evenly m-6">
+        <div className="flex justify-evenly my-6">
           <div className="w-1/3">
             <Image
               src={ethLogo}
