@@ -1,4 +1,4 @@
-# NovaMesh: Ethereum & Solana Token and NFT Minting Platform
+# NovaMesh: Ethereum & Solana Cross-Chain Token & NFT Mint
 
 This web application is a...
 
