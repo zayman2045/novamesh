@@ -1,4 +1,4 @@
-# NovaMesh: Ethereum & Solana Cross-Chain Bridge
+# NovaMesh: Ethereum & Solana Token and NFT Minting Platform
 
 This web application is a...
 
