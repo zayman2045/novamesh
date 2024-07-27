@@ -1,6 +1,6 @@
 # NovaMesh: Ethereum & Solana DeFi Platform
 
-This web application is a...
+This web application is a
 
 * Mint and Swap Tokens & NFTs 
 
