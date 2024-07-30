@@ -25,10 +25,14 @@ describe("nova exchange", () => {
     expect(novaTokenAddress).to.equal(await novaToken.getAddress());
   });
 
-  it("should allow the NovaExchange to mint tokens", async () => {
+  it("should mint 1000 NOVA to the NovaExchange contract upon deployment", async () => {
+    const {novaExchange, novaToken} = await loadFixture(setup);
+    expect(await novaToken.balanceOf(novaExchange)).to.equal(1000);
+  })
+
+  it("should allow the NovaExchange to mint tokens to a user", async () => {
     const { novaExchange, novaToken } = await loadFixture(setup);
     const [deployer] = await ethers.getSigners();
-
     await novaExchange.buyTokens({ value: ethers.parseUnits("1", "wei") });
     expect(await novaToken.balanceOf(deployer)).to.equal(100);
   });
