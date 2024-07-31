@@ -2,9 +2,8 @@ import { defineConfig } from "@wagmi/cli";
 import { etherscan, react } from "@wagmi/cli/plugins";
 import { sepolia } from "wagmi/chains";
 import { erc20Abi } from "viem";
-import * as dotenv from 'dotenv';
+import * as dotenv from "dotenv";
 dotenv.config();
-
 
 export default defineConfig({
   out: "src/generated.ts",
@@ -19,12 +18,12 @@ export default defineConfig({
       apiKey: process.env.ETHERSCAN_API_KEY!,
       chainId: sepolia.id,
       contracts: [
-        // {
-        //   name: "Counter",
-        //   address: {
-        //     [sepolia.id]: "0xA91FA55aE9cb5d1f4701177C99Cd7E418940CCa2",
-        //   },
-        // },
+        {
+          name: "NovaExchange",
+          address: {
+            [sepolia.id]: "0xf804301E3d1D479D14863a4F431793df12969669",
+          },
+        },
       ],
     }),
     react(),
