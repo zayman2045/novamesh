@@ -18,7 +18,7 @@ export default function NovaNftMint() {
       >
         <h2 className="text-2xl pb-3 font-bold">Nova NFTs</h2>
         {address ? (
-          <div className="flex justify-around w-full">
+          <div className="flex flex-wrap justify-around w-full ">
             {nfts.map((item) => (
               <div
                 key={item.name}
