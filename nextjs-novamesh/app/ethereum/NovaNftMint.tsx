@@ -14,7 +14,7 @@ export default function NovaNftMint() {
   return (
     <>
       <div
-        className={`flex flex-col border-4 bg-opacity-50 border-opacity-50 ${address ? "border-custom-blue bg-blue-400 " : "bg-gray-400 border-gray-600"} rounded-md items-center w-3/5 p-4 m-4 `}
+        className={`flex flex-col border-4 bg-opacity-50 border-opacity-50 ${address ? "border-custom-blue bg-blue-400 " : "bg-gray-400 border-gray-600"} rounded-md items-center w-1/2 p-4 m-4 `}
       >
         <h2 className="text-2xl pb-3 font-bold">Nova NFTs</h2>
         {address ? (
