@@ -1,0 +1,15 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.24;
+
+import {ERC20} from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+
+contract NovaToken is ERC20 {
+    uint256 exchangeRate = 1;
+
+    constructor() ERC20("Nova", "NOVA") {}
+
+    function buyTokens() public payable {
+        uint256 novaAmount = msg.value * exchangeRate;
+        _mint(msg.sender, novaAmount);
+    }
+}
