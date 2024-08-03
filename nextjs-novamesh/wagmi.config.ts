@@ -19,9 +19,9 @@ export default defineConfig({
       chainId: sepolia.id,
       contracts: [
         {
-          name: "NovaExchange",
+          name: "NovaToken",
           address: {
-            [sepolia.id]: "0xf804301E3d1D479D14863a4F431793df12969669",
+            [sepolia.id]: "0x246fE1a68b3Bd77b6eb73ac5f312063805aDc485",
           },
         },
       ],
