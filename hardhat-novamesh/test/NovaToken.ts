@@ -14,7 +14,7 @@ describe("nova token", () => {
     return { novaToken, signer };
   };
 
-  it("should mint NOVA tokens in exchange for ETH", async () => {
+  it("should mint Nova tokens in exchange for ETH", async () => {
     const { novaToken, signer } = await loadFixture(setup);
 
     //Check initial balance
