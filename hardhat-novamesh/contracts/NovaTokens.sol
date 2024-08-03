@@ -8,7 +8,8 @@ contract NovaToken is ERC20 {
 
     constructor() ERC20("Nova", "NOVA") {}
 
-    function buyTokens() public payable {
+    // Mints Nova tokens to the user in exchange for ETH
+    function mintTokens() public payable {
         uint256 novaAmount = msg.value * exchangeRate;
         _mint(msg.sender, novaAmount);
     }
