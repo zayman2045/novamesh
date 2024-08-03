@@ -20,8 +20,8 @@ describe("nova token", () => {
     //Check initial balance
     expect(await novaToken.balanceOf(signer)).to.equal(0);
 
-    //Buy tokens and check balance after purchase
-    await novaToken.buyTokens({value: 1});
+    //Mint tokens and check balance after purchase
+    await novaToken.mintTokens({value: 1});
     expect(await novaToken.balanceOf(signer)).to.equal(1);
   });
 });
