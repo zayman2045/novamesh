@@ -21,7 +21,7 @@ export default defineConfig({
         {
           name: "NovaToken",
           address: {
-            [sepolia.id]: "0x246fE1a68b3Bd77b6eb73ac5f312063805aDc485",
+            [sepolia.id]: "0x82E6E83ADcD22a0B4C376575E1B03347553b4eA4",
           },
         },
       ],
