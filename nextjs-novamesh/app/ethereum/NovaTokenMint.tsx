@@ -1,27 +1,14 @@
 import { useAccount } from "wagmi";
-import {
-  novaExchangeAddress,
-  useReadNovaExchangeNovaToken,
-  useReadErc20BalanceOf,
-  useWriteNovaExchangeBuyTokens
-} from "@/src/generated";
+import { useReadNovaTokenBalanceOf } from "@/src/generated";
 
 export default function NovaTokenMint() {
   const { address: userAddress } = useAccount();
-  const { data: novaToken } = useReadNovaExchangeNovaToken();
-  const x = useWriteNovaExchangeBuyTokens();
-  
-  // Get the NOVA balance of the user
-  const { data: userNovaBalance } = useReadErc20BalanceOf({
-    address: novaToken,
+
+  // Get the Nova balance of the user
+  const { data: userNovaBalance } = useReadNovaTokenBalanceOf({
     args: [userAddress!],
   });
-
-  // Get the NOVA Balance of the Exchange
-  const { data: exchangeNovaBalance } = useReadErc20BalanceOf({
-    address: novaToken,
-    args: [novaExchangeAddress[11155111]],
-  });
+  console.log("User Nova Balance:", userNovaBalance);
   
 
   return (
@@ -32,10 +19,8 @@ export default function NovaTokenMint() {
         <h2 className="text-2xl pb-3 font-bold">Nova Tokens</h2>
         {userAddress && (
           <div>
-            <h3 className="mb-3">Nova Token Address: {novaToken} </h3>
-            <h3 className="mb-3">User Nova Balance: {userNovaBalance?.toString()}</h3>
-            <h3 className="mb-3">Exchange Nova Balance: {exchangeNovaBalance?.toString()}</h3>
-
+            {/* <h3 className="mb-3">Nova Token Address: {novaToken} </h3> */}
+            <h3 className="mb-3">Nova Balance: {userNovaBalance?.toString()}</h3>
           </div>
         )}
         {userAddress ? (
