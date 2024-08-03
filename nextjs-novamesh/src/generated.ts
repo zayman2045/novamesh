@@ -10,7 +10,7 @@ import {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x246fE1a68b3Bd77b6eb73ac5f312063805aDc485)
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x82E6E83ADcD22a0B4C376575E1B03347553b4eA4)
  */
 export const novaTokenAbi = [
   { type: 'constructor', inputs: [], stateMutability: 'nonpayable' },
@@ -122,16 +122,16 @@ export const novaTokenAbi = [
   {
     type: 'function',
     inputs: [],
-    name: 'buyTokens',
-    outputs: [],
-    stateMutability: 'payable',
+    name: 'decimals',
+    outputs: [{ name: '', internalType: 'uint8', type: 'uint8' }],
+    stateMutability: 'view',
   },
   {
     type: 'function',
     inputs: [],
-    name: 'decimals',
-    outputs: [{ name: '', internalType: 'uint8', type: 'uint8' }],
-    stateMutability: 'view',
+    name: 'mintTokens',
+    outputs: [],
+    stateMutability: 'payable',
   },
   {
     type: 'function',
@@ -178,14 +178,14 @@ export const novaTokenAbi = [
 ] as const
 
 /**
- * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x246fE1a68b3Bd77b6eb73ac5f312063805aDc485)
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x82E6E83ADcD22a0B4C376575E1B03347553b4eA4)
  */
 export const novaTokenAddress = {
-  11155111: '0x246fE1a68b3Bd77b6eb73ac5f312063805aDc485',
+  11155111: '0x82E6E83ADcD22a0B4C376575E1B03347553b4eA4',
 } as const
 
 /**
- * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x246fE1a68b3Bd77b6eb73ac5f312063805aDc485)
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x82E6E83ADcD22a0B4C376575E1B03347553b4eA4)
  */
 export const novaTokenConfig = {
   address: novaTokenAddress,
@@ -300,7 +300,7 @@ export const erc20Abi = [
 /**
  * Wraps __{@link useReadContract}__ with `abi` set to __{@link novaTokenAbi}__
  *
- * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x246fE1a68b3Bd77b6eb73ac5f312063805aDc485)
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x82E6E83ADcD22a0B4C376575E1B03347553b4eA4)
  */
 export const useReadNovaToken = /*#__PURE__*/ createUseReadContract({
   abi: novaTokenAbi,
@@ -310,7 +310,7 @@ export const useReadNovaToken = /*#__PURE__*/ createUseReadContract({
 /**
  * Wraps __{@link useReadContract}__ with `abi` set to __{@link novaTokenAbi}__ and `functionName` set to `"allowance"`
  *
- * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x246fE1a68b3Bd77b6eb73ac5f312063805aDc485)
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x82E6E83ADcD22a0B4C376575E1B03347553b4eA4)
  */
 export const useReadNovaTokenAllowance = /*#__PURE__*/ createUseReadContract({
   abi: novaTokenAbi,
@@ -321,7 +321,7 @@ export const useReadNovaTokenAllowance = /*#__PURE__*/ createUseReadContract({
 /**
  * Wraps __{@link useReadContract}__ with `abi` set to __{@link novaTokenAbi}__ and `functionName` set to `"balanceOf"`
  *
- * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x246fE1a68b3Bd77b6eb73ac5f312063805aDc485)
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x82E6E83ADcD22a0B4C376575E1B03347553b4eA4)
  */
 export const useReadNovaTokenBalanceOf = /*#__PURE__*/ createUseReadContract({
   abi: novaTokenAbi,
@@ -332,7 +332,7 @@ export const useReadNovaTokenBalanceOf = /*#__PURE__*/ createUseReadContract({
 /**
  * Wraps __{@link useReadContract}__ with `abi` set to __{@link novaTokenAbi}__ and `functionName` set to `"decimals"`
  *
- * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x246fE1a68b3Bd77b6eb73ac5f312063805aDc485)
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x82E6E83ADcD22a0B4C376575E1B03347553b4eA4)
  */
 export const useReadNovaTokenDecimals = /*#__PURE__*/ createUseReadContract({
   abi: novaTokenAbi,
@@ -343,7 +343,7 @@ export const useReadNovaTokenDecimals = /*#__PURE__*/ createUseReadContract({
 /**
  * Wraps __{@link useReadContract}__ with `abi` set to __{@link novaTokenAbi}__ and `functionName` set to `"name"`
  *
- * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x246fE1a68b3Bd77b6eb73ac5f312063805aDc485)
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x82E6E83ADcD22a0B4C376575E1B03347553b4eA4)
  */
 export const useReadNovaTokenName = /*#__PURE__*/ createUseReadContract({
   abi: novaTokenAbi,
@@ -354,7 +354,7 @@ export const useReadNovaTokenName = /*#__PURE__*/ createUseReadContract({
 /**
  * Wraps __{@link useReadContract}__ with `abi` set to __{@link novaTokenAbi}__ and `functionName` set to `"symbol"`
  *
- * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x246fE1a68b3Bd77b6eb73ac5f312063805aDc485)
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x82E6E83ADcD22a0B4C376575E1B03347553b4eA4)
  */
 export const useReadNovaTokenSymbol = /*#__PURE__*/ createUseReadContract({
   abi: novaTokenAbi,
@@ -365,7 +365,7 @@ export const useReadNovaTokenSymbol = /*#__PURE__*/ createUseReadContract({
 /**
  * Wraps __{@link useReadContract}__ with `abi` set to __{@link novaTokenAbi}__ and `functionName` set to `"totalSupply"`
  *
- * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x246fE1a68b3Bd77b6eb73ac5f312063805aDc485)
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x82E6E83ADcD22a0B4C376575E1B03347553b4eA4)
  */
 export const useReadNovaTokenTotalSupply = /*#__PURE__*/ createUseReadContract({
   abi: novaTokenAbi,
@@ -376,7 +376,7 @@ export const useReadNovaTokenTotalSupply = /*#__PURE__*/ createUseReadContract({
 /**
  * Wraps __{@link useWriteContract}__ with `abi` set to __{@link novaTokenAbi}__
  *
- * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x246fE1a68b3Bd77b6eb73ac5f312063805aDc485)
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x82E6E83ADcD22a0B4C376575E1B03347553b4eA4)
  */
 export const useWriteNovaToken = /*#__PURE__*/ createUseWriteContract({
   abi: novaTokenAbi,
@@ -386,7 +386,7 @@ export const useWriteNovaToken = /*#__PURE__*/ createUseWriteContract({
 /**
  * Wraps __{@link useWriteContract}__ with `abi` set to __{@link novaTokenAbi}__ and `functionName` set to `"approve"`
  *
- * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x246fE1a68b3Bd77b6eb73ac5f312063805aDc485)
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x82E6E83ADcD22a0B4C376575E1B03347553b4eA4)
  */
 export const useWriteNovaTokenApprove = /*#__PURE__*/ createUseWriteContract({
   abi: novaTokenAbi,
@@ -395,20 +395,18 @@ export const useWriteNovaTokenApprove = /*#__PURE__*/ createUseWriteContract({
 })
 
 /**
- * Wraps __{@link useWriteContract}__ with `abi` set to __{@link novaTokenAbi}__ and `functionName` set to `"buyTokens"`
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link novaTokenAbi}__ and `functionName` set to `"mintTokens"`
  *
- * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x246fE1a68b3Bd77b6eb73ac5f312063805aDc485)
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x82E6E83ADcD22a0B4C376575E1B03347553b4eA4)
  */
-export const useWriteNovaTokenBuyTokens = /*#__PURE__*/ createUseWriteContract({
-  abi: novaTokenAbi,
-  address: novaTokenAddress,
-  functionName: 'buyTokens',
-})
+export const useWriteNovaTokenMintTokens = /*#__PURE__*/ createUseWriteContract(
+  { abi: novaTokenAbi, address: novaTokenAddress, functionName: 'mintTokens' },
+)
 
 /**
  * Wraps __{@link useWriteContract}__ with `abi` set to __{@link novaTokenAbi}__ and `functionName` set to `"transfer"`
  *
- * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x246fE1a68b3Bd77b6eb73ac5f312063805aDc485)
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x82E6E83ADcD22a0B4C376575E1B03347553b4eA4)
  */
 export const useWriteNovaTokenTransfer = /*#__PURE__*/ createUseWriteContract({
   abi: novaTokenAbi,
@@ -419,7 +417,7 @@ export const useWriteNovaTokenTransfer = /*#__PURE__*/ createUseWriteContract({
 /**
  * Wraps __{@link useWriteContract}__ with `abi` set to __{@link novaTokenAbi}__ and `functionName` set to `"transferFrom"`
  *
- * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x246fE1a68b3Bd77b6eb73ac5f312063805aDc485)
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x82E6E83ADcD22a0B4C376575E1B03347553b4eA4)
  */
 export const useWriteNovaTokenTransferFrom =
   /*#__PURE__*/ createUseWriteContract({
@@ -431,7 +429,7 @@ export const useWriteNovaTokenTransferFrom =
 /**
  * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link novaTokenAbi}__
  *
- * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x246fE1a68b3Bd77b6eb73ac5f312063805aDc485)
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x82E6E83ADcD22a0B4C376575E1B03347553b4eA4)
  */
 export const useSimulateNovaToken = /*#__PURE__*/ createUseSimulateContract({
   abi: novaTokenAbi,
@@ -441,7 +439,7 @@ export const useSimulateNovaToken = /*#__PURE__*/ createUseSimulateContract({
 /**
  * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link novaTokenAbi}__ and `functionName` set to `"approve"`
  *
- * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x246fE1a68b3Bd77b6eb73ac5f312063805aDc485)
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x82E6E83ADcD22a0B4C376575E1B03347553b4eA4)
  */
 export const useSimulateNovaTokenApprove =
   /*#__PURE__*/ createUseSimulateContract({
@@ -451,21 +449,21 @@ export const useSimulateNovaTokenApprove =
   })
 
 /**
- * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link novaTokenAbi}__ and `functionName` set to `"buyTokens"`
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link novaTokenAbi}__ and `functionName` set to `"mintTokens"`
  *
- * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x246fE1a68b3Bd77b6eb73ac5f312063805aDc485)
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x82E6E83ADcD22a0B4C376575E1B03347553b4eA4)
  */
-export const useSimulateNovaTokenBuyTokens =
+export const useSimulateNovaTokenMintTokens =
   /*#__PURE__*/ createUseSimulateContract({
     abi: novaTokenAbi,
     address: novaTokenAddress,
-    functionName: 'buyTokens',
+    functionName: 'mintTokens',
   })
 
 /**
  * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link novaTokenAbi}__ and `functionName` set to `"transfer"`
  *
- * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x246fE1a68b3Bd77b6eb73ac5f312063805aDc485)
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x82E6E83ADcD22a0B4C376575E1B03347553b4eA4)
  */
 export const useSimulateNovaTokenTransfer =
   /*#__PURE__*/ createUseSimulateContract({
@@ -477,7 +475,7 @@ export const useSimulateNovaTokenTransfer =
 /**
  * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link novaTokenAbi}__ and `functionName` set to `"transferFrom"`
  *
- * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x246fE1a68b3Bd77b6eb73ac5f312063805aDc485)
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x82E6E83ADcD22a0B4C376575E1B03347553b4eA4)
  */
 export const useSimulateNovaTokenTransferFrom =
   /*#__PURE__*/ createUseSimulateContract({
@@ -489,7 +487,7 @@ export const useSimulateNovaTokenTransferFrom =
 /**
  * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link novaTokenAbi}__
  *
- * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x246fE1a68b3Bd77b6eb73ac5f312063805aDc485)
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x82E6E83ADcD22a0B4C376575E1B03347553b4eA4)
  */
 export const useWatchNovaTokenEvent = /*#__PURE__*/ createUseWatchContractEvent(
   { abi: novaTokenAbi, address: novaTokenAddress },
@@ -498,7 +496,7 @@ export const useWatchNovaTokenEvent = /*#__PURE__*/ createUseWatchContractEvent(
 /**
  * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link novaTokenAbi}__ and `eventName` set to `"Approval"`
  *
- * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x246fE1a68b3Bd77b6eb73ac5f312063805aDc485)
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x82E6E83ADcD22a0B4C376575E1B03347553b4eA4)
  */
 export const useWatchNovaTokenApprovalEvent =
   /*#__PURE__*/ createUseWatchContractEvent({
@@ -510,7 +508,7 @@ export const useWatchNovaTokenApprovalEvent =
 /**
  * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link novaTokenAbi}__ and `eventName` set to `"Transfer"`
  *
- * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x246fE1a68b3Bd77b6eb73ac5f312063805aDc485)
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x82E6E83ADcD22a0B4C376575E1B03347553b4eA4)
  */
 export const useWatchNovaTokenTransferEvent =
   /*#__PURE__*/ createUseWatchContractEvent({
