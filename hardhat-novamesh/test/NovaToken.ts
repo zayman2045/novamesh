@@ -4,6 +4,7 @@ import NovaTokenModule from "../ignition/modules/NovaToken";
 import { expect } from "chai";
 
 describe("nova token", () => {
+  // Setup function to deploy the NovaToken contract and retrieve the signer
   const setup = async () => {
     const deployment = await ignition.deploy(NovaTokenModule);
     const novaToken = await ethers.getContractAt(
@@ -15,6 +16,7 @@ describe("nova token", () => {
   };
 
   it("should mint Nova tokens in exchange for ETH", async () => {
+    // Get the NovaToken contract and the signer
     const { novaToken, signer } = await loadFixture(setup);
 
     //Check initial balance
