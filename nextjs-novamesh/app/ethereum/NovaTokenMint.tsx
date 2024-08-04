@@ -3,9 +3,10 @@ import {
   useReadNovaTokenBalanceOf,
   useWriteNovaTokenMintTokens,
 } from "@/src/generated";
-import { parseEther, parseUnits } from "viem";
+import { parseEther } from "viem";
 
 export default function NovaTokenMint() {
+  // Get the user's address
   const { address: userAddress } = useAccount();
 
   // Get the Nova balance of the user
@@ -13,11 +14,14 @@ export default function NovaTokenMint() {
     args: [userAddress!],
   });
 
-  //
+  // Check if userNovaBalance is defined before converting to a number
+  const userNovaBalanceNumber =
+    userNovaBalance !== undefined ? (Number(userNovaBalance) / 10 ** 18).toFixed(4) : 0;
+
+  // Destructure the returned values from the useWriteNovaTokenMintTokens hook
   const {
-    data: hash,
-    writeContract: mintTokens,
-    error,
+    data: hash, // The transaction hash of the minting operation
+    writeContract: mintTokens, // Function to call the mintTokens method on the contract
   } = useWriteNovaTokenMintTokens();
 
   // Mint Nova tokens to the user
@@ -25,7 +29,7 @@ export default function NovaTokenMint() {
     e.preventDefault();
     const formData = new FormData(e.target as HTMLFormElement);
     const novaTokenAmount = formData.get("novaTokenAmount") as string;
-    mintTokens({ value: parseUnits(novaTokenAmount, 0) });
+    mintTokens({ value: parseEther(novaTokenAmount) });
   };
 
   return (
@@ -39,7 +43,7 @@ export default function NovaTokenMint() {
           <>
             <div>
               <h3 className="mb-3">
-                Nova Balance: {userNovaBalance?.toString()}
+                Nova Balance: {userNovaBalanceNumber.toString()}
               </h3>
             </div>
             <form onSubmit={handleSubmit}>
@@ -56,7 +60,6 @@ export default function NovaTokenMint() {
               >
                 Mint
               </button>
-              {hash && <div>Transaction Hash: {hash}</div>}
             </form>
           </>
         ) : (
