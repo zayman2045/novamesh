@@ -21,7 +21,8 @@ export default function NovaTokenMint() {
   // Destructure the returned values from the useWriteNovaTokenMintTokens hook
   const {
     data: hash, // The transaction hash of the minting operation
-    writeContract: mintTokens, // Function to call the mintTokens method on the contract
+    writeContract: mintTokens,
+    status // Function to call the mintTokens method on the contract
   } = useWriteNovaTokenMintTokens();
 
   // Mint Nova tokens to the user
