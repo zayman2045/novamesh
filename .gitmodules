@@ -1,0 +1,3 @@
+[submodule "foundry-novamesh/lib/forge-std"]
+	path = foundry-novamesh/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
