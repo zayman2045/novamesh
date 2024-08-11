@@ -1,4 +1,4 @@
-import EthereumConnectButton from "../components/EthereumConnectButton";
+import EthereumConnectButton from "../(connection)/EthereumConnectButton";
 
 export default function EthereumWallet() {
   return (

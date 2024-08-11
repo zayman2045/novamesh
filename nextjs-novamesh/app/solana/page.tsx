@@ -1,6 +1,6 @@
 "use client";
 
-import SolanaConnectButton from "../components/SolanaConnectButton";
+import SolanaConnectButton from "../(connection)/SolanaConnectButton";
 import { useWallet } from "@solana/wallet-adapter-react";
 
 export default function SolanaHome() {

@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { SolanaProvider } from "./components/SolanaProvider";
-import EthereumProvider from "./components/EthereumProvider";
+import { SolanaProvider } from "./(connection)/SolanaProvider";
+import EthereumProvider from "./(connection)/EthereumProvider";
 import "./globals.css";
-import NavBar from "./components/NavBar";
+import NavBar from "./(connection)/NavBar";
 
 const inter = Inter({ subsets: ["latin"] });
 
