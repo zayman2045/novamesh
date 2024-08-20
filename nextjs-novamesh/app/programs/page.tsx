@@ -11,7 +11,6 @@ export default function Programs() {
         <MyProvider>
           <MyConsumer />
         </MyProvider>
-        <MyConsumer/>
       </div>
     </>
   );

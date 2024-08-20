@@ -1,15 +1,9 @@
-import React, { createContext, ReactNode, useState } from "react";
-
+import React, { createContext, ReactNode } from "react";
 
 const MyContext = createContext("hello");
 
 const MyProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-
-  return (
-    <MyContext.Provider value={"goodbye"}>
-      {children}
-    </MyContext.Provider>
-  );
+  return <MyContext.Provider value={"goodbye"}>{children}</MyContext.Provider>;
 };
 
-export { MyProvider, MyContext };
+export { MyContext, MyProvider };
