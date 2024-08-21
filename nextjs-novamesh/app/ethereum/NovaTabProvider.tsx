@@ -3,10 +3,11 @@
 import React, { createContext, useContext, useState } from "react";
 
 export enum NovaTab {
-  Swap,
-  Pool,
-  Send,
-  NFTs,
+  None,
+  Swap = "Swap",
+  Pool = "Pool",
+  Send = "Send",
+  NFTs = "NFTs",
 }
 
 interface NovaTabContextType {
@@ -19,7 +20,7 @@ const NovaTabContext = createContext<NovaTabContextType | undefined>(undefined);
 export const NovaTabProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [tab, setTab] = useState(NovaTab.Swap);
+  const [tab, setTab] = useState(NovaTab.None);
 
   return (
     <NovaTabContext.Provider value={{ tab, setTab }}>
