@@ -6,6 +6,8 @@ import novameshLogo from "@/public/novamesh-title-text.png";
 import githubLogo from "@/public/github-logo.png";
 import ethLogo from "@/public/ethereum-eth-logo.svg";
 import solLogo from "@/public/solana-sol-logo.png";
+import SolanaConnectButton from "./SolanaConnectButton";
+import EthereumConnectButton from "./EthereumConnectButton";
 import { usePathname } from "next/navigation";
 
 export default function NavBar() {
@@ -17,13 +19,13 @@ export default function NavBar() {
           <Image
             src={novameshLogo}
             alt="NovaMesh Logo"
-            className="ml-4 border-b-2 border-white border-opacity-0 hover:border-opacity-100 transition-colors duration-500"
+            className="ml-4 mr-4 border-b-2 border-white border-opacity-0 hover:border-opacity-100 transition-colors duration-500"
             width={225}
             height={100}
           />
         </Link>
-        {pathname === "/ethereum" && <button>Ethereum Wallet</button>}
-        {pathname == "/solana" && <button>Solana Wallet</button>}
+        {pathname === "/ethereum" && <div className="flex items-center"><EthereumConnectButton/></div>}
+        {pathname == "/solana" && <div className="flex items-center"><SolanaConnectButton/></div>}
       </div>
       <div className="flex justify-around w-1/4 gap-4">
         <Link
