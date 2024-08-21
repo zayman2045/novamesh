@@ -6,10 +6,10 @@ import novameshLogo from "@/public/novamesh-title-text.png";
 import githubLogo from "@/public/github-logo.png";
 import ethLogo from "@/public/ethereum-eth-logo.svg";
 import solLogo from "@/public/solana-sol-logo.png";
-import { useNavBar, Route } from "./NavBarContext";
+import { usePathname } from "next/navigation";
 
 export default function NavBar() {
-  const { route } = useNavBar();
+  const pathname = usePathname();
   return (
     <nav className="fixed top-0 left-0 w-full h-[4rem] flex justify-between items-center p-2 text-white text-lg z-10">
       <div className="flex">
@@ -22,8 +22,8 @@ export default function NavBar() {
             height={100}
           />
         </Link>
-        {route === Route.Ethereum && <button>Ethereum Wallet</button>}
-        {route == Route.Solana && <button>Solana Wallet</button>}
+        {pathname === "/ethereum" && <button>Ethereum Wallet</button>}
+        {pathname == "/solana" && <button>Solana Wallet</button>}
       </div>
       <div className="flex justify-around w-1/4 gap-4">
         <Link
