@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { SolanaProvider } from "./(connection)/SolanaProvider";
 import EthereumProvider from "./(connection)/EthereumProvider";
+import { NavBarProvider } from "./(connection)/NavBarContext";
 import "./globals.css";
 import NavBar from "./(connection)/NavBar";
 
@@ -30,8 +31,10 @@ export default function RootLayout({
       >
         <EthereumProvider projectId={projectId}>
           <SolanaProvider>
-            <NavBar />
+            <NavBarProvider>
+              <NavBar />
             <main>{children}</main>
+            </NavBarProvider>
           </SolanaProvider>
         </EthereumProvider>
       </body>
