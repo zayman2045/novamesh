@@ -16,13 +16,15 @@ export default function NovaTokenMint() {
 
   // Check if userNovaBalance is defined before converting to a number
   const userNovaBalanceNumber =
-    userNovaBalance !== undefined ? (Number(userNovaBalance) / 10 ** 18).toFixed(4) : 0;
+    userNovaBalance !== undefined
+      ? (Number(userNovaBalance) / 10 ** 18).toFixed(4)
+      : 0;
 
   // Destructure the returned values from the useWriteNovaTokenMintTokens hook
   const {
     data: hash, // The transaction hash of the minting operation
     writeContract: mintTokens,
-    status // Function to call the mintTokens method on the contract
+    status, // Function to call the mintTokens method on the contract
   } = useWriteNovaTokenMintTokens();
 
   // Mint Nova tokens to the user
@@ -36,10 +38,8 @@ export default function NovaTokenMint() {
   return (
     <>
       <div
-        className={`flex flex-col border-4 bg-opacity-50 border-opacity-50 ${userAddress ? "border-custom-blue" : "border-gray-600"} rounded-md items-center w-1/2 p-4 m-4 ${userAddress ? "bg-blue-400" : "bg-gray-400"}`}
+        className={`flex flex-col border-4 bg-opacity-50 border-opacity-50 rounded-md items-center justify-center h-[50vh] w-[50vw] p-4 ${userAddress ? "border-custom-blue" : "border-gray-600"} ${userAddress ? "bg-blue-400" : "bg-gray-400"}`}
       >
-        <h2 className="text-2xl pb-3 font-bold">Nova Tokens</h2>
-
         {userAddress ? (
           <>
             <div>
@@ -64,7 +64,10 @@ export default function NovaTokenMint() {
             </form>
           </>
         ) : (
-          <p>Connect Wallet to Access</p>
+          <>
+            <h2 className="text-2xl pb-3 font-bold">Nova</h2>
+            <p>Connect Wallet to Access</p>
+          </>
         )}
       </div>
     </>
