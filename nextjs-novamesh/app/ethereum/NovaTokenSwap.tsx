@@ -5,7 +5,7 @@ import {
 } from "@/src/generated";
 import { parseEther } from "viem";
 
-export default function NovaTokenMint() {
+export default function NovaTokenSwap() {
   // Get the user's address
   const { address: userAddress } = useAccount();
 
@@ -37,38 +37,29 @@ export default function NovaTokenMint() {
 
   return (
     <>
-      <div
-        className={`flex flex-col border-4 bg-opacity-50 border-opacity-50 rounded-md items-center justify-center h-[50vh] w-[50vw] p-4 ${userAddress ? "border-custom-blue" : "border-gray-600"} ${userAddress ? "bg-blue-400" : "bg-gray-400"}`}
-      >
-        {userAddress ? (
-          <>
-            <div>
-              <h3 className="mb-3">
-                Nova Balance: {userNovaBalanceNumber.toString()}
-              </h3>
-            </div>
-            <form onSubmit={handleSubmit}>
-              <input
-                name="novaTokenAmount"
-                type="text"
-                className="text-black mr-3 text-right"
-                placeholder="0"
-                required
-              ></input>
-              <button
-                type="submit"
-                className="bg-custom-blue p-1 border border-custom-blue rounded-lg w-20 font-bold hover:scale-105"
-              >
-                Mint
-              </button>
-            </form>
-          </>
-        ) : (
-          <>
-            <h2 className="text-2xl pb-3 font-bold">Nova</h2>
-            <p>Connect Wallet to Access</p>
-          </>
-        )}
+      <div className="flex flex-col border-4 bg-opacity-50 border-opacity-50 rounded-md items-center justify-center h-[50vh] w-[50vw] p-4  border-custom-blue bg-blue-400">
+        <>
+          <div>
+            <h3 className="mb-3">
+              Nova Balance: {userNovaBalanceNumber.toString()}
+            </h3>
+          </div>
+          <form onSubmit={handleSubmit}>
+            <input
+              name="novaTokenAmount"
+              type="text"
+              className="text-black mr-3 text-right"
+              placeholder="0"
+              required
+            ></input>
+            <button
+              type="submit"
+              className="bg-custom-blue p-1 border border-custom-blue rounded-lg w-20 font-bold hover:scale-105"
+            >
+              Mint
+            </button>
+          </form>
+        </>
       </div>
     </>
   );
