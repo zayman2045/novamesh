@@ -51,7 +51,11 @@ export default function Home() {
       <div>
         <h2 className="text-center font-bold text-2xl">Solana</h2>
         <div className="flex justify-evenly m-6">
-          <div className="w-1/3">Description of Solana functionalities...Solana is a blockchain that uses a combination of Proof of Stake (PoS) and Proof of History (PoH) for its consensus mechanism.</div>
+          <div className="w-1/3">
+            Description of Solana functionalities...Solana is a blockchain that
+            uses a combination of Proof of Stake (PoS) and Proof of History
+            (PoH) for its consensus mechanism.
+          </div>
           <div className="w-1/3">
             <Image
               src={solLogo}
