@@ -5,7 +5,7 @@ import {
 } from "@/src/generated";
 import { parseEther } from "viem";
 
-export default function NovaTokenSwap() {
+export default function NovaSwap() {
   // Get the user's address
   const { address: userAddress } = useAccount();
 
@@ -36,9 +36,7 @@ export default function NovaTokenSwap() {
   };
 
   return (
-    <>
       <div className="flex flex-col border-4 bg-opacity-50 border-opacity-50 rounded-md items-center justify-center h-[50vh] w-[50vw] p-4  border-custom-blue bg-blue-400">
-        <>
           <div>
             <h3 className="mb-3">
               Nova Balance: {userNovaBalanceNumber.toString()}
@@ -59,8 +57,6 @@ export default function NovaTokenSwap() {
               Mint
             </button>
           </form>
-        </>
       </div>
-    </>
   );
 }
