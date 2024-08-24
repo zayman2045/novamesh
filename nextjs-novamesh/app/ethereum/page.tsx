@@ -3,7 +3,6 @@
 import NovaSwap from "./NovaSwap";
 import NovaNFTs from "./NovaNFTs";
 import NovaSend from "./NovaSend";
-import NovaPool from "./NovaPool";
 import NovaTabButton from "./NovaTabButton";
 import { NovaTab, useNovaTab } from "./NovaTabProvider";
 import { useAccount } from "wagmi";
@@ -23,16 +22,14 @@ export default function EthereumHome() {
         <div className="h-[55vh]">
           <div>
             <NovaTabButton tabValue={NovaTab.Swap} />
-            <NovaTabButton tabValue={NovaTab.Pool} />
             <NovaTabButton tabValue={NovaTab.Send} />
             <NovaTabButton tabValue={NovaTab.NFTs} />
           </div>
           {userAddress && tabState == NovaTab.Swap && <NovaSwap />}
-          {userAddress && tabState == NovaTab.Pool && <NovaPool />}
           {userAddress && tabState == NovaTab.Send && <NovaSend />}
           {userAddress && tabState == NovaTab.NFTs && <NovaNFTs />}
           {!userAddress && (
-            <div className="flex flex-col border-4 bg-opacity-50 border-gray-600 bg-gray-400 border-opacity-50 rounded-md items-center justify-center h-[50vh] w-[50vw] p-4">
+            <div className="flex flex-col border-4 bg-opacity-50 border-gray-600 bg-gray-400 border-opacity-50 rounded-3xl items-center justify-center h-[50vh] w-[50vw] p-4">
               <h2 className="text-2xl pb-3 font-bold">NOVA</h2>
               <p>Connect Wallet to Access</p>
             </div>

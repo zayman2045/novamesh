@@ -5,7 +5,6 @@ import React, { createContext, useContext, useState } from "react";
 export enum NovaTab {
   None,
   Swap = "Swap",
-  Pool = "Pool",
   Send = "Send",
   NFTs = "NFTs",
 }
