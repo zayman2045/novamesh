@@ -4,13 +4,17 @@ import NovaTokenModule from "../ignition/modules/NovaToken";
 import { expect } from "chai";
 
 describe("nova token", () => {
-  // Setup function to deploy the NovaToken contract and retrieve the signer
   const setup = async () => {
+    // Deploy the NovaToken contract
     const deployment = await ignition.deploy(NovaTokenModule);
+
+    // Get the NovaToken contract from ethers
     const novaToken = await ethers.getContractAt(
       "NovaToken",
       deployment.novaToken
     );
+
+    // Get the signer
     const [signer] = await ethers.getSigners()
     return { novaToken, signer };
   };
