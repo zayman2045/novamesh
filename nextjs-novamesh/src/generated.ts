@@ -6,6 +6,53 @@ import {
 } from 'wagmi/codegen'
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// EthUsdPriceConverter
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x4b5Af4A571E51ABE9e74fF323f46930fc7CCDe41)
+ */
+export const ethUsdPriceConverterAbi = [
+  { type: 'constructor', inputs: [], stateMutability: 'nonpayable' },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'getDecimals',
+    outputs: [{ name: '', internalType: 'uint8', type: 'uint8' }],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [{ name: 'ethAmount', internalType: 'uint256', type: 'uint256' }],
+    name: 'getEthInUsd',
+    outputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'getLatestPrice',
+    outputs: [{ name: '', internalType: 'int256', type: 'int256' }],
+    stateMutability: 'view',
+  },
+] as const
+
+/**
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x4b5Af4A571E51ABE9e74fF323f46930fc7CCDe41)
+ */
+export const ethUsdPriceConverterAddress = {
+  11155111: '0x4b5Af4A571E51ABE9e74fF323f46930fc7CCDe41',
+} as const
+
+/**
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x4b5Af4A571E51ABE9e74fF323f46930fc7CCDe41)
+ */
+export const ethUsdPriceConverterConfig = {
+  address: ethUsdPriceConverterAddress,
+  abi: ethUsdPriceConverterAbi,
+} as const
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // NovaToken
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -296,6 +343,52 @@ export const erc20Abi = [
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // React
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link ethUsdPriceConverterAbi}__
+ *
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x4b5Af4A571E51ABE9e74fF323f46930fc7CCDe41)
+ */
+export const useReadEthUsdPriceConverter = /*#__PURE__*/ createUseReadContract({
+  abi: ethUsdPriceConverterAbi,
+  address: ethUsdPriceConverterAddress,
+})
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link ethUsdPriceConverterAbi}__ and `functionName` set to `"getDecimals"`
+ *
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x4b5Af4A571E51ABE9e74fF323f46930fc7CCDe41)
+ */
+export const useReadEthUsdPriceConverterGetDecimals =
+  /*#__PURE__*/ createUseReadContract({
+    abi: ethUsdPriceConverterAbi,
+    address: ethUsdPriceConverterAddress,
+    functionName: 'getDecimals',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link ethUsdPriceConverterAbi}__ and `functionName` set to `"getEthInUsd"`
+ *
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x4b5Af4A571E51ABE9e74fF323f46930fc7CCDe41)
+ */
+export const useReadEthUsdPriceConverterGetEthInUsd =
+  /*#__PURE__*/ createUseReadContract({
+    abi: ethUsdPriceConverterAbi,
+    address: ethUsdPriceConverterAddress,
+    functionName: 'getEthInUsd',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link ethUsdPriceConverterAbi}__ and `functionName` set to `"getLatestPrice"`
+ *
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x4b5Af4A571E51ABE9e74fF323f46930fc7CCDe41)
+ */
+export const useReadEthUsdPriceConverterGetLatestPrice =
+  /*#__PURE__*/ createUseReadContract({
+    abi: ethUsdPriceConverterAbi,
+    address: ethUsdPriceConverterAddress,
+    functionName: 'getLatestPrice',
+  })
 
 /**
  * Wraps __{@link useReadContract}__ with `abi` set to __{@link novaTokenAbi}__
