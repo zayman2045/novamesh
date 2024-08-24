@@ -20,7 +20,7 @@ export default function NovaSwap() {
   // Check if userEthBalance is defined before converting to a number
   const userEthBalance =
     userEthBalanceData !== undefined
-      ? (Number(userEthBalanceData.value) / 10 ** 18).toFixed(4)
+      ? (Number(userEthBalanceData.value) / 10 ** 18).toPrecision(4)
       : 0;
 
   // Get the NOVA balance of the user
@@ -31,7 +31,7 @@ export default function NovaSwap() {
   // Check if userNovaBalance is defined before converting to a number
   const userNovaBalance =
     userNovaBalanceData !== undefined
-      ? (Number(userNovaBalanceData) / 10 ** 18).toFixed(4)
+      ? (Number(userNovaBalanceData) / 10 ** 18).toPrecision(4)
       : 0;
 
   // Destructure the returned values from the useWriteNovaTokenMintTokens hook
@@ -42,23 +42,54 @@ export default function NovaSwap() {
   } = useWriteNovaTokenMintTokens();
 
   // Define message state
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState("Swap");
+
+  // Define the ETH input value
+  const [ethValue, setEthValue] = useState("");
+
+  // Define the NOVA input value
+  const [novaValue, setNovaValue] = useState("");
+
+  // Handle the change event of the ETH input field
+  const handleEthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const currentEthValue = e.target.value;
+    if (/^\d*\.?\d*$/.test(currentEthValue)) {
+      setEthValue(currentEthValue);
+      const calculatedNovaValue = (Number(currentEthValue) * 1).toPrecision(4); // Assuming 1 ETH = 1 NOVA for simplicity
+      setNovaValue(calculatedNovaValue);
+      if (Number(currentEthValue) > Number(userEthBalance)) {
+        setMessage("Insufficient ETH Balance");
+      } else {
+        setMessage("Swap");
+      }
+    }
+  };
+
+  // Handle the change event of the NOVA input field
+  const handleNovaChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const currentNovaValue = e.target.value;
+    if (/^\d*\.?\d*$/.test(currentNovaValue)) {
+      setNovaValue(currentNovaValue);
+      const calculatedEthValue = (Number(currentNovaValue) * 1).toPrecision(4); // Assuming 1 NOVA = 1 ETH for simplicity
+      setEthValue(calculatedEthValue);
+      if (Number(calculatedEthValue) > Number(userEthBalance)) {
+        setMessage("Insufficient ETH Balance");
+      } else {
+        setMessage("Swap");
+      }
+    }
+  };
 
   // Mint Nova tokens to the user when the form is submitted
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.target as HTMLFormElement);
-    const novaTokenAmount = formData.get("novaTokenAmount") as string;
-    if (Number(novaTokenAmount) > Number(userEthBalance)) {
-      setMessage("Insufficient Eth Balance");
-      return;
-    } else {
-      setMessage("");
-      mintTokens({ value: parseEther(novaTokenAmount) });
-    }
+    const novaTokenAmount = formData.get("ethAmount") as string;
+    mintTokens({ value: parseEther(novaTokenAmount) });
   };
 
-  const getStatusMessage = (status: string) => {
+  // Get the status of the transaction
+  const getStatus = (status: string) => {
     switch (status) {
       case "pending":
         return "Processing transaction...";
@@ -74,39 +105,66 @@ export default function NovaSwap() {
   };
 
   return (
-    <div className="flex flex-col border-4 bg-opacity-50 border-opacity-50 rounded-md items-center justify-center h-[50vh] w-[50vw] p-4  border-custom-blue bg-blue-400">
-      <div>
-        <h3 className="mb-3">Nova Balance: {userNovaBalance.toString()}</h3>
-        <h3>Eth Balance: {userEthBalance.toString()}</h3>
-      </div>
-      <form onSubmit={handleSubmit}>
-        <input
-          name="novaTokenAmount"
-          type="text"
-          className="text-black mr-3 text-right"
-          placeholder="0"
-          required
-        ></input>
+    <>
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-col gap-2 items-center justify-center h-[50vh] w-[50vw]"
+      >
+        <div className="border-4 bg-opacity-50 border-opacity-50 border-custom-blue bg-blue-400 rounded-3xl h-2/5 w-full p-3">
+          <h3>Sell</h3>
+          <input
+            name="ethAmount"
+            type="text"
+            className={`text-white mr-3 bg-transparent rounded-3xl w-3/4 h-1/2 p-1 text-left text-3xl outline-none shadow-none placeholder:text-white`}
+            placeholder="0"
+            required
+            onChange={handleEthChange}
+            value={ethValue}
+          ></input>
+          <h3 className="text-right">
+            Eth Balance: {userEthBalance.toString()}
+          </h3>
+        </div>
+        <div className="border-4 bg-opacity-50 border-opacity-50 border-custom-blue bg-blue-400 rounded-3xl h-2/5 w-full p-3">
+          <h3>Buy</h3>
+          <input
+            name="novaAmount"
+            type="text"
+            className={`text-white mr-3 bg-transparent rounded-3xl w-3/4 h-1/2 p-1 text-left text-3xl outline-none shadow-none placeholder:text-white`}
+            placeholder="0"
+            required
+            onChange={handleNovaChange}
+            value={novaValue}
+          ></input>
+          <h3 className="text-right">
+            Nova Balance: {userNovaBalance.toString()}
+          </h3>
+        </div>
         <button
           type="submit"
-          className="bg-custom-blue p-1 border border-custom-blue rounded-lg w-20 font-bold hover:scale-105"
+          className={`bg-blue-500 bg-opacity-75 p-1 border-2 border-custom-blue rounded-3xl w-full h-1/5 font-bold hover:scale-105 ${message == "Insufficient ETH Balance" && "bg-red-500 border-red-500"}`}
+          disabled={message == "Insufficient ETH Balance"}
         >
-          Mint
+          {message}
         </button>
       </form>
-      <div>{message}</div>
-      <div>
+      <div className={"w-full mt-3 flex flex-col items-center"}>
+        <p>{getStatus(status)}</p>
         {hash && (
-          <a
-            href={`https://sepolia.etherscan.io/tx/${hash}`}
-            target="_blank"
-            rel="noreferrer"
+          <button
+            className={`bg-custom-blue p-1 border border-custom-blue rounded-lg w-1/2 font-bold hover:scale-105`}
+            onClick={() =>
+              window.open(
+                `https://sepolia.etherscan.io/tx/${hash}`,
+                "_blank",
+                "noopener,noreferrer"
+              )
+            }
           >
             View Transaction
-          </a>
+          </button>
         )}
       </div>
-      <div>{getStatusMessage(status)}</div>
-    </div>
+    </>
   );
 }
