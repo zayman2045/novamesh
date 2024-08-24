@@ -24,6 +24,12 @@ export default defineConfig({
             [sepolia.id]: "0x82E6E83ADcD22a0B4C376575E1B03347553b4eA4",
           },
         },
+        {
+          name: "EthUsdPriceConverter",
+          address: {
+            [sepolia.id]: "0x4b5Af4A571E51ABE9e74fF323f46930fc7CCDe41",
+          },
+        },
       ],
     }),
     react(),
