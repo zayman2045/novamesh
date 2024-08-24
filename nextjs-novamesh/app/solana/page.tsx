@@ -13,7 +13,7 @@ export default function SolanaHome() {
         >
           {connected ? (
             <button className="bg-custom-purple w-20 font-bold border border-custom-purple rounded-lg p-1 hover:scale-105">
-              Mint
+              Swap
             </button>
           ) : (
             <>
