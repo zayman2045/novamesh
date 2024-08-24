@@ -6,10 +6,15 @@ import {
   useWriteNovaTokenMintTokens,
 } from "@/src/generated";
 import { parseEther } from "viem";
+import { useReadEthUsdPriceConverterGetLatestPrice } from "@/src/generated";
 
 export default function NovaSwap() {
   // Get the user's address
   const { address: userAddress } = useAccount();
+
+  // Get the latest ETH price in USD
+  const { data: ethUsdPriceData } = useReadEthUsdPriceConverterGetLatestPrice();
+  const ethUsdPrice = (Number(ethUsdPriceData || 0) / 10 ** 18).toFixed(2);
 
   // Get the ETH balance of the user;
   const { data: userEthBalanceData } = useBalance({
@@ -106,6 +111,7 @@ export default function NovaSwap() {
 
   return (
     <>
+      <h2>{ethUsdPrice}</h2>
       <form
         onSubmit={handleSubmit}
         className="flex flex-col gap-2 items-center justify-center h-[50vh] w-[50vw]"
