@@ -7,3 +7,6 @@
 [submodule "foundry-novamesh/lib/openzeppelin-contracts"]
 	path = foundry-novamesh/lib/openzeppelin-contracts
 	url = https://github.com/Openzeppelin/openzeppelin-contracts
+[submodule "foundry-novamesh/lib/chainlink-brownie-contracts"]
+	path = foundry-novamesh/lib/chainlink-brownie-contracts
+	url = https://github.com/smartcontractkit/chainlink-brownie-contracts
