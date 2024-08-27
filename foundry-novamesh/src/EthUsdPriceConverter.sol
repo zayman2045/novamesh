@@ -7,11 +7,8 @@ import {AggregatorV3Interface} from "chainlink-brownie-contracts/contracts/src/v
 contract EthUsdPriceConverter {
     AggregatorV3Interface internal priceFeed;
 
-    constructor() {
-        priceFeed = AggregatorV3Interface(
-            0x694AA1769357215DE4FAC081bf1f309aDC325306
-        ); // Sepolia Testnet ETH/USD
-        // priceFeed = AggregatorV3Interface(0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419); // Mainnet ETH/USD
+    constructor(address _priceFeed) {
+        priceFeed = AggregatorV3Interface(_priceFeed);
     }
 
     function getLatestPrice() public view returns (int256) {
