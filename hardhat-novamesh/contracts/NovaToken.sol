@@ -3,6 +3,10 @@ pragma solidity ^0.8.24;
 
 import {ERC20} from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
+/**
+@title NovaToken
+@notice Mint Nova tokens in exchange for ETH
+ */
 contract NovaToken is ERC20 {
     uint256 exchangeRate = 1;
 

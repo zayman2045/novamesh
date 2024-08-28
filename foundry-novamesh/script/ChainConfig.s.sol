@@ -5,6 +5,10 @@ pragma solidity ^0.8.24;
 import {Script} from "forge-std/Script.sol";
 import {MockV3Aggregator} from "../test/mocks/MockV3Aggregator.sol";
 
+/**
+@title ChainConfig
+@notice Configure the Chainlink price feed for the network
+ */
 contract ChainConfig is Script {
     NetworkConfig public activeNetworkConfig;
 

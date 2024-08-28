@@ -4,6 +4,10 @@ pragma solidity ^0.8.24;
 
 import {ERC721} from "openzeppelin-contracts/contracts/token/ERC721/ERC721.sol";
 
+/**
+@title NovaNFTs
+@notice Mint NFTs
+ */
 contract NovaNFTs is ERC721 {
     uint256 private _tokenCounter;
     uint256 public tokenPrice = 0.01 ether;

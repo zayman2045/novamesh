@@ -4,6 +4,11 @@ pragma solidity ^0.8.24;
 
 import {AggregatorV3Interface} from "chainlink-brownie-contracts/contracts/src/v0.8/shared/interfaces/AggregatorV3Interface.sol";
 
+/**
+@title EthUsdPriceConverter
+@notice Convert ETH to USD
+@dev Use Chainlink AggregatorV3Interface to get the latest ETH/USD price
+ */
 contract EthUsdPriceConverter {
     AggregatorV3Interface internal priceFeed;
 
