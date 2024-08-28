@@ -1,25 +1,30 @@
 # NovaMesh: Ethereum & Solana DeFi Platform
 
-This full-stack web application is a
+This full-stack DeFi application is a
 
-* Mint and Swap Tokens & NFTs 
+* Swap Tokens, Mint NFTs, and send assets.
 
 ## Overview
 
-### Frontend
+### Ethereum
 
-* The `Next.js` React framework for creating modern, performant front-ends using server-side rendering.
+* The `Next.js` framework for creating modern, performant React applications using server-side rendering.
 * The `RainbowKit` React library that provides a customizable and easy-to-integrate user interface for connecting and interacting with Ethereum wallets in decentralized applications.
 * The `Wagmi` React library provides a collection of hooks for managing Ethereum-related states and actions, simplifying the process of interacting with Ethereum smart contracts and wallets in web applications.
+* Both the `Foundry` and `Hardhat` smart contract development toolchains that provides a fast, modular, and extensible framework for building, testing, and deploying Ethereum smart contracts.
+* Hardhat ignition modules for deployment. `Mocha` testing framework and `Chai` assertion library.
+* Solidity scripts for deployment and Solidity tests with cheat codes.
+* Mock contracts used for testing on local blockchain nodes.
+* ERC20 Token & ERC721 NFT
+* `Ethers.js` library for interacting with the Ethereum blockchain and its ecosystem
+* `Etherscan` Verification
+* `Alchemy` node as a service provides RPC (Remote Procedure Call) endpoints to interact with the Ethereum blockchain
+* `OpenZeppelin` library for secure smart contract development
+* `Chainlink` decentralized oracle network for connecting smart contracts with real-world data
 
-### Ethereum On-Chain Programs
+### Solana
 
-* The `Hardhat` development environment for Ethereum that facilitates building, deploying, testing, and debugging decentralized applications and smart contracts. Hardhat Ignition for deployment.
-* The `Mocha` testing framework and `Chai` assertion library.
-
-
-### Solana On-Chain Programs
-
+* `Solana Wallet Adapter` facilitated wallet connection
 * `Anchor` framework for developing, testing, and deploying Solana smart contracts
 * The `Mocha` testing framework and `Chai` assertion library
 
