@@ -111,7 +111,7 @@ export default function NovaSwap() {
 
   return (
     <>
-      <h2>{ethUsdPrice}</h2>
+      <h2 className={"text-right"}>{ethUsdPrice}</h2>
       <form
         onSubmit={handleSubmit}
         className="flex flex-col gap-2 items-center justify-center h-[50vh] w-[50vw]"
