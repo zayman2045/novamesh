@@ -9,6 +9,7 @@ This full-stack DeFi application is a
 ### Ethereum
 
 * The `Next.js` framework for creating modern, performant React applications using server-side rendering.
+* `Tailwind CSS` utility-first CSS framework for rapidly building custom user interfaces
 * The `RainbowKit` React library that provides a customizable and easy-to-integrate user interface for connecting and interacting with Ethereum wallets in decentralized applications.
 * The `Wagmi` React library provides a collection of hooks for managing Ethereum-related states and actions, simplifying the process of interacting with Ethereum smart contracts and wallets in web applications.
 * Both the `Foundry` and `Hardhat` smart contract development toolchains that provides a fast, modular, and extensible framework for building, testing, and deploying Ethereum smart contracts.
