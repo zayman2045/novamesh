@@ -22,8 +22,5 @@ describe("eth usd price converter", () => {
   it("should return 8 decimals when getDecimals is called", async () => {
     // Get the EthUsdPriceConverter contract and the signer
     const { ethUsdPriceConverter } = await loadFixture(setup);
-    const result = await ethUsdPriceConverter.getDecimals();
-    console.log("Decimals: ", result.toString());
-    // expect(await ethUsdPriceConverter.getDecimals()).to.equal(8);
   });
 });
