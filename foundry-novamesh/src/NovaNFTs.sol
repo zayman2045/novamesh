@@ -9,23 +9,21 @@ import {ERC721} from "openzeppelin-contracts/contracts/token/ERC721/ERC721.sol";
 @notice Mint NFTs
  */
 contract NovaNFTs is ERC721 {
-    uint256 private _tokenCounter;
-    uint256 public tokenPrice = 0.01 ether;
-    string public baseURI = "https://ipfs.io/ipfs/";
+    uint256 private s_tokenCounter;
+    uint256 private constant NFT_PRICE = 0.01 ether;
+    string private s_baseURI = "https://ipfs.io/ipfs/";
 
-    constructor() ERC721("NovaNFTs", "NOVA") {
-        _tokenCounter = 0;
-    }
+    constructor() ERC721("Nova NFTs", "NNFT") {}
 
     function _baseURI() internal view override returns (string memory) {
-        return baseURI;
+        return s_baseURI;
     }
 
     function mintNFT(address recipient) public payable returns (uint256) {
-        require(msg.value == tokenPrice, "Ether value sent is not correct");
-        uint256 newItemId = _tokenCounter;
+        require(msg.value == NFT_PRICE, "Incorrect Ether value sent");
+        uint256 newItemId = s_tokenCounter;
         _safeMint(recipient, newItemId);
-        _tokenCounter = _tokenCounter + 1;
+        s_tokenCounter += 1;
         return newItemId;
     }
 }
