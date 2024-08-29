@@ -10,19 +10,19 @@ import {AggregatorV3Interface} from "chainlink-brownie-contracts/contracts/src/v
 @dev Use Chainlink AggregatorV3Interface to get the latest ETH/USD price
  */
 contract EthUsdPriceConverter {
-    AggregatorV3Interface internal priceFeed;
+    AggregatorV3Interface internal s_priceFeed;
 
     constructor(address _priceFeed) {
-        priceFeed = AggregatorV3Interface(_priceFeed);
+        s_priceFeed = AggregatorV3Interface(_priceFeed);
     }
 
     function getLatestPrice() public view returns (int256) {
-        (, int256 answer, , , ) = priceFeed.latestRoundData();
+        (, int256 answer, , , ) = s_priceFeed.latestRoundData();
         return answer * 1e10; // Convert to 1e18 precision
     }
 
     function getDecimals() public view returns (uint8) {
-        return priceFeed.decimals(); // 8 decimals for ETH/USD
+        return s_priceFeed.decimals(); // 8 decimals for ETH/USD
     }
 
     function getEthInUsd(uint256 ethAmount) external view returns (uint256) {
