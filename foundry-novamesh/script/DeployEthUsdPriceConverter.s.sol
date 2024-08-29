@@ -10,10 +10,10 @@ contract DeployEthUsdPriceConverter is Script {
     function run() external returns (EthUsdPriceConverter) {
         uint256 deployerPrivateKey = vm.envUint("SEPOLIA_PRIVATE_KEY");
         ChainConfig chainConfig = new ChainConfig();
-        address ethConfig = chainConfig.activeNetworkConfig();
+        address priceFeed = chainConfig.activeNetworkConfig();
 
         vm.startBroadcast(deployerPrivateKey);
-        EthUsdPriceConverter ethUsdPriceConverter = new EthUsdPriceConverter(ethConfig);
+        EthUsdPriceConverter ethUsdPriceConverter = new EthUsdPriceConverter(priceFeed);
         vm.stopBroadcast();
         return (ethUsdPriceConverter);
     }
