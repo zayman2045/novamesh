@@ -1,4 +1,4 @@
 .PHONY: test
 
 test: 
-	forge test
+	forge test && hh test
