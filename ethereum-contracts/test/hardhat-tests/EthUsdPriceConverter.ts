@@ -19,9 +19,10 @@ describe("eth usd price converter", () => {
     return { ethUsdPriceConverter, signer };
   };
 
-  // TODO: Test on a forked network vs the hardhat node
   it("should return 8 decimals when getDecimals is called", async () => {
     // Get the EthUsdPriceConverter contract and the signer
     const { ethUsdPriceConverter } = await loadFixture(setup);
+    const decimals = await ethUsdPriceConverter.getDecimals();
+    expect(decimals).to.equal(8);
   });
 });
