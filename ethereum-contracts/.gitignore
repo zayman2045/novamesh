@@ -1,0 +1,31 @@
+# Dotenv file
+.env
+
+# Compiler files
+cache/
+cache_hardhat/
+out/
+/artifacts
+
+
+# Ignores development broadcast logs
+!/broadcast
+/broadcast/*/31337/
+/broadcast/**/dry-run/
+
+# Docs
+docs/
+
+# Node modules
+node_modules/
+
+# TypeChain files
+/typechain
+/typechain-types
+
+# solidity-coverage files
+/coverage
+/coverage.json
+
+# Hardhat Ignition default folder for deployments
+ignition/deployments/

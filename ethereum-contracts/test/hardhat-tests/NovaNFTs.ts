@@ -1,5 +1,5 @@
 import {ignition, ethers} from 'hardhat';
-import NovaNftsModule from '../ignition/modules/NovaNFTs';
+import NovaNftsModule from '../../ignition/modules/NovaNFTs';
 import {loadFixture} from "@nomicfoundation/hardhat-network-helpers";
 import { expect } from 'chai';
 

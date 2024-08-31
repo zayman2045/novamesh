@@ -1,12 +1,12 @@
-[submodule "foundry-novamesh/lib/forge-std"]
-	path = foundry-novamesh/lib/forge-std
+[submodule "ethereum-contracts/lib/forge-std"]
+	path = ethereum-contracts/lib/forge-std
 	url = https://github.com/foundry-rs/forge-std
-[submodule "foundry-novamesh/lib/solmate"]
-	path = foundry-novamesh/lib/solmate
+[submodule "ethereum-contracts/lib/solmate"]
+	path = ethereum-contracts/lib/solmate
 	url = https://github.com/transmissions11/solmate
-[submodule "foundry-novamesh/lib/openzeppelin-contracts"]
-	path = foundry-novamesh/lib/openzeppelin-contracts
+[submodule "ethereum-contracts/lib/openzeppelin-contracts"]
+	path = ethereum-contracts/lib/openzeppelin-contracts
 	url = https://github.com/Openzeppelin/openzeppelin-contracts
-[submodule "foundry-novamesh/lib/chainlink-brownie-contracts"]
-	path = foundry-novamesh/lib/chainlink-brownie-contracts
+[submodule "ethereum-contracts/lib/chainlink-brownie-contracts"]
+	path = ethereum-contracts/lib/chainlink-brownie-contracts
 	url = https://github.com/smartcontractkit/chainlink-brownie-contracts

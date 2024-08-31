@@ -1,6 +1,6 @@
 import { loadFixture } from "@nomicfoundation/hardhat-network-helpers";
 import { ignition, ethers } from "hardhat";
-import NovaTokenModule from "../ignition/modules/NovaToken";
+import NovaTokenModule from "../../ignition/modules/NovaToken";
 import { expect } from "chai";
 
 describe("nova token", () => {
