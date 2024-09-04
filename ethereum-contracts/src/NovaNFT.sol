@@ -44,7 +44,7 @@ contract NovaNFT is ERC721, VRFConsumerBaseV2Plus {
         if (msg.value != TOKEN_PRICE) {
             revert NovaNFT__InvalidEthValueSent(msg.value, TOKEN_PRICE);
         }
-        newTokenId = s_tokenCounter + 1;
+        newTokenId = s_tokenCounter;
         _safeMint(recipient, newTokenId);
         s_tokenCounter += 1;
         emit NFTMinted(recipient, newTokenId);
