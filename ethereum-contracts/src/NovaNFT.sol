@@ -6,6 +6,10 @@ import {ERC721} from "openzeppelin-contracts/contracts/token/ERC721/ERC721.sol";
 import {VRFConsumerBaseV2Plus} from "chainlink-brownie-contracts/contracts/src/v0.8/vrf/dev/VRFConsumerBaseV2Plus.sol";
 import {VRFV2PlusClient} from "chainlink-brownie-contracts/contracts/src/v0.8/vrf/dev/libraries/VRFV2PlusClient.sol";
 
+/**
+    * @title NovaNFT
+    * @notice This contract mints NFTs and uses Chainlink VRF to mint random NFTs
+ */
 contract NovaNFT is ERC721, VRFConsumerBaseV2Plus {
     uint256 private s_tokenCounter;
     uint256 public constant TOKEN_PRICE = 0.01 ether;
