@@ -9,7 +9,7 @@ import "openzeppelin-contracts/contracts/utils/Strings.sol";
 
 contract NovaNFTsTest is Test {
     NovaNFT novaNFT;
-    address recipient = address(0x123);
+    address recipient = makeAddr("recipient");
 
     function setUp() public {
         DeployNovaNFT deployNovaNFT = new DeployNovaNFT();
