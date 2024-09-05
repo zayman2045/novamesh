@@ -21,7 +21,8 @@ contract NovaNFTsTest is Test {
         assertEq(tokenId, 0);
     }
 
-    function testFail_MintNFTWithIncorrectValue() public {
+    function test_InvalidEthValueSentRevert() public {
+        vm.expectRevert(abi.encodeWithSelector(NovaNFT.NovaNFT__InvalidEthValueSent.selector, 3 ether, 0.01 ether));
         novaNFT.mintNFT{value: 3 ether}(recipient);
     }
 
