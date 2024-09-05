@@ -2,14 +2,14 @@
 
 pragma solidity ^0.8.24;
 
-import {Test} from "forge-std/Test.sol";
+import {Test, console} from "forge-std/Test.sol";
 import {NovaNFT} from "../src/NovaNFT.sol";
 import {DeployNovaNFT} from "../script/DeployNovaNFT.s.sol";
 import "openzeppelin-contracts/contracts/utils/Strings.sol";
 
 contract NovaNFTsTest is Test {
     NovaNFT novaNFT;
-
+    address recipient = address(0x123);
 
     function setUp() public {
         DeployNovaNFT deployNovaNFT = new DeployNovaNFT();
@@ -17,14 +17,22 @@ contract NovaNFTsTest is Test {
     }
 
     function test_MintNFT() public {
-        address recipient = address(0x123);
         uint256 tokenId = novaNFT.mintNFT{value: 0.01 ether}(recipient);
         assertEq(tokenId, 0);
     }
 
     function testFail_MintNFTWithIncorrectValue() public {
-        address recipient = address(0x123);
-        novaNFT.mintNFT{value: 0.001 ether}(recipient);
+        novaNFT.mintNFT{value: 3 ether}(recipient);
+    }
+
+    function testWithdraw() public {
+        address owner = novaNFT.owner();
+        assertEq(owner.balance, 0);
+
+        novaNFT.mintNFT{value: 0.01 ether}(recipient);
+        vm.prank(owner);
+        novaNFT.withdraw();
+        assertEq(owner.balance, 0.01 ether);
     }
 
     function test_BaseURI() public view {
@@ -48,7 +56,6 @@ contract NovaNFTsTest is Test {
     }
 
     function test_TokenURI() public {
-        address recipient = address(0x123);
         uint256 tokenId = novaNFT.mintNFT{value: 0.01 ether}(recipient);
         string memory baseURI = novaNFT.getBaseURI();
         string memory tokenURI = novaNFT.tokenURI(tokenId);

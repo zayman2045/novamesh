@@ -93,7 +93,12 @@ contract NovaNFT is ERC721, VRFConsumerBaseV2Plus {
         emit RandomNFTMinted(recipient, newTokenId);
     }
 
-    function withdraw() public onlyOwner {}
+    function withdraw() public onlyOwner {
+        (bool success, ) = payable(msg.sender).call{
+            value: address(this).balance
+        }("");
+        require(success, "Transfer failed.");
+    }
 
     function _baseURI() internal view override returns (string memory) {
         return s_baseURI;
