@@ -8,6 +8,7 @@ import {DeployNovaToken} from "../script/DeployNovaToken.sol";
 
 contract NovaTokenTest is Test {
     NovaToken novaToken;
+    address user = makeAddr("user");
 
     function setUp() public {
         DeployNovaToken deployNovaToken = new DeployNovaToken();
@@ -15,10 +16,10 @@ contract NovaTokenTest is Test {
     }
 
     function test_MintNovaTokens() public {
-        address user = address(this);
         uint256 userInitialBalance = novaToken.balanceOf(user);
         assertEq(userInitialBalance, 0);
 
+        hoax(user, 1);
         novaToken.mintTokens{value: 1}();
         uint256 userFinalBalance = novaToken.balanceOf(user);
         assertEq(userFinalBalance, 1);
