@@ -4,12 +4,14 @@ pragma solidity ^0.8.24;
 
 import {Test} from "forge-std/Test.sol";
 import {NovaToken} from "../src/NovaToken.sol";
+import {DeployNovaToken} from "../script/DeployNovaToken.sol";
 
 contract NovaTokenTest is Test {
     NovaToken novaToken;
 
     function setUp() public {
-        novaToken = new NovaToken();
+        DeployNovaToken deployNovaToken = new DeployNovaToken();
+        novaToken = deployNovaToken.run();
     }
 
     function test_MintNovaTokens() public {
