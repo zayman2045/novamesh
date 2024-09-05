@@ -2,7 +2,7 @@
 
 pragma solidity ^0.8.24;
 
-import {Test} from "forge-std/Test.sol";
+import {Test, console} from "forge-std/Test.sol";
 import {NovaToken} from "../src/NovaToken.sol";
 import {DeployNovaToken} from "../script/DeployNovaToken.sol";
 
@@ -22,5 +22,21 @@ contract NovaTokenTest is Test {
         novaToken.mintTokens{value: 1}();
         uint256 userFinalBalance = novaToken.balanceOf(user);
         assertEq(userFinalBalance, 1);
+    }
+
+    function test_Name() public view {
+        string memory name = novaToken.name();
+        assertEq(name, "Nova");
+    }
+
+    function test_Symbol() public view {
+        string memory symbol = novaToken.symbol();
+        assertEq(symbol, "NOVA");
+    }
+
+    function test_Constructor() public {
+        NovaToken novaTokenContract = new NovaToken();
+        uint64 nonce = vm.getNonce(address(novaTokenContract));
+        assertEq(nonce, 1);
     }
 }
