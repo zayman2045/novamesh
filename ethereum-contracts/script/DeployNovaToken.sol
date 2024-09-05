@@ -6,10 +6,11 @@ import {Script} from "forge-std/Script.sol";
 import {NovaToken} from "../src/NovaToken.sol";
 
 contract DeployNovaToken is Script {
-    function run() external {
+    function run() external returns (NovaToken) {
         uint256 deployerPrivateKey = vm.envUint("SEPOLIA_PRIVATE_KEY");
         vm.startBroadcast(deployerPrivateKey);
-        new NovaToken();
+        NovaToken novaToken = new NovaToken();
         vm.stopBroadcast();
+        return novaToken;
     }
 }
