@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import ethLogo from "@/public/ethereum-eth-logo.svg";
 import solLogo from "@/public/solana-sol-logo.png";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -31,39 +32,20 @@ export default function Home() {
           Connect your Ethereum and Solana Wallet to mint Tokens and NFTs
         </p>
       </div>
-      <div>
-        <h2 className="text-center font-bold text-2xl">Ethereum</h2>
-        <div className="flex justify-evenly my-6">
-          <div className="w-1/3">
-            <Image
-              src={ethLogo}
-              alt="ETH Logo"
-              width="250"
-              className="mx-auto"
-            />
-          </div>
-          <p className="w-1/3">
-            Description of Ethereum functionalities. Ethereum is amazing! It is
-            so great, especially when it comes to placeholder text.
-          </p>
+      <div className="flex justify-evenly items-center my-6 min-h-[80vh]">
+        <div className="w-1/6 p-2 hover:scale-110 transition-transform duration-300">
+          <Link href="/ethereum">
+            <Image src={ethLogo} alt="ETH Logo" className="w-full" />
+          </Link>
         </div>
-      </div>
-      <div>
-        <h2 className="text-center font-bold text-2xl">Solana</h2>
-        <div className="flex justify-evenly m-6">
-          <div className="w-1/3">
-            Description of Solana functionalities...Solana is a blockchain that
-            uses a combination of Proof of Stake (PoS) and Proof of History
-            (PoH) for its consensus mechanism.
-          </div>
-          <div className="w-1/3">
-            <Image
-              src={solLogo}
-              alt="SOL Logo"
-              width="250"
-              className="mx-auto"
-            />
-          </div>
+        <p className="w-1/3 p-3 text-center">
+          NovaMesh allows users to mint tokens and NFTs on the Ethereum & Solana
+          blockchain networks.
+        </p>
+        <div className="w-1/6 p-2 hover:scale-110 transition-transform duration-300">
+          <Link href="/solana">
+            <Image src={solLogo} alt="SOL Logo" className="w-full" />
+          </Link>
         </div>
       </div>
     </div>
