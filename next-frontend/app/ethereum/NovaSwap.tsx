@@ -55,17 +55,25 @@ export default function NovaSwap() {
   // Define the NOVA input value
   const [novaValue, setNovaValue] = useState("");
 
+  // Define a regular expression to validate the input values
+  const regex = /^\d*\.?\d*$/;
+
   // Handle the change event of the ETH input field
   const handleEthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const currentEthValue = e.target.value;
-    if (/^\d*\.?\d*$/.test(currentEthValue)) {
+    if (regex.test(currentEthValue)) {
       setEthValue(currentEthValue);
-      const calculatedNovaValue = (Number(currentEthValue) * 1).toPrecision(4); // Assuming 1 ETH = 1 NOVA for simplicity
-      setNovaValue(calculatedNovaValue);
-      if (Number(currentEthValue) > Number(userEthBalance)) {
-        setMessage("Insufficient ETH Balance");
+      const calculatedNovaValue = (Number(currentEthValue) * 1).toPrecision(4); // 1 ETH = 1 NOVA
+      if (Number.isNaN(Number(calculatedNovaValue))) {
+        setNovaValue("");
+        setMessage("Invalid Input");
       } else {
-        setMessage("Swap");
+        setNovaValue(calculatedNovaValue);
+        if (Number(currentEthValue) > Number(userEthBalance)) {
+          setMessage("Insufficient ETH Balance");
+        } else {
+          setMessage("Swap");
+        }
       }
     }
   };
@@ -73,9 +81,9 @@ export default function NovaSwap() {
   // Handle the change event of the NOVA input field
   const handleNovaChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const currentNovaValue = e.target.value;
-    if (/^\d*\.?\d*$/.test(currentNovaValue)) {
+    if (regex.test(currentNovaValue)) {
       setNovaValue(currentNovaValue);
-      const calculatedEthValue = (Number(currentNovaValue) * 1).toPrecision(4); // Assuming 1 NOVA = 1 ETH for simplicity
+      const calculatedEthValue = (Number(currentNovaValue) * 1).toPrecision(4); // 1 NOVA = 1 ETH
       setEthValue(calculatedEthValue);
       if (Number(calculatedEthValue) > Number(userEthBalance)) {
         setMessage("Insufficient ETH Balance");
@@ -128,7 +136,7 @@ export default function NovaSwap() {
             value={ethValue}
           ></input>
           <h3 className="text-right">
-            Eth Balance: {userEthBalance.toString()}
+            ETH Balance: {userEthBalance.toString()}
           </h3>
         </div>
         <div className="border-4 bg-opacity-50 border-opacity-50 border-custom-blue bg-blue-400 rounded-3xl h-2/5 w-full p-3">
@@ -143,13 +151,13 @@ export default function NovaSwap() {
             value={novaValue}
           ></input>
           <h3 className="text-right">
-            Nova Balance: {userNovaBalance.toString()}
+            NOVA Balance: {userNovaBalance.toString()}
           </h3>
         </div>
         <button
           type="submit"
-          className={`bg-blue-500 bg-opacity-75 p-1 border-2 border-custom-blue rounded-3xl w-full h-1/5 font-bold hover:scale-105 ${message == "Insufficient ETH Balance" && "bg-red-500 border-red-500"}`}
-          disabled={message == "Insufficient ETH Balance"}
+          className={`bg-blue-500 bg-opacity-75 p-1 border-2 border-custom-blue rounded-3xl w-full h-1/5 font-bold hover:scale-105 ${message != "Swap" && "bg-red-500 border-red-500"}`}
+                  disabled={message != "Swap"}
         >
           {message}
         </button>
