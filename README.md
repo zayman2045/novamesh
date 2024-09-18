@@ -22,6 +22,7 @@ This full-stack DeFi application is a
 * `Alchemy` node as a service provides RPC (Remote Procedure Call) endpoints to interact with the Ethereum blockchain
 * `OpenZeppelin` library for secure smart contract development
 * `Chainlink` decentralized oracle network for connecting smart contracts with real-world data
+* `Pinata` API used to upload NFT artwork and metadata to IPFS
 * `Makefile` is used to streamline the development process, allowing both Foundry and Hardhat commands to be simultaneously with a single custom command.
 
 ### Solana
