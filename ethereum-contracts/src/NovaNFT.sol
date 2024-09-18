@@ -2,18 +2,17 @@
 
 pragma solidity ^0.8.24;
 
-import {ERC721} from "openzeppelin-contracts/contracts/token/ERC721/ERC721.sol";
+import {ERC721URIStorage, ERC721} from "openzeppelin-contracts/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import {VRFConsumerBaseV2Plus} from "chainlink-brownie-contracts/contracts/src/v0.8/vrf/dev/VRFConsumerBaseV2Plus.sol";
 import {VRFV2PlusClient} from "chainlink-brownie-contracts/contracts/src/v0.8/vrf/dev/libraries/VRFV2PlusClient.sol";
 
 /**
-    * @title NovaNFT
-    * @notice This contract mints NFTs and uses Chainlink VRF to mint random NFTs
+ * @title NovaNFT
+ * @notice This contract mints NFTs and uses Chainlink VRF to mint random NFTs
  */
-contract NovaNFT is ERC721, VRFConsumerBaseV2Plus {
+contract NovaNFT is ERC721URIStorage, VRFConsumerBaseV2Plus {
     uint256 private s_tokenCounter;
     uint256 public constant TOKEN_PRICE = 0.01 ether;
-    string private s_baseURI = "https://ipfs.io/ipfs/";
     uint256 s_subscriptionId;
     address vrfCoordinator = 0x9DdfaCa8183c41ad55329BdeeD9F6A8d53168B1B;
     bytes32 s_keyHash =
@@ -21,7 +20,6 @@ contract NovaNFT is ERC721, VRFConsumerBaseV2Plus {
     uint32 callbackGasLimit = 500000;
     uint16 requestConfirmations = 3;
     uint32 numWords = 1;
-    uint256 public randomNum;
     mapping(uint256 => address) public requestIdToRecipient;
 
     error NovaNFT__InvalidEthValueSent(uint256 ethSent, uint256 tokenPrice);
@@ -83,16 +81,30 @@ contract NovaNFT is ERC721, VRFConsumerBaseV2Plus {
         uint256 requestId,
         uint256[] calldata randomWords
     ) internal override {
-        randomNum = randomWords[0];
+        uint256 randomNum = randomWords[0];
         address recipient = requestIdToRecipient[requestId];
-        mintRandomNFT(recipient);
+        mintRandomNFT(recipient, randomNum);
     }
 
     function mintRandomNFT(
-        address recipient
+        address recipient,
+        uint256 randomNum
     ) internal returns (uint256 newTokenId) {
         newTokenId = s_tokenCounter + 1;
         _safeMint(recipient, newTokenId);
+
+        // Generate the token URI based on the random number
+        if (randomNum % 2 == 0) {
+            string
+                memory _tokenURI = "ipfs://QmdQ5qTZgdanGiWxCC5TT6TJ5Acd5dwifZotFEdYBzkNAu";
+
+            _setTokenURI(newTokenId, _tokenURI);
+        } else {
+            string
+                memory _tokenURI = "ipfs://QmbaLg5h3VfSrUgwf3eJzAwGsTJ58Kx8A8YHf37G46LyHK";
+            _setTokenURI(newTokenId, _tokenURI);
+        }
+
         s_tokenCounter += 1;
         emit RandomNFTMinted(recipient, newTokenId);
     }
@@ -102,13 +114,5 @@ contract NovaNFT is ERC721, VRFConsumerBaseV2Plus {
             value: address(this).balance
         }("");
         require(success, "Transfer failed.");
-    }
-
-    function _baseURI() internal view override returns (string memory) {
-        return s_baseURI;
-    }
-
-    function getBaseURI() external view returns (string memory) {
-        return s_baseURI;
     }
 }
