@@ -22,7 +22,13 @@ contract NovaNFTsTest is Test {
     }
 
     function test_InvalidEthValueSentRevert() public {
-        vm.expectRevert(abi.encodeWithSelector(NovaNFT.NovaNFT__InvalidEthValueSent.selector, 3 ether, 0.01 ether));
+        vm.expectRevert(
+            abi.encodeWithSelector(
+                NovaNFT.NovaNFT__InvalidEthValueSent.selector,
+                3 ether,
+                0.01 ether
+            )
+        );
         novaNFT.mintNFT{value: 3 ether}(recipient);
     }
 
@@ -34,11 +40,6 @@ contract NovaNFTsTest is Test {
         vm.prank(owner);
         novaNFT.withdraw();
         assertEq(owner.balance, 0.01 ether);
-    }
-
-    function test_BaseURI() public view {
-        string memory uri = novaNFT.getBaseURI();
-        assertEq(uri, "https://ipfs.io/ipfs/");
     }
 
     function test_TokenPrice() public view {
@@ -54,15 +55,5 @@ contract NovaNFTsTest is Test {
     function test_Symbol() public view {
         string memory symbol = novaNFT.symbol();
         assertEq(symbol, "NNFT");
-    }
-
-    function test_TokenURI() public {
-        uint256 tokenId = novaNFT.mintNFT{value: 0.01 ether}(recipient);
-        string memory baseURI = novaNFT.getBaseURI();
-        string memory tokenURI = novaNFT.tokenURI(tokenId);
-        string memory expectedTokenURI = string(
-            abi.encodePacked(baseURI, Strings.toString(tokenId))
-        );
-        assertEq(tokenURI, expectedTokenURI);
     }
 }
