@@ -1,32 +1,41 @@
-import Image from "next/image";
-import NovaNft1 from "@/public/nova-nft-1.jpeg";
-import NovaNft2 from "@/public/nova-nft-2.jpeg";
-import NovaNft3 from "@/public/nova-nft-3.jpeg";
+import NovaNFTImages from "./NovaNFTImages";
 import { useRef, useEffect } from "react";
 
 export default function NovaNFTs() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
+   useEffect(() => {
     const scrollContainer = scrollContainerRef.current;
     if (!scrollContainer) return;
-
-    // Set initial scroll position to the middle
-    scrollContainer.scrollLeft = scrollContainer.scrollWidth / 2;
-
+  
+    const setInitialScrollPosition = () => {
+      const initialScrollPosition = scrollContainer.scrollWidth / 3;
+      scrollContainer.scrollLeft = initialScrollPosition;
+      return initialScrollPosition;
+    };
+  
+    let initialScrollPosition = setInitialScrollPosition();
+  
     const handleScroll = () => {
-      const maxScrollLeft = scrollContainer.scrollWidth / 2;
-
-      if (scrollContainer.scrollLeft >= maxScrollLeft) {
-        scrollContainer.scrollLeft = scrollContainer.scrollLeft - maxScrollLeft;
-      } else if (scrollContainer.scrollLeft <= 0) {
-        scrollContainer.scrollLeft = maxScrollLeft + scrollContainer.scrollLeft;
+      if (
+        scrollContainer.scrollLeft >= initialScrollPosition * 2 ||
+        scrollContainer.scrollLeft <= 0
+      ) {
+        // Reset to the middle
+        scrollContainer.scrollLeft = initialScrollPosition;
       }
     };
-
+  
+    const handleResize = () => {
+      initialScrollPosition = setInitialScrollPosition();
+    };
+  
     scrollContainer.addEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleResize);
+  
     return () => {
       scrollContainer.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
@@ -36,25 +45,9 @@ export default function NovaNFTs() {
         ref={scrollContainerRef}
         className="flex overflow-x-auto w-full gap-4 hide-scrollbar"
       >
-        <div className="flex flex-col items-center justify-center min-w-[33%]">
-          <Image src={NovaNft1} alt="Nova NFT 1" className="rounded-lg" />
-        </div>
-        <div className="flex flex-col items-center justify-center min-w-[33%]">
-          <Image src={NovaNft2} alt="Nova NFT 2" className="rounded-lg" />
-        </div>
-        <div className="flex flex-col items-center justify-center min-w-[33%]">
-          <Image src={NovaNft3} alt="Nova NFT 3" className="rounded-lg" />
-        </div>
-        {/* Duplicate the content for seamless scrolling */}
-        <div className="flex flex-col items-center justify-center min-w-[33%]">
-          <Image src={NovaNft1} alt="Nova NFT 1" className="rounded-lg" />
-        </div>
-        <div className="flex flex-col items-center justify-center min-w-[33%]">
-          <Image src={NovaNft2} alt="Nova NFT 2" className="rounded-lg" />
-        </div>
-        <div className="flex flex-col items-center justify-center min-w-[33%]">
-          <Image src={NovaNft3} alt="Nova NFT 3" className="rounded-lg" />
-        </div>
+        <NovaNFTImages />
+        <NovaNFTImages />
+        <NovaNFTImages />
       </div>
       <div className="flex flex-col items-center justify-center my-2">
         <button className="bg-blue-500 bg-opacity-75 border-2 border-custom-blue rounded-xl font-bold p-2 m-2 transition-transform hover:scale-110 duration-300">
