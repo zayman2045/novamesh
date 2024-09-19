@@ -53,6 +53,492 @@ export const ethUsdPriceConverterConfig = {
 } as const
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// NovaNFT
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x640157b367b350589E68197E16B964273302d8BB)
+ */
+export const novaNftAbi = [
+  {
+    type: 'constructor',
+    inputs: [
+      { name: 'subscriptionId', internalType: 'uint256', type: 'uint256' },
+    ],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'error',
+    inputs: [
+      { name: 'sender', internalType: 'address', type: 'address' },
+      { name: 'tokenId', internalType: 'uint256', type: 'uint256' },
+      { name: 'owner', internalType: 'address', type: 'address' },
+    ],
+    name: 'ERC721IncorrectOwner',
+  },
+  {
+    type: 'error',
+    inputs: [
+      { name: 'operator', internalType: 'address', type: 'address' },
+      { name: 'tokenId', internalType: 'uint256', type: 'uint256' },
+    ],
+    name: 'ERC721InsufficientApproval',
+  },
+  {
+    type: 'error',
+    inputs: [{ name: 'approver', internalType: 'address', type: 'address' }],
+    name: 'ERC721InvalidApprover',
+  },
+  {
+    type: 'error',
+    inputs: [{ name: 'operator', internalType: 'address', type: 'address' }],
+    name: 'ERC721InvalidOperator',
+  },
+  {
+    type: 'error',
+    inputs: [{ name: 'owner', internalType: 'address', type: 'address' }],
+    name: 'ERC721InvalidOwner',
+  },
+  {
+    type: 'error',
+    inputs: [{ name: 'receiver', internalType: 'address', type: 'address' }],
+    name: 'ERC721InvalidReceiver',
+  },
+  {
+    type: 'error',
+    inputs: [{ name: 'sender', internalType: 'address', type: 'address' }],
+    name: 'ERC721InvalidSender',
+  },
+  {
+    type: 'error',
+    inputs: [{ name: 'tokenId', internalType: 'uint256', type: 'uint256' }],
+    name: 'ERC721NonexistentToken',
+  },
+  {
+    type: 'error',
+    inputs: [
+      { name: 'ethSent', internalType: 'uint256', type: 'uint256' },
+      { name: 'tokenPrice', internalType: 'uint256', type: 'uint256' },
+    ],
+    name: 'NovaNFT__InvalidEthValueSent',
+  },
+  {
+    type: 'error',
+    inputs: [
+      { name: 'have', internalType: 'address', type: 'address' },
+      { name: 'want', internalType: 'address', type: 'address' },
+    ],
+    name: 'OnlyCoordinatorCanFulfill',
+  },
+  {
+    type: 'error',
+    inputs: [
+      { name: 'have', internalType: 'address', type: 'address' },
+      { name: 'owner', internalType: 'address', type: 'address' },
+      { name: 'coordinator', internalType: 'address', type: 'address' },
+    ],
+    name: 'OnlyOwnerOrCoordinator',
+  },
+  { type: 'error', inputs: [], name: 'ZeroAddress' },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      {
+        name: 'owner',
+        internalType: 'address',
+        type: 'address',
+        indexed: true,
+      },
+      {
+        name: 'approved',
+        internalType: 'address',
+        type: 'address',
+        indexed: true,
+      },
+      {
+        name: 'tokenId',
+        internalType: 'uint256',
+        type: 'uint256',
+        indexed: true,
+      },
+    ],
+    name: 'Approval',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      {
+        name: 'owner',
+        internalType: 'address',
+        type: 'address',
+        indexed: true,
+      },
+      {
+        name: 'operator',
+        internalType: 'address',
+        type: 'address',
+        indexed: true,
+      },
+      { name: 'approved', internalType: 'bool', type: 'bool', indexed: false },
+    ],
+    name: 'ApprovalForAll',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      {
+        name: '_fromTokenId',
+        internalType: 'uint256',
+        type: 'uint256',
+        indexed: false,
+      },
+      {
+        name: '_toTokenId',
+        internalType: 'uint256',
+        type: 'uint256',
+        indexed: false,
+      },
+    ],
+    name: 'BatchMetadataUpdate',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      {
+        name: 'vrfCoordinator',
+        internalType: 'address',
+        type: 'address',
+        indexed: false,
+      },
+    ],
+    name: 'CoordinatorSet',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      {
+        name: 'recipient',
+        internalType: 'address',
+        type: 'address',
+        indexed: true,
+      },
+      {
+        name: 'requestId',
+        internalType: 'uint256',
+        type: 'uint256',
+        indexed: true,
+      },
+    ],
+    name: 'LootBoxActivated',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      {
+        name: '_tokenId',
+        internalType: 'uint256',
+        type: 'uint256',
+        indexed: false,
+      },
+    ],
+    name: 'MetadataUpdate',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      {
+        name: 'recipient',
+        internalType: 'address',
+        type: 'address',
+        indexed: true,
+      },
+      {
+        name: 'newTokenId',
+        internalType: 'uint256',
+        type: 'uint256',
+        indexed: true,
+      },
+    ],
+    name: 'NFTMinted',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'from', internalType: 'address', type: 'address', indexed: true },
+      { name: 'to', internalType: 'address', type: 'address', indexed: true },
+    ],
+    name: 'OwnershipTransferRequested',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'from', internalType: 'address', type: 'address', indexed: true },
+      { name: 'to', internalType: 'address', type: 'address', indexed: true },
+    ],
+    name: 'OwnershipTransferred',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      {
+        name: 'recipient',
+        internalType: 'address',
+        type: 'address',
+        indexed: true,
+      },
+      {
+        name: 'newTokenId',
+        internalType: 'uint256',
+        type: 'uint256',
+        indexed: true,
+      },
+    ],
+    name: 'RandomNFTMinted',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'from', internalType: 'address', type: 'address', indexed: true },
+      { name: 'to', internalType: 'address', type: 'address', indexed: true },
+      {
+        name: 'tokenId',
+        internalType: 'uint256',
+        type: 'uint256',
+        indexed: true,
+      },
+    ],
+    name: 'Transfer',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'TOKEN_PRICE',
+    outputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'acceptOwnership',
+    outputs: [],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'function',
+    inputs: [{ name: 'recipient', internalType: 'address', type: 'address' }],
+    name: 'activateLootBox',
+    outputs: [{ name: 'requestId', internalType: 'uint256', type: 'uint256' }],
+    stateMutability: 'payable',
+  },
+  {
+    type: 'function',
+    inputs: [
+      { name: 'to', internalType: 'address', type: 'address' },
+      { name: 'tokenId', internalType: 'uint256', type: 'uint256' },
+    ],
+    name: 'approve',
+    outputs: [],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'function',
+    inputs: [{ name: 'owner', internalType: 'address', type: 'address' }],
+    name: 'balanceOf',
+    outputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [{ name: 'tokenId', internalType: 'uint256', type: 'uint256' }],
+    name: 'getApproved',
+    outputs: [{ name: '', internalType: 'address', type: 'address' }],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [
+      { name: 'owner', internalType: 'address', type: 'address' },
+      { name: 'operator', internalType: 'address', type: 'address' },
+    ],
+    name: 'isApprovedForAll',
+    outputs: [{ name: '', internalType: 'bool', type: 'bool' }],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [{ name: 'recipient', internalType: 'address', type: 'address' }],
+    name: 'mintNFT',
+    outputs: [{ name: 'newTokenId', internalType: 'uint256', type: 'uint256' }],
+    stateMutability: 'payable',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'name',
+    outputs: [{ name: '', internalType: 'string', type: 'string' }],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'owner',
+    outputs: [{ name: '', internalType: 'address', type: 'address' }],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [{ name: 'tokenId', internalType: 'uint256', type: 'uint256' }],
+    name: 'ownerOf',
+    outputs: [{ name: '', internalType: 'address', type: 'address' }],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [
+      { name: 'requestId', internalType: 'uint256', type: 'uint256' },
+      { name: 'randomWords', internalType: 'uint256[]', type: 'uint256[]' },
+    ],
+    name: 'rawFulfillRandomWords',
+    outputs: [],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'function',
+    inputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
+    name: 'requestIdToRecipient',
+    outputs: [{ name: '', internalType: 'address', type: 'address' }],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 's_vrfCoordinator',
+    outputs: [
+      {
+        name: '',
+        internalType: 'contract IVRFCoordinatorV2Plus',
+        type: 'address',
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [
+      { name: 'from', internalType: 'address', type: 'address' },
+      { name: 'to', internalType: 'address', type: 'address' },
+      { name: 'tokenId', internalType: 'uint256', type: 'uint256' },
+    ],
+    name: 'safeTransferFrom',
+    outputs: [],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'function',
+    inputs: [
+      { name: 'from', internalType: 'address', type: 'address' },
+      { name: 'to', internalType: 'address', type: 'address' },
+      { name: 'tokenId', internalType: 'uint256', type: 'uint256' },
+      { name: 'data', internalType: 'bytes', type: 'bytes' },
+    ],
+    name: 'safeTransferFrom',
+    outputs: [],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'function',
+    inputs: [
+      { name: 'operator', internalType: 'address', type: 'address' },
+      { name: 'approved', internalType: 'bool', type: 'bool' },
+    ],
+    name: 'setApprovalForAll',
+    outputs: [],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'function',
+    inputs: [
+      { name: '_vrfCoordinator', internalType: 'address', type: 'address' },
+    ],
+    name: 'setCoordinator',
+    outputs: [],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'function',
+    inputs: [{ name: 'interfaceId', internalType: 'bytes4', type: 'bytes4' }],
+    name: 'supportsInterface',
+    outputs: [{ name: '', internalType: 'bool', type: 'bool' }],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'symbol',
+    outputs: [{ name: '', internalType: 'string', type: 'string' }],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [{ name: 'tokenId', internalType: 'uint256', type: 'uint256' }],
+    name: 'tokenURI',
+    outputs: [{ name: '', internalType: 'string', type: 'string' }],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [
+      { name: 'from', internalType: 'address', type: 'address' },
+      { name: 'to', internalType: 'address', type: 'address' },
+      { name: 'tokenId', internalType: 'uint256', type: 'uint256' },
+    ],
+    name: 'transferFrom',
+    outputs: [],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'function',
+    inputs: [{ name: 'to', internalType: 'address', type: 'address' }],
+    name: 'transferOwnership',
+    outputs: [],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'withdraw',
+    outputs: [],
+    stateMutability: 'nonpayable',
+  },
+] as const
+
+/**
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x640157b367b350589E68197E16B964273302d8BB)
+ */
+export const novaNftAddress = {
+  11155111: '0x640157b367b350589E68197E16B964273302d8BB',
+} as const
+
+/**
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x640157b367b350589E68197E16B964273302d8BB)
+ */
+export const novaNftConfig = {
+  address: novaNftAddress,
+  abi: novaNftAbi,
+} as const
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // NovaToken
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -388,6 +874,572 @@ export const useReadEthUsdPriceConverterGetLatestPrice =
     abi: ethUsdPriceConverterAbi,
     address: ethUsdPriceConverterAddress,
     functionName: 'getLatestPrice',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link novaNftAbi}__
+ *
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x640157b367b350589E68197E16B964273302d8BB)
+ */
+export const useReadNovaNft = /*#__PURE__*/ createUseReadContract({
+  abi: novaNftAbi,
+  address: novaNftAddress,
+})
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link novaNftAbi}__ and `functionName` set to `"TOKEN_PRICE"`
+ *
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x640157b367b350589E68197E16B964273302d8BB)
+ */
+export const useReadNovaNftTokenPrice = /*#__PURE__*/ createUseReadContract({
+  abi: novaNftAbi,
+  address: novaNftAddress,
+  functionName: 'TOKEN_PRICE',
+})
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link novaNftAbi}__ and `functionName` set to `"balanceOf"`
+ *
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x640157b367b350589E68197E16B964273302d8BB)
+ */
+export const useReadNovaNftBalanceOf = /*#__PURE__*/ createUseReadContract({
+  abi: novaNftAbi,
+  address: novaNftAddress,
+  functionName: 'balanceOf',
+})
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link novaNftAbi}__ and `functionName` set to `"getApproved"`
+ *
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x640157b367b350589E68197E16B964273302d8BB)
+ */
+export const useReadNovaNftGetApproved = /*#__PURE__*/ createUseReadContract({
+  abi: novaNftAbi,
+  address: novaNftAddress,
+  functionName: 'getApproved',
+})
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link novaNftAbi}__ and `functionName` set to `"isApprovedForAll"`
+ *
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x640157b367b350589E68197E16B964273302d8BB)
+ */
+export const useReadNovaNftIsApprovedForAll =
+  /*#__PURE__*/ createUseReadContract({
+    abi: novaNftAbi,
+    address: novaNftAddress,
+    functionName: 'isApprovedForAll',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link novaNftAbi}__ and `functionName` set to `"name"`
+ *
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x640157b367b350589E68197E16B964273302d8BB)
+ */
+export const useReadNovaNftName = /*#__PURE__*/ createUseReadContract({
+  abi: novaNftAbi,
+  address: novaNftAddress,
+  functionName: 'name',
+})
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link novaNftAbi}__ and `functionName` set to `"owner"`
+ *
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x640157b367b350589E68197E16B964273302d8BB)
+ */
+export const useReadNovaNftOwner = /*#__PURE__*/ createUseReadContract({
+  abi: novaNftAbi,
+  address: novaNftAddress,
+  functionName: 'owner',
+})
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link novaNftAbi}__ and `functionName` set to `"ownerOf"`
+ *
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x640157b367b350589E68197E16B964273302d8BB)
+ */
+export const useReadNovaNftOwnerOf = /*#__PURE__*/ createUseReadContract({
+  abi: novaNftAbi,
+  address: novaNftAddress,
+  functionName: 'ownerOf',
+})
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link novaNftAbi}__ and `functionName` set to `"requestIdToRecipient"`
+ *
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x640157b367b350589E68197E16B964273302d8BB)
+ */
+export const useReadNovaNftRequestIdToRecipient =
+  /*#__PURE__*/ createUseReadContract({
+    abi: novaNftAbi,
+    address: novaNftAddress,
+    functionName: 'requestIdToRecipient',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link novaNftAbi}__ and `functionName` set to `"s_vrfCoordinator"`
+ *
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x640157b367b350589E68197E16B964273302d8BB)
+ */
+export const useReadNovaNftSVrfCoordinator =
+  /*#__PURE__*/ createUseReadContract({
+    abi: novaNftAbi,
+    address: novaNftAddress,
+    functionName: 's_vrfCoordinator',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link novaNftAbi}__ and `functionName` set to `"supportsInterface"`
+ *
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x640157b367b350589E68197E16B964273302d8BB)
+ */
+export const useReadNovaNftSupportsInterface =
+  /*#__PURE__*/ createUseReadContract({
+    abi: novaNftAbi,
+    address: novaNftAddress,
+    functionName: 'supportsInterface',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link novaNftAbi}__ and `functionName` set to `"symbol"`
+ *
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x640157b367b350589E68197E16B964273302d8BB)
+ */
+export const useReadNovaNftSymbol = /*#__PURE__*/ createUseReadContract({
+  abi: novaNftAbi,
+  address: novaNftAddress,
+  functionName: 'symbol',
+})
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link novaNftAbi}__ and `functionName` set to `"tokenURI"`
+ *
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x640157b367b350589E68197E16B964273302d8BB)
+ */
+export const useReadNovaNftTokenUri = /*#__PURE__*/ createUseReadContract({
+  abi: novaNftAbi,
+  address: novaNftAddress,
+  functionName: 'tokenURI',
+})
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link novaNftAbi}__
+ *
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x640157b367b350589E68197E16B964273302d8BB)
+ */
+export const useWriteNovaNft = /*#__PURE__*/ createUseWriteContract({
+  abi: novaNftAbi,
+  address: novaNftAddress,
+})
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link novaNftAbi}__ and `functionName` set to `"acceptOwnership"`
+ *
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x640157b367b350589E68197E16B964273302d8BB)
+ */
+export const useWriteNovaNftAcceptOwnership =
+  /*#__PURE__*/ createUseWriteContract({
+    abi: novaNftAbi,
+    address: novaNftAddress,
+    functionName: 'acceptOwnership',
+  })
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link novaNftAbi}__ and `functionName` set to `"activateLootBox"`
+ *
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x640157b367b350589E68197E16B964273302d8BB)
+ */
+export const useWriteNovaNftActivateLootBox =
+  /*#__PURE__*/ createUseWriteContract({
+    abi: novaNftAbi,
+    address: novaNftAddress,
+    functionName: 'activateLootBox',
+  })
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link novaNftAbi}__ and `functionName` set to `"approve"`
+ *
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x640157b367b350589E68197E16B964273302d8BB)
+ */
+export const useWriteNovaNftApprove = /*#__PURE__*/ createUseWriteContract({
+  abi: novaNftAbi,
+  address: novaNftAddress,
+  functionName: 'approve',
+})
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link novaNftAbi}__ and `functionName` set to `"mintNFT"`
+ *
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x640157b367b350589E68197E16B964273302d8BB)
+ */
+export const useWriteNovaNftMintNft = /*#__PURE__*/ createUseWriteContract({
+  abi: novaNftAbi,
+  address: novaNftAddress,
+  functionName: 'mintNFT',
+})
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link novaNftAbi}__ and `functionName` set to `"rawFulfillRandomWords"`
+ *
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x640157b367b350589E68197E16B964273302d8BB)
+ */
+export const useWriteNovaNftRawFulfillRandomWords =
+  /*#__PURE__*/ createUseWriteContract({
+    abi: novaNftAbi,
+    address: novaNftAddress,
+    functionName: 'rawFulfillRandomWords',
+  })
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link novaNftAbi}__ and `functionName` set to `"safeTransferFrom"`
+ *
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x640157b367b350589E68197E16B964273302d8BB)
+ */
+export const useWriteNovaNftSafeTransferFrom =
+  /*#__PURE__*/ createUseWriteContract({
+    abi: novaNftAbi,
+    address: novaNftAddress,
+    functionName: 'safeTransferFrom',
+  })
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link novaNftAbi}__ and `functionName` set to `"setApprovalForAll"`
+ *
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x640157b367b350589E68197E16B964273302d8BB)
+ */
+export const useWriteNovaNftSetApprovalForAll =
+  /*#__PURE__*/ createUseWriteContract({
+    abi: novaNftAbi,
+    address: novaNftAddress,
+    functionName: 'setApprovalForAll',
+  })
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link novaNftAbi}__ and `functionName` set to `"setCoordinator"`
+ *
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x640157b367b350589E68197E16B964273302d8BB)
+ */
+export const useWriteNovaNftSetCoordinator =
+  /*#__PURE__*/ createUseWriteContract({
+    abi: novaNftAbi,
+    address: novaNftAddress,
+    functionName: 'setCoordinator',
+  })
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link novaNftAbi}__ and `functionName` set to `"transferFrom"`
+ *
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x640157b367b350589E68197E16B964273302d8BB)
+ */
+export const useWriteNovaNftTransferFrom = /*#__PURE__*/ createUseWriteContract(
+  { abi: novaNftAbi, address: novaNftAddress, functionName: 'transferFrom' },
+)
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link novaNftAbi}__ and `functionName` set to `"transferOwnership"`
+ *
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x640157b367b350589E68197E16B964273302d8BB)
+ */
+export const useWriteNovaNftTransferOwnership =
+  /*#__PURE__*/ createUseWriteContract({
+    abi: novaNftAbi,
+    address: novaNftAddress,
+    functionName: 'transferOwnership',
+  })
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link novaNftAbi}__ and `functionName` set to `"withdraw"`
+ *
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x640157b367b350589E68197E16B964273302d8BB)
+ */
+export const useWriteNovaNftWithdraw = /*#__PURE__*/ createUseWriteContract({
+  abi: novaNftAbi,
+  address: novaNftAddress,
+  functionName: 'withdraw',
+})
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link novaNftAbi}__
+ *
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x640157b367b350589E68197E16B964273302d8BB)
+ */
+export const useSimulateNovaNft = /*#__PURE__*/ createUseSimulateContract({
+  abi: novaNftAbi,
+  address: novaNftAddress,
+})
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link novaNftAbi}__ and `functionName` set to `"acceptOwnership"`
+ *
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x640157b367b350589E68197E16B964273302d8BB)
+ */
+export const useSimulateNovaNftAcceptOwnership =
+  /*#__PURE__*/ createUseSimulateContract({
+    abi: novaNftAbi,
+    address: novaNftAddress,
+    functionName: 'acceptOwnership',
+  })
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link novaNftAbi}__ and `functionName` set to `"activateLootBox"`
+ *
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x640157b367b350589E68197E16B964273302d8BB)
+ */
+export const useSimulateNovaNftActivateLootBox =
+  /*#__PURE__*/ createUseSimulateContract({
+    abi: novaNftAbi,
+    address: novaNftAddress,
+    functionName: 'activateLootBox',
+  })
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link novaNftAbi}__ and `functionName` set to `"approve"`
+ *
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x640157b367b350589E68197E16B964273302d8BB)
+ */
+export const useSimulateNovaNftApprove =
+  /*#__PURE__*/ createUseSimulateContract({
+    abi: novaNftAbi,
+    address: novaNftAddress,
+    functionName: 'approve',
+  })
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link novaNftAbi}__ and `functionName` set to `"mintNFT"`
+ *
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x640157b367b350589E68197E16B964273302d8BB)
+ */
+export const useSimulateNovaNftMintNft =
+  /*#__PURE__*/ createUseSimulateContract({
+    abi: novaNftAbi,
+    address: novaNftAddress,
+    functionName: 'mintNFT',
+  })
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link novaNftAbi}__ and `functionName` set to `"rawFulfillRandomWords"`
+ *
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x640157b367b350589E68197E16B964273302d8BB)
+ */
+export const useSimulateNovaNftRawFulfillRandomWords =
+  /*#__PURE__*/ createUseSimulateContract({
+    abi: novaNftAbi,
+    address: novaNftAddress,
+    functionName: 'rawFulfillRandomWords',
+  })
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link novaNftAbi}__ and `functionName` set to `"safeTransferFrom"`
+ *
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x640157b367b350589E68197E16B964273302d8BB)
+ */
+export const useSimulateNovaNftSafeTransferFrom =
+  /*#__PURE__*/ createUseSimulateContract({
+    abi: novaNftAbi,
+    address: novaNftAddress,
+    functionName: 'safeTransferFrom',
+  })
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link novaNftAbi}__ and `functionName` set to `"setApprovalForAll"`
+ *
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x640157b367b350589E68197E16B964273302d8BB)
+ */
+export const useSimulateNovaNftSetApprovalForAll =
+  /*#__PURE__*/ createUseSimulateContract({
+    abi: novaNftAbi,
+    address: novaNftAddress,
+    functionName: 'setApprovalForAll',
+  })
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link novaNftAbi}__ and `functionName` set to `"setCoordinator"`
+ *
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x640157b367b350589E68197E16B964273302d8BB)
+ */
+export const useSimulateNovaNftSetCoordinator =
+  /*#__PURE__*/ createUseSimulateContract({
+    abi: novaNftAbi,
+    address: novaNftAddress,
+    functionName: 'setCoordinator',
+  })
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link novaNftAbi}__ and `functionName` set to `"transferFrom"`
+ *
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x640157b367b350589E68197E16B964273302d8BB)
+ */
+export const useSimulateNovaNftTransferFrom =
+  /*#__PURE__*/ createUseSimulateContract({
+    abi: novaNftAbi,
+    address: novaNftAddress,
+    functionName: 'transferFrom',
+  })
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link novaNftAbi}__ and `functionName` set to `"transferOwnership"`
+ *
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x640157b367b350589E68197E16B964273302d8BB)
+ */
+export const useSimulateNovaNftTransferOwnership =
+  /*#__PURE__*/ createUseSimulateContract({
+    abi: novaNftAbi,
+    address: novaNftAddress,
+    functionName: 'transferOwnership',
+  })
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link novaNftAbi}__ and `functionName` set to `"withdraw"`
+ *
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x640157b367b350589E68197E16B964273302d8BB)
+ */
+export const useSimulateNovaNftWithdraw =
+  /*#__PURE__*/ createUseSimulateContract({
+    abi: novaNftAbi,
+    address: novaNftAddress,
+    functionName: 'withdraw',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link novaNftAbi}__
+ *
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x640157b367b350589E68197E16B964273302d8BB)
+ */
+export const useWatchNovaNftEvent = /*#__PURE__*/ createUseWatchContractEvent({
+  abi: novaNftAbi,
+  address: novaNftAddress,
+})
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link novaNftAbi}__ and `eventName` set to `"Approval"`
+ *
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x640157b367b350589E68197E16B964273302d8BB)
+ */
+export const useWatchNovaNftApprovalEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: novaNftAbi,
+    address: novaNftAddress,
+    eventName: 'Approval',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link novaNftAbi}__ and `eventName` set to `"ApprovalForAll"`
+ *
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x640157b367b350589E68197E16B964273302d8BB)
+ */
+export const useWatchNovaNftApprovalForAllEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: novaNftAbi,
+    address: novaNftAddress,
+    eventName: 'ApprovalForAll',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link novaNftAbi}__ and `eventName` set to `"BatchMetadataUpdate"`
+ *
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x640157b367b350589E68197E16B964273302d8BB)
+ */
+export const useWatchNovaNftBatchMetadataUpdateEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: novaNftAbi,
+    address: novaNftAddress,
+    eventName: 'BatchMetadataUpdate',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link novaNftAbi}__ and `eventName` set to `"CoordinatorSet"`
+ *
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x640157b367b350589E68197E16B964273302d8BB)
+ */
+export const useWatchNovaNftCoordinatorSetEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: novaNftAbi,
+    address: novaNftAddress,
+    eventName: 'CoordinatorSet',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link novaNftAbi}__ and `eventName` set to `"LootBoxActivated"`
+ *
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x640157b367b350589E68197E16B964273302d8BB)
+ */
+export const useWatchNovaNftLootBoxActivatedEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: novaNftAbi,
+    address: novaNftAddress,
+    eventName: 'LootBoxActivated',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link novaNftAbi}__ and `eventName` set to `"MetadataUpdate"`
+ *
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x640157b367b350589E68197E16B964273302d8BB)
+ */
+export const useWatchNovaNftMetadataUpdateEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: novaNftAbi,
+    address: novaNftAddress,
+    eventName: 'MetadataUpdate',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link novaNftAbi}__ and `eventName` set to `"NFTMinted"`
+ *
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x640157b367b350589E68197E16B964273302d8BB)
+ */
+export const useWatchNovaNftNftMintedEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: novaNftAbi,
+    address: novaNftAddress,
+    eventName: 'NFTMinted',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link novaNftAbi}__ and `eventName` set to `"OwnershipTransferRequested"`
+ *
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x640157b367b350589E68197E16B964273302d8BB)
+ */
+export const useWatchNovaNftOwnershipTransferRequestedEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: novaNftAbi,
+    address: novaNftAddress,
+    eventName: 'OwnershipTransferRequested',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link novaNftAbi}__ and `eventName` set to `"OwnershipTransferred"`
+ *
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x640157b367b350589E68197E16B964273302d8BB)
+ */
+export const useWatchNovaNftOwnershipTransferredEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: novaNftAbi,
+    address: novaNftAddress,
+    eventName: 'OwnershipTransferred',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link novaNftAbi}__ and `eventName` set to `"RandomNFTMinted"`
+ *
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x640157b367b350589E68197E16B964273302d8BB)
+ */
+export const useWatchNovaNftRandomNftMintedEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: novaNftAbi,
+    address: novaNftAddress,
+    eventName: 'RandomNFTMinted',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link novaNftAbi}__ and `eventName` set to `"Transfer"`
+ *
+ * [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x640157b367b350589E68197E16B964273302d8BB)
+ */
+export const useWatchNovaNftTransferEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: novaNftAbi,
+    address: novaNftAddress,
+    eventName: 'Transfer',
   })
 
 /**
