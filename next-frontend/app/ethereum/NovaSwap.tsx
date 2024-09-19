@@ -199,7 +199,7 @@ export default function NovaSwap() {
         </div>
         <button
           type="submit"
-          className={`bg-blue-500 bg-opacity-75 p-1 border-2 border-custom-blue rounded-3xl w-full h-1/5 font-bold hover:scale-105 ${message == "Insufficient ETH Balance" && "bg-red-500 border-red-500"} ${message == "Enter an amount" && "bg-opacity-50 border-gray-600 bg-gray-400 border-opacity-50"}`}
+          className={`bg-blue-500 bg-opacity-75 p-1 border-2 border-custom-blue rounded-3xl w-full h-1/5 font-bold hover:scale-105 duration-300 ${message == "Insufficient ETH Balance" && "bg-red-500 border-red-500"} ${message == "Enter an amount" && "bg-opacity-50 border-gray-600 bg-gray-400 border-opacity-50"}`}
           disabled={message != "Swap"}
         >
           {message}
