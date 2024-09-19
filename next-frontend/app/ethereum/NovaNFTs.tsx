@@ -3,20 +3,22 @@ import { useRef, useEffect } from "react";
 
 export default function NovaNFTs() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const scrollIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
-   useEffect(() => {
+  useEffect(() => {
     const scrollContainer = scrollContainerRef.current;
     if (!scrollContainer) return;
-  
+
     const setInitialScrollPosition = () => {
       const initialScrollPosition = scrollContainer.scrollWidth / 3;
       scrollContainer.scrollLeft = initialScrollPosition;
       return initialScrollPosition;
     };
-  
+
     let initialScrollPosition = setInitialScrollPosition();
-  
+
     const handleScroll = () => {
+      console.log(`Scroll position: ${scrollContainer.scrollLeft}`);
       if (
         scrollContainer.scrollLeft >= initialScrollPosition * 2 ||
         scrollContainer.scrollLeft <= 0
@@ -25,17 +27,36 @@ export default function NovaNFTs() {
         scrollContainer.scrollLeft = initialScrollPosition;
       }
     };
-  
+
     const handleResize = () => {
       initialScrollPosition = setInitialScrollPosition();
     };
-  
+
+    const startAutoScroll = () => {
+      scrollIntervalRef.current = setInterval(() => {
+        scrollContainer.scrollLeft += 1;
+      }, 20);
+    };
+
+    const stopAutoScroll = () => {
+      if (scrollIntervalRef.current) {
+        clearInterval(scrollIntervalRef.current);
+      }
+    };
+
     scrollContainer.addEventListener("scroll", handleScroll);
     window.addEventListener("resize", handleResize);
-  
+    scrollContainer.addEventListener("mouseenter", stopAutoScroll);
+    scrollContainer.addEventListener("mouseleave", startAutoScroll);
+
+    startAutoScroll();
+
     return () => {
       scrollContainer.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleResize);
+      scrollContainer.removeEventListener("mouseenter", stopAutoScroll);
+      scrollContainer.removeEventListener("mouseleave", startAutoScroll);
+      stopAutoScroll();
     };
   }, []);
 
