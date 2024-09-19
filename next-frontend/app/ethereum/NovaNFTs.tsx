@@ -1,5 +1,8 @@
 import NovaNFTImages from "./NovaNFTImages";
 import { useRef, useEffect } from "react";
+import {useWriteNovaNftActivateLootBox} from "@/src/generated";
+import { useAccount } from "wagmi";
+import { parseEther } from "ethers";
 
 export default function NovaNFTs() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -60,6 +63,27 @@ export default function NovaNFTs() {
     };
   }, []);
 
+  const { address: userAddress } = useAccount();
+
+  const { writeContract: activateLootBox, data: hash } = useWriteNovaNftActivateLootBox();
+
+  const onClick = async () => {
+    if (!userAddress) {
+      console.error("User address is undefined");
+      return;
+    }
+
+    try {
+      const tx = await activateLootBox({
+        args: [userAddress],
+        value: parseEther("0.01"),
+      });
+      console.log("Transaction hash:", tx);
+    } catch (error) {
+      console.error("Transaction failed:", error);
+    }
+  };
+
   return (
     <div className="flex flex-col border-4 bg-opacity-50 border-opacity-50 rounded-3xl items-center justify-evenly h-[50vh] w-[50vw] p-4 border-custom-blue bg-blue-400">
       <div
@@ -71,7 +95,7 @@ export default function NovaNFTs() {
         <NovaNFTImages />
       </div>
       <div className="flex flex-col items-center justify-center my-2">
-        <button className="bg-blue-500 bg-opacity-75 border-2 border-custom-blue rounded-xl font-bold p-2 m-2 transition-transform hover:scale-110 duration-300">
+        <button className="bg-blue-500 bg-opacity-75 border-2 border-custom-blue rounded-xl font-bold p-2 m-2 transition-transform hover:scale-110 duration-300" onClick={onClick}>
           Activate Loot Box
         </button>
       </div>
