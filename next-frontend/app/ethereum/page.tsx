@@ -22,8 +22,8 @@ export default function EthereumHome() {
         <div className="h-[55vh]">
           <div>
             <NovaTabButton tabValue={NovaTab.Swap} />
-            <NovaTabButton tabValue={NovaTab.Send} />
             <NovaTabButton tabValue={NovaTab.NFTs} />
+            <NovaTabButton tabValue={NovaTab.Send} />
           </div>
           {userAddress && tabState == NovaTab.Swap && <NovaSwap />}
           {userAddress && tabState == NovaTab.Send && <NovaSend />}
