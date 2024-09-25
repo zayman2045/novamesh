@@ -23,3 +23,14 @@
   -webkit-appearance: none;
   margin: 0;
 }
+
+/* Class for hiding sections */
+.hide {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;}
+
+/* Class for showing sections */
+.show {
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
+}
