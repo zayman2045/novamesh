@@ -24,13 +24,35 @@
   margin: 0;
 }
 
+/* Prevent horizontal scrolling */
+body {
+  overflow-x: hidden;
+}
+
 /* Class for hiding sections */
 .hide {
   opacity: 0;
-  transition: opacity 1s ease-in-out;}
+  filter: blur(5px);
+  transform: translateX(20vw);
+  transition: all 1s ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hide {
+    transition: none;
+  }
+}
 
 /* Class for showing sections */
 .show {
   opacity: 1;
-  transition: opacity 1s ease-in-out;
+  filter: blur(0);
+  transform: translateX(0);
+  transition: all 1s ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .show {
+    transition: none;
+  }
 }
