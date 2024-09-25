@@ -13,15 +13,15 @@ export default function Home() {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
+          if (entry.intersectionRatio >= 0.75) {
             entry.target.classList.add("show");
-          } else {
+          } else if (entry.intersectionRatio <= 0.5) {
             entry.target.classList.remove("show");
           }
         });
       },
       {
-        threshold: 0.5,
+        threshold: [0.5, 0.75],
       }
     );
 
