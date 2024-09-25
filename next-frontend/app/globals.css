@@ -2,8 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Hide scrollbar */
+/* Custom global styles */
+
+/* Class for hiding the scrollbar */
 .hide-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+/* Class for removing spin buttons from number inputs */
+.no-spinner {
+  /* Firefox */
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+/* Chrome, Safari, Edge, Opera */
+.no-spinner::-webkit-outer-spin-button,
+.no-spinner::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
