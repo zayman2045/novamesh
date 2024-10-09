@@ -17,9 +17,12 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+    // Retrieve the Wallet Connect project ID from environment variables
   const projectId = process.env.WALLET_CONNECT_PROJECT_ID;
-
+  
+  // Check if the project ID is defined
   if (!projectId) {
+    // Throw an error if the project ID is not defined
     throw new Error("WALLET_CONNECT_PROJECT_ID is not defined");
   }
 
