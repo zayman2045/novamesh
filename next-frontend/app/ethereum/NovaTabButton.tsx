@@ -3,14 +3,18 @@ import { NovaTab, useNovaTab } from "./NovaTabProvider";
 import { useAccount } from "wagmi";
 
 interface NovaTabButtonProps {
-  tabValue: NovaTab;
+  tabValue: NovaTab; // The value of the tab
 }
 
 const NovaTabButton: React.FC<NovaTabButtonProps> = ({ tabValue }) => {
+  // Get the current tab and the function to set the tab
   const { tab: tabState, setTab } = useNovaTab();
+
+  // Get the user's address
   const { address: userAddress } = useAccount();
 
   const handleClick = () => {
+    // Set the tab to the clicked tab
     if (userAddress) {
       setTab(tabValue);
     }

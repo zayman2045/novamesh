@@ -11,7 +11,9 @@ import EthereumConnectButton from "./EthereumConnectButton";
 import { usePathname } from "next/navigation";
 
 export default function NavBar() {
+  // Retrieve the current pathname
   const pathname = usePathname();
+  
   return (
     <nav className="fixed top-0 left-0 w-full h-[4rem] flex justify-between items-center p-2 text-white text-lg z-10">
       <div className="flex">
