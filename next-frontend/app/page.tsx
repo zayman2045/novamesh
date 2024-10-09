@@ -47,11 +47,26 @@ export default function Home() {
 
   return (
     <div className="flex flex-col m-10">
-      <div className="flex flex-col justify-center items-center text-center h-[calc(100vh-4rem)] hide">
-        <h1 className="text-3xl font-bold">Welcome to NovaMesh</h1>
-        <p className="m-6">
-          Connect your Ethereum and Solana Wallet to mint Tokens and NFTs
-        </p>
+      <div className=" h-[calc(100vh-4rem)] hide">
+        <div className="flex flex-col justify-center items-center text-center h-4/5">
+          <h1 className="text-3xl font-bold">Welcome to NovaMesh</h1>
+          <p className="m-6">
+            Connect your Ethereum and Solana Wallet to mint Tokens and NFTs
+          </p>
+        </div>
+        <div className="text-lg text-center font-semibold mt-4 animate-blink">
+          <p>Learn More</p>
+          <p>&#x2193;</p>
+        </div>
+      </div>
+      <div className="hide flex justify-center items-center h-20 my-10 border-2 border-white">
+        <h1>Some Content!</h1>
+      </div>
+      <div className="hide flex justify-center items-center h-20 my-10 border-2 border-white">
+        <h1>More Content!!</h1>
+      </div>
+      <div className="hide flex justify-center items-center h-20 my-10 border-2 border-white">
+        <h1>Even More Content!!!</h1>
       </div>
       <div className="flex justify-evenly items-center my-6 h-[calc(100vh-4rem)] hide">
         <div className="w-1/6 p-2 hover:scale-110 transition-transform duration-300">
