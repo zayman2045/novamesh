@@ -1,7 +1,7 @@
 interface HomeContentProps {
-  title: string;
-  description: string;
-  orientation: "left" | "right";
+  title: string; // The title to be displayed in the component
+  description: string; // The description to be displayed in the component
+  orientation: "left" | "right"; // The orientation of the content
 }
 
 export default function HomeContent({
