@@ -8,23 +8,31 @@ import Link from "next/link";
 
 export default function Home() {
   useEffect(() => {
+    // Select all elements with the class "hide"
     const hiddenElements = document.querySelectorAll(".hide");
 
+    // Create a new IntersectionObserver instance
     const observer = new IntersectionObserver(
       (entries) => {
+        // Iterate over each entry (observed element)
         entries.forEach((entry) => {
+          // If 75% or more of the element is visible, add the "show" class
           if (entry.intersectionRatio >= 0.75) {
             entry.target.classList.add("show");
-          } else if (entry.intersectionRatio <= 0.5) {
+          }
+          // If 50% or less of the element is visible, remove the "show" class
+          else if (entry.intersectionRatio <= 0.5) {
             entry.target.classList.remove("show");
           }
         });
       },
       {
+        // Set thresholds for visibility at 50% and 75%
         threshold: [0.5, 0.75],
       }
     );
 
+    // Observe each hidden element
     hiddenElements.forEach((element) => {
       observer.observe(element);
     });
