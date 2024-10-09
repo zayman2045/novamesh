@@ -1,7 +1,7 @@
 "use client";
 
 import { useWallet } from "@solana/wallet-adapter-react";
-import MeshTokens from "./MeshTokens";
+import MeshSwap from "./MeshSwap";
 
 export default function SolanaHome() {
   const { connected, publicKey } = useWallet();
@@ -14,7 +14,7 @@ export default function SolanaHome() {
         >
           {connected ? (
             <>
-              <MeshTokens />
+              <MeshSwap />
             </>
           ) : (
             <>
