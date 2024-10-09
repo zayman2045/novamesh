@@ -56,3 +56,18 @@ body {
     transition: none;
   }
 }
+
+/* Keyframe animation for blinking effect */
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Tailwind CSS class for blinking animation */
+.animate-blink {
+  animation: blink 3s infinite;
+}
