@@ -9,7 +9,10 @@ import { useAccount } from "wagmi";
 import { useEffect } from "react";
 
 export default function EthereumHome() {
+  // Get the user's address
   const { address: userAddress } = useAccount();
+
+  // Get the current tab and the function to set the tab
   const { tab: tabState, setTab } = useNovaTab();
 
   useEffect(() => {
