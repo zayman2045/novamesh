@@ -63,17 +63,17 @@ export default function Home() {
       <div className="flex flex-col gap-5">
         <HomeContent
           title="Tokens"
-          description="NovaMesh allows users to mint tokens and NFTs on the Ethereum & Solana blockchain networks."
+          description="Mint ERC-20 tokens on Ethereum and SPL tokens on Solana."
           orientation="left"
         />
         <HomeContent
           title="NFTs"
-          description="NovaMesh allows users to mint tokens and NFTs on the Ethereum & Solana blockchain networks."
+          description="Redeem a daily NFT using the NovaMesh loot box."
           orientation="right"
         />
         <HomeContent
-          title="Blockchain"
-          description="NovaMesh allows users to mint tokens and NFTs on the Ethereum & Solana blockchain networks."
+          title="Transfer"
+          description="Send tokens and NFTs to other users on the network."
           orientation="left"
         />
       </div>
@@ -84,8 +84,7 @@ export default function Home() {
           </Link>
         </div>
         <p className="w-1/3 p-3 text-center">
-          NovaMesh allows users to mint tokens and NFTs on the Ethereum & Solana
-          blockchain networks.
+          Select a blockchain network to continue.
         </p>
         <div className="w-1/6 p-2 hover:scale-110 transition-transform duration-300">
           <Link href="/solana">
