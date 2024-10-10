@@ -63,17 +63,17 @@ export default function Home() {
       <div className="flex flex-col gap-5">
         <HomeContent
           title="Tokens"
-          description="Mint ERC-20 tokens on Ethereum and SPL tokens on Solana."
+          description="Mint ERC-20 tokens on Ethereum and SPL tokens on Solana. Nova tokens are minted in exchange for ETH, while Mesh tokens are minted in exchange for SOL."
           orientation="left"
         />
         <HomeContent
           title="NFTs"
-          description="Redeem a daily NFT using the NovaMesh loot box."
+          description="Redeem a daily NFT using the Nova and Mesh Loot Boxes. The artwork is generated with OpenAI's DALL·E 3 & Stable Diffusion 3. The NFT metadata is stored on IPFS for decentralized access."
           orientation="right"
         />
         <HomeContent
           title="Transfer"
-          description="Send tokens and NFTs to other users on the network."
+          description="Send tokens and NFTs to other users on the network. The transfer is done on-chain and is recorded on the blockchain."  
           orientation="left"
         />
       </div>
@@ -84,7 +84,7 @@ export default function Home() {
           </Link>
         </div>
         <p className="w-1/3 p-3 text-center">
-          Select a blockchain network to continue.
+          Select a blockchain network to continue
         </p>
         <div className="w-1/6 p-2 hover:scale-110 transition-transform duration-300">
           <Link href="/solana">
