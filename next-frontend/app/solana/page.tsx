@@ -2,6 +2,7 @@
 
 import { useWallet } from "@solana/wallet-adapter-react";
 import MeshSwap from "./MeshSwap";
+import MeshNFTs from "./MeshNFTs";
 import MeshTabButton from "./MeshTabButton";
 import { MeshTab, useMeshTab } from "./MeshTabProvider";
 import { useEffect } from "react";
@@ -33,7 +34,7 @@ export default function SolanaHome() {
           </div>
           {connected && tabState == MeshTab.Swap && <MeshSwap />}
           {connected && tabState == MeshTab.Send && <MeshSwap />}
-          {connected && tabState == MeshTab.NFTs && <MeshSwap />}
+          {connected && tabState == MeshTab.NFTs && <MeshNFTs />}
           {!connected && (
             <div className="flex flex-col border-4 bg-opacity-50 border-gray-600 bg-gray-400 border-opacity-50 rounded-3xl items-center justify-center h-[50vh] w-[50vw] p-4">
               <h2 className="text-2xl pb-3 font-bold">NOVA</h2>
