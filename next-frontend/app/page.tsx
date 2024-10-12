@@ -72,8 +72,8 @@ export default function Home() {
           orientation="right"
         />
         <HomeContent
-          title="Transfer"
-          description="Send tokens and NFTs to other users on the network. The transfer is done on-chain and is recorded on the blockchain."  
+          title="Transfers"
+          description="Send tokens and NFTs to other users on the network. The transfer is done on-chain and is recorded on the blockchain."
           orientation="left"
         />
       </div>
