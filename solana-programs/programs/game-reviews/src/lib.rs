@@ -93,7 +93,7 @@ pub struct AddGameReview<'info> {
 }
 
 #[derive(Accounts)]
-#[instruction(title: String, description: String, rating: u8)]
+#[instruction(title: String, description: String)]
 pub struct UpdateGameReview<'info> {
     #[account(mut, seeds = [title.as_bytes(), reviewer.key().as_ref()], bump ,realloc = 8 + 32 + 1 + 4 + title.len() + 4 + description.len(), realloc::payer = reviewer, realloc::zero = true)]
     pub game_review: Account<'info, GameReview>,
