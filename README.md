@@ -1,8 +1,6 @@
-# NovaMesh: Ethereum & Solana DeFi Platform
+# NovaMesh: Ethereum & Solana DeSci Application
 
-This full-stack DeFi application is a
-
-* Swap Tokens, Mint NFTs, and send assets.
+This full-stack DeSci application is a...
 
 ## Overview
 
