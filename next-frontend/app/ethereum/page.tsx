@@ -9,7 +9,10 @@ import { useAccount } from "wagmi";
 import { useEffect } from "react";
 
 export default function EthereumHome() {
+  // Get the user's address
   const { address: userAddress } = useAccount();
+
+  // Get the current tab and the function to set the tab
   const { tab: tabState, setTab } = useNovaTab();
 
   useEffect(() => {
@@ -22,8 +25,8 @@ export default function EthereumHome() {
         <div className="h-[55vh]">
           <div>
             <NovaTabButton tabValue={NovaTab.Swap} />
-            <NovaTabButton tabValue={NovaTab.Send} />
             <NovaTabButton tabValue={NovaTab.NFTs} />
+            <NovaTabButton tabValue={NovaTab.Send} />
           </div>
           {userAddress && tabState == NovaTab.Swap && <NovaSwap />}
           {userAddress && tabState == NovaTab.Send && <NovaSend />}

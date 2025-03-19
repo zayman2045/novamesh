@@ -2,3 +2,72 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Custom global styles */
+
+/* Class for hiding the scrollbar */
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Class for removing spin buttons from number inputs */
+.no-spinner {
+  /* Firefox */
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+/* Chrome, Safari, Edge, Opera */
+.no-spinner::-webkit-outer-spin-button,
+.no-spinner::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Prevent horizontal scrolling */
+body {
+  overflow-x: hidden;
+}
+
+/* Class for hiding sections */
+.hide {
+  opacity: 0;
+  filter: blur(5px);
+  transform: translateX(20vw);
+  transition: all 1s ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hide {
+    transition: none;
+  }
+}
+
+/* Class for showing sections */
+.show {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateX(0);
+  transition: all 1s ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .show {
+    transition: none;
+  }
+}
+
+/* Keyframe animation for blinking effect */
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Tailwind CSS class for blinking animation */
+.animate-blink {
+  animation: blink 3s infinite;
+}

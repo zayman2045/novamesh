@@ -30,6 +30,12 @@ export default defineConfig({
             [sepolia.id]: "0x4b5Af4A571E51ABE9e74fF323f46930fc7CCDe41",
           },
         },
+        {
+          name: "NovaNFT",
+          address: {
+            [sepolia.id]: "0x640157b367b350589E68197E16B964273302d8BB",
+          },
+        },
       ],
     }),
     react(),

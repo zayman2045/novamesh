@@ -10,12 +10,17 @@ import { clusterApiUrl } from "@solana/web3.js";
 import "@solana/wallet-adapter-react-ui/styles.css";
 
 interface SolanaProviderProps {
-  children: ReactNode;
+  children: ReactNode; // The children of the component
 }
 
 export const SolanaProvider: React.FC<SolanaProviderProps> = ({ children }) => {
+  // Set the network to Devnet
   const network = WalletAdapterNetwork.Devnet;
+
+  // Set the endpoint to the cluster API URL
   const endpoint = useMemo(() => clusterApiUrl(network), [network]);
+
+  // Create an array of wallets
   const wallets = useMemo(() => [], [network]);
 
   return (
