@@ -1,6 +1,6 @@
 # NovaMesh: Ethereum & Solana DeSci Application
 
-This full-stack DeSci application is a
+This full-stack DeSci application is a...
 
 ## Overview
 
